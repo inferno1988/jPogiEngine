@@ -1,0 +1,4 @@
+SELECT AsText(roads_geom) AS geom
+FROM roads
+WHERE
+ roads_geom && SetSRID('BOX3D(0 0,500 500)'::box3d,-1);
