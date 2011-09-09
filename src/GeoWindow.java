@@ -3,6 +3,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.geom.*;
 import java.util.*;
 
@@ -17,7 +19,7 @@ import net.it_tim.jpogiengine.geoObjects.GeoPolyMaker;
 import org.postgis.Point;
 
 public class GeoWindow extends JComponent implements MouseMotionListener,
-		MouseInputListener, ComponentListener {
+		MouseInputListener, ComponentListener, MouseWheelListener {
 
 	private static final long serialVersionUID = -5210242861777162258L;
 	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
@@ -25,14 +27,15 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 	private boolean select = false;
 	private boolean move = false;
 	private GeoObjMaker selected;
-	private double deltaX = 0, startX = 0, sx = 0;
-	private double deltaY = 0, startY = 0, sy = 0;
+	private double deltaX = 0, startX = 0, sx = 0, scaleX = 1.0;
+	private double deltaY = 0, startY = 0, sy = 0, scaleY = 1.0;
 
 	public GeoWindow() {
 		super();
 		addComponentListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
+		addMouseWheelListener(this);
 	}
 
 	public void addLine(int dbId, int z, Point fp, Point lp) {
@@ -73,19 +76,13 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 				}
 			}
 		}
-
-		try {
-			Thread.sleep(0);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public void clearLines() {
 		geoBuffer.clear();
 		repaint();
 	}
+
 	public GeoObjMaker find(Point2D p) {
 		for (GeoObjMaker lines : geoBuffer) {
 			if (lines.intersects(mouseRect))
@@ -167,7 +164,8 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 		if (isMove()) {
 			deltaX -= startX - e.getPoint().getX();
 			deltaY -= startY - e.getPoint().getY();
-			SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize().getHeight());
+			SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
+					.getHeight(), scaleX, scaleY);
 			setCursor(Cursor.getDefaultCursor());
 		}
 	}
@@ -216,6 +214,17 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 
 	public double getDeltaY() {
 		return deltaY;
+	}
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		if ((scaleX <= 1.0 || scaleY <= 1.0) && e.getWheelRotation() < 0) {
+			scaleX = scaleY = 1.0;
+		} else {
+			scaleX = scaleY += e.getWheelRotation()/4.0;
+			SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
+					.getHeight(), scaleX, scaleY);
+		}
 	}
 
 }

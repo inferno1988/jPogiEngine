@@ -103,7 +103,7 @@ public class SimplePogiTest {
 		gw.setLayout(new BorderLayout(0, 0));
 	}
 
-	public static void test(double dx, double dy, double w, double h) {
+	public static void test(double dx, double dy, double w, double h, double sx, double sy) {
 		java.sql.Connection conn;
 
 		try {
@@ -124,18 +124,20 @@ public class SimplePogiTest {
 			 * Создаем объект запроса и выполняем запрос select.
 			 */
 			gw.clearLines();
-			float m = 2;
-			Point xv = new Point(dx, dy);
-			Point yv = new Point(w, h);
+			Point xv = new Point(-dx*sx, -dy*sy);
+			Point yv = new Point((-dx + w)*sx, (-dy + h)*sy);
 			PGbox3d b3d = new PGbox3d(xv, yv);
-			System.out.println("~~~ New query ~~~");
-			System.out.println(b3d.getValue());
-			String selectAllIn = "select ST_TransScale(roads_geom, ?, ?, ?, ?) as geom, road_id, z from roads where roads_geom && SetSRID(?::box3d,-1)";
+			System.out.printf("xv: %s, xy: %s\n", xv.getValue(), yv.getValue());
+			System.out.printf("sx: %6.2f, sy: %6.2f\n", sx, sy);
+			String selectAllIn = "select ST_TransScale(roads_geom, ?, ?, ?, ?) as geom, road_id, z from (select * from roads WHERE roads_geom && SetSRID(?::box3d,-1)) as box";
 			PreparedStatement s = conn.prepareStatement(selectAllIn);
-			s.setDouble(1, dx);
-			s.setDouble(2, dy);
-			s.setFloat(3, 1f);
-			s.setFloat(4, 1f);
+			s.setDouble(1, dx*sx);
+			s.setDouble(2, dy*sy);
+			if ( sx <= 0 && sy <= 0) {
+				sx = sy = 1;
+			}
+			s.setDouble(3, 1/sx);
+			s.setDouble(4, 1/sy);
 			s.setString(5, b3d.getValue());
 			ResultSet r = s.executeQuery();
 			
@@ -156,7 +158,6 @@ public class SimplePogiTest {
 				
 				if (geoType == Geometry.POLYGON) {
 					Polygon poly = (Polygon) geom.getGeometry();
-					System.out.println(poly.getValue());
 					int num = poly.numPoints();
 					int[] x = new int[num];
 					int[] y = new int[num];
