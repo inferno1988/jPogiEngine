@@ -6,20 +6,21 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.*;
+import java.awt.image.BufferedImage;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
 import java.util.*;
-
-import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
-
 import net.it_tim.jpogiengine.geoObjects.GeoLineMaker;
 import net.it_tim.jpogiengine.geoObjects.GeoObjMaker;
-import net.it_tim.jpogiengine.geoObjects.GeoObjShape;
 import net.it_tim.jpogiengine.geoObjects.GeoPolyMaker;
 
 import org.postgis.Point;
 
-public class GeoWindow extends JComponent implements MouseMotionListener,
-		MouseInputListener, ComponentListener, MouseWheelListener {
+public class GeoWindow extends JPanel implements MouseMotionListener,
+		MouseInputListener, ComponentListener, MouseWheelListener, Printable {
 
 	private static final long serialVersionUID = -5210242861777162258L;
 	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
@@ -29,13 +30,33 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 	private GeoObjMaker selected;
 	private double deltaX = 0, startX = 0, sx = 0, scaleX = 1.0;
 	private double deltaY = 0, startY = 0, sy = 0, scaleY = 1.0;
+	private BufferedImage bi = null;
 
 	public GeoWindow() {
 		super();
+		setSize(new Dimension(500, 500));
 		addComponentListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		addMouseWheelListener(this);
+		setVisible(true);
+
+		Thread loop = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					if (WorkerPool.hasWorkers()) {
+						repaint();
+					}
+				}
+			}
+		});
+		loop.start();
 	}
 
 	public void addLine(int dbId, int z, Point fp, Point lp) {
@@ -49,18 +70,25 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 		geoBuffer.add(poly);
 	}
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
+	public Graphics2D createGraphics2D(int w, int h) {
+		Graphics2D g2 = null;
+		if (bi == null || bi.getWidth() != w || bi.getHeight() != h) {
+			bi = (BufferedImage) createImage(w, h);
+		}
+		bi.setAccelerationPriority(1.0f);
+		g2 = bi.createGraphics();
+		g2.setBackground(getBackground());
+		g2.clearRect(0, 0, w, h);
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		rh.put(RenderingHints.KEY_RENDERING,
+		g2.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
-		g2.setRenderingHints(rh);
+		return g2;
+	}
 
-		g2.setPaint(Color.WHITE);
-		g2.fill(getBounds());
-
+	/*
+	private void drawObjects(Graphics2D g2) {
+		// Draw objects
 		for (int z = 0; z < 2; z++) {
 			for (GeoObjMaker lines : geoBuffer) {
 				for (GeoObjShape shape : lines.getgShapes()) {
@@ -77,10 +105,23 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 			}
 		}
 	}
+	*/
+	
+	@Override
+	public void paint(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+		g2.drawImage(bi, null, 0, 0);
+		g2.draw(new Rectangle2D.Double(4, 4, 201, 51));
+		g2.setColor(Color.WHITE);
+		g2.fill(new Rectangle2D.Double(5, 5, 200, 50));
+		g2.setColor(Color.BLACK);
+		g2.drawString("Cache size: " + Integer.toString(CachedLoop.size()), 6, 33);
+
+		//new Integer(SimplePogiTest.imgBuffer.size()).toString()
+	}
 
 	public void clearLines() {
 		geoBuffer.clear();
-		repaint();
 	}
 
 	public GeoObjMaker find(Point2D p) {
@@ -118,9 +159,9 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 			if (selected != null && e.getClickCount() == 1
 					&& e.getButton() == MouseEvent.BUTTON1) {
 				selected.setSelected();
+				repaint();
 			}
 		}
-		repaint();
 	}
 
 	@Override
@@ -156,6 +197,7 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 			startY = e.getPoint().getY();
 			sx = e.getPoint().getX();
 			sy = e.getPoint().getY();
+			PaintThread.stop();
 		}
 	}
 
@@ -167,6 +209,7 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 			SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
 					.getHeight(), scaleX, scaleY);
 			setCursor(Cursor.getDefaultCursor());
+			loadMap();
 		}
 	}
 
@@ -221,10 +264,37 @@ public class GeoWindow extends JComponent implements MouseMotionListener,
 		if ((scaleX <= 1.0 || scaleY <= 1.0) && e.getWheelRotation() < 0) {
 			scaleX = scaleY = 1.0;
 		} else {
-			scaleX = scaleY += e.getWheelRotation()/4.0;
+			scaleX = scaleY += e.getWheelRotation();
 			SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
 					.getHeight(), scaleX, scaleY);
 		}
 	}
 
+	@Override
+	public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
+			throws PrinterException {
+        if (pageIndex > 0) { /* We have only one page, and 'page' is zero-based */
+            return NO_SUCH_PAGE;
+        }
+
+        /* User (0,0) is typically outside the imageable area, so we must
+         * translate by the X and Y values in the PageFormat to avoid clipping
+         */
+        Graphics2D g2d = (Graphics2D) graphics;
+        g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+
+        g2d.drawImage(bi, 0, 0, this);
+        /* tell the caller that this page is part of the printed document */
+        return PAGE_EXISTS;
+	}
+
+	public void loadMap() {
+		Dimension d = getSize();
+		Graphics2D g2 = createGraphics2D(d.width, d.height);
+		Thread pt = new Thread(new PaintThread());
+		PaintThread.setGraphics(g2);
+		PaintThread.setDelta(deltaX, deltaY);
+		PaintThread.setScale(scaleX, scaleY);
+		pt.start();
+	}
 }
