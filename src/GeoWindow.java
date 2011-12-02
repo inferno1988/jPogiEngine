@@ -6,57 +6,101 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.*;
+import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
-import java.util.*;
-import javax.swing.JPanel;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import javax.swing.event.MouseInputListener;
 import net.it_tim.jpogiengine.geoObjects.GeoLineMaker;
 import net.it_tim.jpogiengine.geoObjects.GeoObjMaker;
+import net.it_tim.jpogiengine.geoObjects.GeoObjShape;
 import net.it_tim.jpogiengine.geoObjects.GeoPolyMaker;
-
 import org.postgis.Point;
 
-public class GeoWindow extends JPanel implements MouseMotionListener,
+public class GeoWindow extends Canvas implements MouseMotionListener,
 		MouseInputListener, ComponentListener, MouseWheelListener, Printable {
 
 	private static final long serialVersionUID = -5210242861777162258L;
 	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
-	private ArrayList<GeoObjMaker> geoBuffer = new ArrayList<GeoObjMaker>();
+	private CopyOnWriteArrayList<GeoObjMaker> geoBuffer = new CopyOnWriteArrayList<GeoObjMaker>();
+
 	private boolean select = false;
 	private boolean move = false;
 	private GeoObjMaker selected;
-	private double deltaX = 0, startX = 0, sx = 0, scaleX = 1.0;
-	private double deltaY = 0, startY = 0, sy = 0, scaleY = 1.0;
+	private double deltaX = 0, startX = 0, sx = 0, scaleX = 0.0;
+	private double deltaY = 0, startY = 0, sy = 0, scaleY = 0.0;
+	//private Rectangle viewPort;
 	private BufferedImage bi = null;
+	private BufferStrategy buffer = null;
+	
+	int fps = 0;
+	int frames = 0;
+	long totalTime = 0;
+	long curTime = System.currentTimeMillis();
+	long lastTime = curTime;
+
+	public double getStartX() {
+		return startX;
+	}
+
+	public void setStartX(double startX) {
+		this.startX = startX;
+	}
+
+	public double getSx() {
+		return sx;
+	}
+
+	public void setSx(double sx) {
+		this.sx = sx;
+	}
+
+	public double getScaleX() {
+		return scaleX;
+	}
+
+	public void setScaleX(double scaleX) {
+		this.scaleX = scaleX;
+	}
+
+	public double getStartY() {
+		return startY;
+	}
+
+	public void setStartY(double startY) {
+		this.startY = startY;
+	}
+
+	public double getSy() {
+		return sy;
+	}
+
+	public void setSy(double sy) {
+		this.sy = sy;
+	}
+
+	public double getScaleY() {
+		return scaleY;
+	}
+
+	public void setScaleY(double scaleY) {
+		this.scaleY = scaleY;
+	}
 
 	public GeoWindow() {
-		super();
-		setSize(new Dimension(500, 500));
 		addComponentListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		addMouseWheelListener(this);
 		setVisible(true);
-
-		Thread loop = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (true) {
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					if (WorkerPool.hasWorkers()) {
-						repaint();
-					}
-				}
-			}
-		});
-		loop.start();
+		setIgnoreRepaint(true);
+		setBackground(new Color(145, 188, 236));
+		setSize(getSize());
+		setIgnoreRepaint(true);
+		setVisible(true);
 	}
 
 	public void addLine(int dbId, int z, Point fp, Point lp) {
@@ -72,10 +116,13 @@ public class GeoWindow extends JPanel implements MouseMotionListener,
 
 	public Graphics2D createGraphics2D(int w, int h) {
 		Graphics2D g2 = null;
+		GraphicsEnvironment ge = GraphicsEnvironment
+				.getLocalGraphicsEnvironment();
+		GraphicsDevice gd = ge.getDefaultScreenDevice();
+		GraphicsConfiguration gc = gd.getDefaultConfiguration();
 		if (bi == null || bi.getWidth() != w || bi.getHeight() != h) {
-			bi = (BufferedImage) createImage(w, h);
+			bi = (BufferedImage) gc.createCompatibleImage(w, h);
 		}
-		bi.setAccelerationPriority(1.0f);
 		g2 = bi.createGraphics();
 		g2.setBackground(getBackground());
 		g2.clearRect(0, 0, w, h);
@@ -86,7 +133,6 @@ public class GeoWindow extends JPanel implements MouseMotionListener,
 		return g2;
 	}
 
-	/*
 	private void drawObjects(Graphics2D g2) {
 		// Draw objects
 		for (int z = 0; z < 2; z++) {
@@ -105,19 +151,37 @@ public class GeoWindow extends JPanel implements MouseMotionListener,
 			}
 		}
 	}
-	*/
-	
-	@Override
-	public void paint(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		g2.drawImage(bi, null, 0, 0);
-		g2.draw(new Rectangle2D.Double(4, 4, 201, 51));
-		g2.setColor(Color.WHITE);
-		g2.fill(new Rectangle2D.Double(5, 5, 200, 50));
-		g2.setColor(Color.BLACK);
-		g2.drawString("Cache size: " + Integer.toString(CachedLoop.size()), 6, 33);
 
-		//new Integer(SimplePogiTest.imgBuffer.size()).toString()
+	public void paintAll() {
+		Graphics graphics = null;
+		try {
+			// count Frames per second...
+			lastTime = curTime;
+			curTime = System.currentTimeMillis();
+			totalTime += curTime - lastTime;
+			if (totalTime > 1000) {
+				totalTime -= 1000;
+				fps = frames;
+				frames = 0;
+			}
+			++frames;
+			
+			createBufferStrategy(2);
+			buffer = getBufferStrategy();
+			graphics = buffer.getDrawGraphics();
+			graphics.drawImage(bi, 0, 0, null);
+			drawObjects((Graphics2D) graphics);
+			graphics.drawString(String.format("FPS: %s", fps), 20, 20);
+			graphics.drawString(String.format("Cache size: %s", CachedLoop.size()), 20, 40);
+			if (!buffer.contentsLost())
+				buffer.show();
+			// Let the OS have a little time...
+			Thread.yield();
+		} finally {
+			// release resources
+			if (graphics != null)
+				graphics.dispose();
+		}
 	}
 
 	public void clearLines() {
@@ -166,23 +230,24 @@ public class GeoWindow extends JPanel implements MouseMotionListener,
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if (isMove()) {
+			if (WorkerPool.hasWorkers())
+				WorkerPool.interruptAll();
 			double dx = 0, dy = 0;
 			dx = e.getPoint().getX() - sx;
 			dy = e.getPoint().getY() - sy;
 			for (GeoObjMaker lines : geoBuffer) {
 				lines.move(new Point2D.Double(dx, dy));
-				repaint();
 			}
 			sx = e.getPoint().getX();
 			sy = e.getPoint().getY();
@@ -197,7 +262,8 @@ public class GeoWindow extends JPanel implements MouseMotionListener,
 			startY = e.getPoint().getY();
 			sx = e.getPoint().getX();
 			sy = e.getPoint().getY();
-			PaintThread.stop();
+			if (WorkerPool.hasWorkers())
+				WorkerPool.interruptAll();
 		}
 	}
 
@@ -215,19 +281,17 @@ public class GeoWindow extends JPanel implements MouseMotionListener,
 
 	@Override
 	public void componentHidden(ComponentEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void componentMoved(ComponentEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void componentResized(ComponentEvent e) {
-
+		loadMap();
 	}
 
 	@Override
@@ -261,40 +325,41 @@ public class GeoWindow extends JPanel implements MouseMotionListener,
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		if ((scaleX <= 1.0 || scaleY <= 1.0) && e.getWheelRotation() < 0) {
-			scaleX = scaleY = 1.0;
-		} else {
-			scaleX = scaleY += e.getWheelRotation();
-			SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
-					.getHeight(), scaleX, scaleY);
-		}
+		scaleX = scaleY += e.getWheelRotation();
+		if (scaleX <= 18.0d || scaleY <= 18.0d)
+			scaleX = scaleY = 18.0d;
+		if (scaleX >= 23.0d || scaleY >= 23.0d)
+			scaleX = scaleY = 23.0d;
+		SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
+				.getHeight(), scaleX, scaleY);
+		loadMap();
 	}
 
 	@Override
 	public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
 			throws PrinterException {
-        if (pageIndex > 0) { /* We have only one page, and 'page' is zero-based */
-            return NO_SUCH_PAGE;
-        }
+		if (pageIndex > 0) { /* We have only one page, and 'page' is zero-based */
+			return NO_SUCH_PAGE;
+		}
 
-        /* User (0,0) is typically outside the imageable area, so we must
-         * translate by the X and Y values in the PageFormat to avoid clipping
-         */
-        Graphics2D g2d = (Graphics2D) graphics;
-        g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+		/*
+		 * User (0,0) is typically outside the imageable area, so we must
+		 * translate by the X and Y values in the PageFormat to avoid clipping
+		 */
+		Graphics2D g2d = (Graphics2D) graphics;
+		g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
 
-        g2d.drawImage(bi, 0, 0, this);
-        /* tell the caller that this page is part of the printed document */
-        return PAGE_EXISTS;
+		 g2d.drawImage(bi, 0, 0, this);
+		/* tell the caller that this page is part of the printed document */
+		return PAGE_EXISTS;
 	}
 
 	public void loadMap() {
+		if (WorkerPool.hasWorkers())
+			WorkerPool.interruptAll();
 		Dimension d = getSize();
 		Graphics2D g2 = createGraphics2D(d.width, d.height);
-		Thread pt = new Thread(new PaintThread());
-		PaintThread.setGraphics(g2);
-		PaintThread.setDelta(deltaX, deltaY);
-		PaintThread.setScale(scaleX, scaleY);
+		Thread pt = new Thread(new JobGenerator(this, g2));
 		pt.start();
 	}
 }

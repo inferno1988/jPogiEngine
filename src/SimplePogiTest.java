@@ -2,14 +2,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -34,7 +32,7 @@ public class SimplePogiTest {
 	private JToggleButton moveToggle = new JToggleButton("Move");
 	private JToggleButton selectToggle = new JToggleButton("Select");
 	private final JPanel panel = new JPanel();
-	private final JButton btnNewButton_1 = new JButton("New button");
+	private final JButton btnNewButton_1 = new JButton("Print");
 	private final JButton btnNewButton_2 = new JButton("Map");
 	private final JButton btnNewButton_3 = new JButton("Clear");
 
@@ -69,6 +67,7 @@ public class SimplePogiTest {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setLayout(new BorderLayout());
 
 		JToolBar toolBar = new JToolBar();
 		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
@@ -137,21 +136,38 @@ public class SimplePogiTest {
 				gw.loadMap();
 			}
 		});
-		
+
 		toolBar.add(btnNewButton_2);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Thread loop = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						while (true) {
+							try {
+								if (WorkerPool.hasWorkers()) {
+									Thread.sleep(10);
+									gw.paintAll();
+								} else {
+									Thread.sleep(20);
+									gw.paintAll();
+								}
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				});
+				loop.start();
 			}
 		});
-		
+
 		toolBar.add(btnNewButton_3);
 
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.add(gw);
 		gw.setSelected(false);
-		gw.setLayout(new BorderLayout(0, 0));
 	}
 
 	public static void test(double dx, double dy, double w, double h,
@@ -176,18 +192,23 @@ public class SimplePogiTest {
 			 * Создаем объект запроса и выполняем запрос select.
 			 */
 			gw.clearLines();
-			Point xv = new Point(-dx * sx, -dy * sy);
-			Point yv = new Point((-dx + w) * sx, (-dy + h) * sy);
+			Point xv = new Point(-dx, -dy);
+			Point yv = new Point((-dx + w), (-dy + h));
+			//Point xv = new Point(-dx * sx, -dy * sy);
+			//Point yv = new Point((-dx + w) * sx, (-dy + h) * sy);
+			System.out.println("XV: " + xv.toString());
+			System.out.println("YV: " + yv.toString());
 			PGbox3d b3d = new PGbox3d(xv, yv);
 			String selectAllIn = "select ST_TransScale(roads_geom, ?, ?, ?, ?) as geom, road_id, z from (select * from roads WHERE roads_geom && SetSRID(?::box3d,-1)) as box";
 			PreparedStatement s = conn.prepareStatement(selectAllIn);
-			s.setDouble(1, dx * sx);
-			s.setDouble(2, dy * sy);
+			s.setDouble(1, dx);
+			s.setDouble(2, dy);
 			if (sx <= 0 && sy <= 0) {
 				sx = sy = 1;
 			}
-			s.setDouble(3, 1 / sx);
-			s.setDouble(4, 1 / sy);
+			s.setDouble(3, 1.0);
+			s.setDouble(4, 1.0);
+			System.out.println("Scale X: " + sx);
 			s.setString(5, b3d.getValue());
 			ResultSet r = s.executeQuery();
 
@@ -205,7 +226,6 @@ public class SimplePogiTest {
 					gw.addLine(r.getInt(2), z, ls.getFirstPoint(),
 							ls.getLastPoint());
 				}
-
 				if (geoType == Geometry.POLYGON) {
 					Polygon poly = (Polygon) geom.getGeometry();
 					int num = poly.numPoints();

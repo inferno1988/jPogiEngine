@@ -11,7 +11,7 @@ public class GeoLineMaker extends GeoObjMaker {
 	public GeoLineMaker(int aDbId, int z, Point p1, Point p2) {
 		super(aDbId);
 		Line2D line = new Line2D.Double(p1.x, p1.y, p2.x, p2.y);
-		BasicStroke fat = new BasicStroke(5.0f, BasicStroke.CAP_ROUND,
+		BasicStroke fat = new BasicStroke(3.0f, BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_MITER);
 		GeoObjShape goj = new GeoObjShape(line, z, getLineColor(), fat, false, null);
 		addShape(goj);

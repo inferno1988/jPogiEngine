@@ -9,7 +9,7 @@ public class GeoPolyMaker extends GeoObjMaker {
 	public GeoPolyMaker(int aDbId, int z, int[] xpoints, int[] ypoints, int npoints) {
 		super(aDbId);
 		Polygon poly = new Polygon(xpoints, ypoints, npoints);
-		BasicStroke fat = new BasicStroke(5.0f, BasicStroke.CAP_ROUND,
+		BasicStroke fat = new BasicStroke(3.0f, BasicStroke.CAP_ROUND,
 				BasicStroke.JOIN_MITER);
 		GeoObjShape goj = new GeoObjShape(poly, z, getLineColor(), fat, true,
 				getSelectRectFillColor());

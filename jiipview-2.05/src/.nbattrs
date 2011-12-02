@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="JIIPImage.java">
+        <attr name="class_dependency_java.lang.Cloneable" stringvalue="JIIPImage"/>
+    </fileobject>
+    <fileobject name="ViewImage.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="ViewImage"/>
+        <attr name="class_dependency_java.awt.event.ItemListener" stringvalue="ViewImage"/>
+    </fileobject>
+    <fileobject name="JIIPView.java">
+        <attr name="class_dependency_javax.swing.JApplet" stringvalue="JIIPView"/>
+        <attr name="NetBeansAttrArguments" serialvalue="aced0005757200135b4c6a6176612e6c616e672e537472696e673badd256e7e91d7b47020000787000000003740017687474703a2f2f3134332e3132362e3234342e3232322f7400112f686f6d652f64656e69732f706970706f74000474727565"/>
+        <attr name="NetBeansAttrExecutor" serialvalue="aced00057372001e6f72672e6f70656e6964652e53657276696365547970652448616e646c6564612acc871b81080300024c0009636c6173734e616d657400124c6a6176612f6c616e672f537472696e673b4c00046e616d6571007e000178707400104170706c657420457865637574696f6e74002a6f72672e6e65746265616e732e6d6f64756c65732e6170706c65742e4170706c65744578656375746f7278"/>
+        <attr name="NetBeansAttrDataObjectCompilerManager" serialvalue="aced00057372001e6f72672e6f70656e6964652e53657276696365547970652448616e646c6564612acc871b81080300024c0009636c6173734e616d657400124c6a6176612f6c616e672f537472696e673b4c00046e616d6571007e00017870740014496e7465726e616c20436f6d70696c6174696f6e74002d6f72672e6e65746265616e732e6d6f64756c65732e6a6176612e676a2e4a617661436f6d70696c65725479706578"/>
+    </fileobject>
+</attributes>
