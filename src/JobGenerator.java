@@ -1,4 +1,4 @@
-import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -11,8 +11,8 @@ public class JobGenerator extends PaintThread {
 		return jobList;
 	}
 
-	public JobGenerator(GeoWindow parent, Graphics2D g2d) {
-		super(parent, g2d);
+	public JobGenerator(GeoWindow parent, BufferedImage bi) {
+		super(parent, bi);
 	}
 
 	@Override
@@ -46,10 +46,13 @@ public class JobGenerator extends PaintThread {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		RasterThread a = new RasterThread(getGw(), getG2());
+		RasterThread a = new RasterThread(getGw(), getBi());
 		a.start();
+		RasterThread b = new RasterThread(getGw(), getBi());
+		b.start();
 		try {
 			a.join();
+			b.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

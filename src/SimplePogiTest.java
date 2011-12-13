@@ -5,9 +5,15 @@ import java.awt.event.ActionListener;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -24,11 +30,13 @@ import org.postgis.PGgeometry;
 import org.postgis.Point;
 import org.postgis.Polygon;
 import org.postgresql.PGConnection;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class SimplePogiTest {
 
 	private JFrame frame;
-	private static GeoWindow gw = new GeoWindow();
+	private static GeoWindow gw;
 	private JToggleButton moveToggle = new JToggleButton("Move");
 	private JToggleButton selectToggle = new JToggleButton("Select");
 	private final JPanel panel = new JPanel();
@@ -64,6 +72,32 @@ public class SimplePogiTest {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		gw = new GeoWindow(loadSettings());
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent e) {
+				gw.init();
+				Thread loop = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						while (true) {
+							try {
+								if (WorkerPool.hasWorkers()) {
+									Thread.sleep(10);
+									gw.paintAll();
+								} else {
+									Thread.sleep(20);
+									gw.paintAll();
+								}
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				});
+				loop.start();
+			}
+		});
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
@@ -140,34 +174,49 @@ public class SimplePogiTest {
 		toolBar.add(btnNewButton_2);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Thread loop = new Thread(new Runnable() {
-					@Override
-					public void run() {
-						while (true) {
-							try {
-								if (WorkerPool.hasWorkers()) {
-									Thread.sleep(10);
-									gw.paintAll();
-								} else {
-									Thread.sleep(20);
-									gw.paintAll();
-								}
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-				});
-				loop.start();
+				
 			}
 		});
-
 		toolBar.add(btnNewButton_3);
 
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.add(gw);
 		gw.setSelected(false);
+	}
+	
+	private HashMap<String, String> loadSettings() {
+		HashMap<String, String> settings = new HashMap<String, String>();
+		try {
+			String request = new String(
+					"http://192.168.33.110/yTiles/tiles.info");
+			URL url;
+			url = new URL(request);
+			InputStreamReader isr = new InputStreamReader(url
+					.openStream());
+			BufferedReader br = new BufferedReader(isr);
+			String line;
+
+			while ((line = br.readLine()) != null) {
+				int i = line.indexOf('=');
+				String obj, res;
+				if (i != -1) {
+					obj = line.substring(0, i);
+					res = line.substring(i + 1);
+				} else {
+					obj = "(error)";
+					res = "(error)";
+				}
+				settings.put(obj, res);
+			}
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		return settings;
 	}
 
 	public static void test(double dx, double dy, double w, double h,

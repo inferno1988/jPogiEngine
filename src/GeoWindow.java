@@ -11,14 +11,14 @@ import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
+import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-
+import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 import net.it_tim.jpogiengine.geoObjects.GeoLineMaker;
 import net.it_tim.jpogiengine.geoObjects.GeoObjMaker;
 import net.it_tim.jpogiengine.geoObjects.GeoObjShape;
 import net.it_tim.jpogiengine.geoObjects.GeoPolyMaker;
-import org.postgis.Point;
 
 public class GeoWindow extends Canvas implements MouseMotionListener,
 		MouseInputListener, ComponentListener, MouseWheelListener, Printable {
@@ -26,22 +26,37 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	private static final long serialVersionUID = -5210242861777162258L;
 	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
 	private CopyOnWriteArrayList<GeoObjMaker> geoBuffer = new CopyOnWriteArrayList<GeoObjMaker>();
-
+	private HashMap<String, String> settings = new HashMap<String, String>();
 	private boolean select = false;
 	private boolean move = false;
 	private GeoObjMaker selected;
-	private double deltaX = 0, startX = 0, sx = 0, scaleX = 0.0;
-	private double deltaY = 0, startY = 0, sy = 0, scaleY = 0.0;
-	//private Rectangle viewPort;
+	private double deltaX = 0, startX = 0, sx = 0, scaleX = 18.0;
+	private double deltaY = 0, startY = 0, sy = 0, scaleY = 18.0;
+	private Rectangle viewPort = new Rectangle();
 	private BufferedImage bi = null;
 	private BufferStrategy buffer = null;
-	
+	private Point mouse = new Point();
+
 	int fps = 0;
 	int frames = 0;
 	long totalTime = 0;
 	long curTime = System.currentTimeMillis();
 	long lastTime = curTime;
 
+	public GeoWindow(HashMap<String, String> settings) {
+		addComponentListener(this);
+		addMouseListener(this);
+		addMouseMotionListener(this);
+		addMouseWheelListener(this);
+		setVisible(true);
+		setIgnoreRepaint(true);
+		setBackground(new Color(145, 188, 236));
+		setSize(getSize());
+		setIgnoreRepaint(true);
+		setVisible(true);
+		this.settings = settings;
+	}
+	
 	public double getStartX() {
 		return startX;
 	}
@@ -90,20 +105,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		this.scaleY = scaleY;
 	}
 
-	public GeoWindow() {
-		addComponentListener(this);
-		addMouseListener(this);
-		addMouseMotionListener(this);
-		addMouseWheelListener(this);
-		setVisible(true);
-		setIgnoreRepaint(true);
-		setBackground(new Color(145, 188, 236));
-		setSize(getSize());
-		setIgnoreRepaint(true);
-		setVisible(true);
-	}
-
-	public void addLine(int dbId, int z, Point fp, Point lp) {
+	public void addLine(int dbId, int z, org.postgis.Point fp, org.postgis.Point lp) {
 		GeoObjMaker l2d = new GeoLineMaker(dbId, z, fp, lp);
 		geoBuffer.add(l2d);
 	}
@@ -114,8 +116,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		geoBuffer.add(poly);
 	}
 
-	public Graphics2D createGraphics2D(int w, int h) {
-		Graphics2D g2 = null;
+	public void createGraphics2D(int w, int h) {
 		GraphicsEnvironment ge = GraphicsEnvironment
 				.getLocalGraphicsEnvironment();
 		GraphicsDevice gd = ge.getDefaultScreenDevice();
@@ -123,18 +124,9 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		if (bi == null || bi.getWidth() != w || bi.getHeight() != h) {
 			bi = (BufferedImage) gc.createCompatibleImage(w, h);
 		}
-		g2 = bi.createGraphics();
-		g2.setBackground(getBackground());
-		g2.clearRect(0, 0, w, h);
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.setRenderingHint(RenderingHints.KEY_RENDERING,
-				RenderingHints.VALUE_RENDER_QUALITY);
-		return g2;
 	}
 
-	private void drawObjects(Graphics2D g2) {
-		// Draw objects
+	private void drawObjects(Graphics2D g2) { // Draw objects
 		for (int z = 0; z < 2; z++) {
 			for (GeoObjMaker lines : geoBuffer) {
 				for (GeoObjShape shape : lines.getgShapes()) {
@@ -152,8 +144,15 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 	}
 
-	public void paintAll() {
-		Graphics graphics = null;
+	public void init() {
+		Dimension d = getSize();
+		createGraphics2D(d.width, d.height);
+		createBufferStrategy(2);
+		buffer = getBufferStrategy();
+	}
+
+	public synchronized void paintAll() {
+		Graphics2D graphics = null;
 		try {
 			// count Frames per second...
 			lastTime = curTime;
@@ -165,14 +164,15 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				frames = 0;
 			}
 			++frames;
-			
-			createBufferStrategy(2);
-			buffer = getBufferStrategy();
-			graphics = buffer.getDrawGraphics();
+			graphics = (Graphics2D)buffer.getDrawGraphics();
 			graphics.drawImage(bi, 0, 0, null);
-			drawObjects((Graphics2D) graphics);
+			//drawObjects(graphics);
 			graphics.drawString(String.format("FPS: %s", fps), 20, 20);
-			graphics.drawString(String.format("Cache size: %s", CachedLoop.size()), 20, 40);
+			graphics.drawString(
+					String.format("Cache size: %s", CachedLoop.size()), 20, 40);
+			graphics.drawString(
+					String.format("Image size: %s", settings.get("image.size")), 20, 60);
+
 			if (!buffer.contentsLost())
 				buffer.show();
 			// Let the OS have a little time...
@@ -206,6 +206,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
+		mouse = e.getPoint();
 		if (isSelect()) {
 			mouseRect.setRect(e.getX() - 5, e.getY() - 5, 10, 10);
 			if (find(e.getPoint()) == null) {
@@ -240,7 +241,9 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		if (isMove()) {
+		Graphics2D graphics = null;
+		graphics = bi.createGraphics();
+		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			if (WorkerPool.hasWorkers())
 				WorkerPool.interruptAll();
 			double dx = 0, dy = 0;
@@ -251,12 +254,13 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			}
 			sx = e.getPoint().getX();
 			sy = e.getPoint().getY();
+			graphics.copyArea(0, 0, getWidth(), getHeight(), (int) dx, (int) dy);
 		}
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if (isMove()) {
+		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			startX = e.getPoint().getX();
 			startY = e.getPoint().getY();
@@ -269,11 +273,9 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if (isMove()) {
+		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			deltaX -= startX - e.getPoint().getX();
 			deltaY -= startY - e.getPoint().getY();
-			SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
-					.getHeight(), scaleX, scaleY);
 			setCursor(Cursor.getDefaultCursor());
 			loadMap();
 		}
@@ -291,6 +293,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void componentResized(ComponentEvent e) {
+		Dimension d = getSize();
+		createGraphics2D(d.width, d.height);
 		loadMap();
 	}
 
@@ -330,8 +334,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			scaleX = scaleY = 18.0d;
 		if (scaleX >= 23.0d || scaleY >= 23.0d)
 			scaleX = scaleY = 23.0d;
-		SimplePogiTest.test(deltaX, deltaY, getSize().getWidth(), getSize()
-				.getHeight(), scaleX, scaleY);
 		loadMap();
 	}
 
@@ -349,7 +351,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		Graphics2D g2d = (Graphics2D) graphics;
 		g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
 
-		 g2d.drawImage(bi, 0, 0, this);
+		g2d.drawImage(bi, 0, 0, this);
 		/* tell the caller that this page is part of the printed document */
 		return PAGE_EXISTS;
 	}
@@ -357,9 +359,15 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	public void loadMap() {
 		if (WorkerPool.hasWorkers())
 			WorkerPool.interruptAll();
-		Dimension d = getSize();
-		Graphics2D g2 = createGraphics2D(d.width, d.height);
-		Thread pt = new Thread(new JobGenerator(this, g2));
+		Thread pt = new Thread(new JobGenerator(this, bi));
 		pt.start();
+	}
+
+	private void zoomIn() {
+
+	}
+
+	private void zoomOut() {
+
 	}
 }

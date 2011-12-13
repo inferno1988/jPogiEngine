@@ -2,16 +2,17 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public class PaintThread extends Thread {
-	private Graphics2D g2 = null;
-	private BufferedImage img = new BufferedImage(256, 256,
+	private BufferedImage bi;
+	private final int TILE_SIZE = 256;
+	private BufferedImage img = new BufferedImage(TILE_SIZE, TILE_SIZE,
 			BufferedImage.TYPE_INT_ARGB);
 	private int mx = 0, my = 0;
 	private GeoWindow gw = null;
 	private boolean interrupted = false;
 	
-	public PaintThread(GeoWindow parent, Graphics2D g2d) {
+	public PaintThread(GeoWindow parent, BufferedImage bi) {
 		this.setGw(parent);
-		this.setG2(g2d);
+		this.setBi(bi);
 	}
 	
 	@Override
@@ -22,14 +23,6 @@ public class PaintThread extends Thread {
 	@Override
 	public boolean isInterrupted() {
 		return this.interrupted;
-	}
-
-	public Graphics2D getG2() {
-		return g2;
-	}
-
-	public void setG2(Graphics2D g2) {
-		this.g2 = g2;
 	}
 
 	public BufferedImage getImg() {
@@ -62,5 +55,13 @@ public class PaintThread extends Thread {
 
 	public void setGw(GeoWindow gw) {
 		this.gw = gw;
+	}
+
+	public BufferedImage getBi() {
+		return bi;
+	}
+
+	public void setBi(BufferedImage bi) {
+		this.bi = bi;
 	}
 }

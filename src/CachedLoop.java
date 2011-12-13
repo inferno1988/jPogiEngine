@@ -1,11 +1,11 @@
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CachedLoop {
 	private static int cacheSize = 500; // size of image cache, should be
 										// parameterized
-	private static HashMap<String, BufferedImage> imgBuffer = new HashMap<String, BufferedImage>(
+	private static ConcurrentHashMap<String, BufferedImage> imgBuffer = new ConcurrentHashMap<String, BufferedImage>(
 			cacheSize);
 	private static ArrayBlockingQueue<String> fifoMap = new ArrayBlockingQueue<String>(
 			cacheSize + 10);
