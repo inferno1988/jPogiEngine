@@ -8,10 +8,11 @@ import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 
 public class RasterThread extends PaintThread {
-	private final int TILE_SIZE = 256;
+	private final int TILE_SIZE;
 	
 	public RasterThread(GeoWindow parent, BufferedImage bi) {
 		super(parent, bi);
+		TILE_SIZE=256;
 	}
 
 	@Override

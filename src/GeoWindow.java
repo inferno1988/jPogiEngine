@@ -26,7 +26,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	private static final long serialVersionUID = -5210242861777162258L;
 	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
 	private CopyOnWriteArrayList<GeoObjMaker> geoBuffer = new CopyOnWriteArrayList<GeoObjMaker>();
-	private HashMap<String, String> settings = new HashMap<String, String>();
+	private ImageSettings settings;
 	private boolean select = false;
 	private boolean move = false;
 	private GeoObjMaker selected;
@@ -43,7 +43,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	long curTime = System.currentTimeMillis();
 	long lastTime = curTime;
 
-	public GeoWindow(HashMap<String, String> settings) {
+	public GeoWindow(ImageSettings imageSettings) {
 		addComponentListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -54,7 +54,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		setSize(getSize());
 		setIgnoreRepaint(true);
 		setVisible(true);
-		this.settings = settings;
+		this.settings = imageSettings;
 	}
 	
 	public double getStartX() {
@@ -164,14 +164,22 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				frames = 0;
 			}
 			++frames;
+			int width = 2;
 			graphics = (Graphics2D)buffer.getDrawGraphics();
 			graphics.drawImage(bi, 0, 0, null);
+			Rectangle2D rect = new Rectangle2D.Double(width, width, 200-width, 100-width);
+			Rectangle2D bound = new Rectangle2D.Double(width/2, width/2, 200, 100);
+			graphics.setColor(Color.WHITE);
+			graphics.fill(rect);
+			graphics.setColor(Color.BLACK);
+			graphics.setStroke(new BasicStroke(width));
+			graphics.draw(bound);
 			//drawObjects(graphics);
 			graphics.drawString(String.format("FPS: %s", fps), 20, 20);
 			graphics.drawString(
 					String.format("Cache size: %s", CachedLoop.size()), 20, 40);
-			graphics.drawString(
-					String.format("Image size: %s", settings.get("image.size")), 20, 60);
+			graphics.drawString(String.format("Image size: %s", settings.getImageSize().width + " | " + settings.getImageSize().height), 20, 60);
+			graphics.drawString(settings.getScales().toString(), 20, 80);
 
 			if (!buffer.contentsLost())
 				buffer.show();
@@ -188,7 +196,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		geoBuffer.clear();
 	}
 
-	public GeoObjMaker find(Point2D p) {
+	private GeoObjMaker find(Point2D p) {
 		for (GeoObjMaker lines : geoBuffer) {
 			if (lines.intersects(mouseRect))
 				return lines;

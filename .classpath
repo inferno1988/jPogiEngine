@@ -4,6 +4,9 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="jars/postgis_1.5.3.jar"/>
 	<classpathentry kind="lib" path="jars/postgresql-9.0-801.jdbc3.jar" sourcepath="/home/atom/.m2/repository/postgresql/postgresql/9.0-801.jdbc3/postgresql-9.0-801.jdbc3-sources.jar"/>
-	<classpathentry kind="lib" path="jars/jiipview-2.05.jar"/>
+	<classpathentry kind="lib" path="jars/commons-configuration-1.6.jar"/>
+	<classpathentry kind="lib" path="jars/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="jars/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="jars/commons-collections-3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

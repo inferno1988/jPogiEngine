@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
+import org.apache.commons.configuration.ConfigurationException;
 import org.postgis.Geometry;
 import org.postgis.LineString;
 import org.postgis.PGbox3d;
@@ -71,8 +72,10 @@ public class SimplePogiTest {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		try {
 		frame = new JFrame();
-		gw = new GeoWindow(loadSettings());
+		ImageSettings is = ImageSettings.parseXML(new URL("http://192.168.33.110/config.xml"));
+		gw = new GeoWindow(is);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
@@ -183,41 +186,16 @@ public class SimplePogiTest {
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.add(gw);
 		gw.setSelected(false);
+		} catch (MalformedURLException e) {
+			System.out.println(e.getMessage());
+			System.exit(0);
+		} catch (ConfigurationException e) {
+			System.out.println(e.getMessage());
+			System.exit(0);
+		}
 	}
 	
-	private HashMap<String, String> loadSettings() {
-		HashMap<String, String> settings = new HashMap<String, String>();
-		try {
-			String request = new String(
-					"http://192.168.33.110/yTiles/tiles.info");
-			URL url;
-			url = new URL(request);
-			InputStreamReader isr = new InputStreamReader(url
-					.openStream());
-			BufferedReader br = new BufferedReader(isr);
-			String line;
-
-			while ((line = br.readLine()) != null) {
-				int i = line.indexOf('=');
-				String obj, res;
-				if (i != -1) {
-					obj = line.substring(0, i);
-					res = line.substring(i + 1);
-				} else {
-					obj = "(error)";
-					res = "(error)";
-				}
-				settings.put(obj, res);
-			}
-		} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		return settings;
-	}
+	
 
 	public static void test(double dx, double dy, double w, double h,
 			double sx, double sy) {
@@ -243,8 +221,6 @@ public class SimplePogiTest {
 			gw.clearLines();
 			Point xv = new Point(-dx, -dy);
 			Point yv = new Point((-dx + w), (-dy + h));
-			//Point xv = new Point(-dx * sx, -dy * sy);
-			//Point yv = new Point((-dx + w) * sx, (-dy + h) * sy);
 			System.out.println("XV: " + xv.toString());
 			System.out.println("YV: " + yv.toString());
 			PGbox3d b3d = new PGbox3d(xv, yv);

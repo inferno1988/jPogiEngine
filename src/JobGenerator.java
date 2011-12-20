@@ -35,7 +35,6 @@ public class JobGenerator extends PaintThread {
 					return;
 				}
 				String fileUrl = new String(String.format("http://192.168.33.110/yTiles/%d/tile-%d-%d.png",  new Double(getGw().getScaleX()).intValue(), i, j));
-				//System.out.println(fileUrl);
 				URL url = new URL(fileUrl);
 				TileInfo ti = new TileInfo(url, i, j);
 				jobList.add(ti);
@@ -47,8 +46,8 @@ public class JobGenerator extends PaintThread {
 			e.printStackTrace();
 		}
 		RasterThread a = new RasterThread(getGw(), getBi());
-		a.start();
 		RasterThread b = new RasterThread(getGw(), getBi());
+		a.start();
 		b.start();
 		try {
 			a.join();
