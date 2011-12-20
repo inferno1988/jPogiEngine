@@ -5,20 +5,23 @@ public class PaintThread extends Thread {
 	private final int TILE_SIZE = 256;
 	private BufferedImage img = new BufferedImage(TILE_SIZE, TILE_SIZE,
 			BufferedImage.TYPE_INT_ARGB);
+	private ImageSettings imageSettings;
 	private int mx = 0, my = 0;
 	private GeoWindow gw = null;
 	private boolean interrupted = false;
-	
-	public PaintThread(GeoWindow parent, BufferedImage bi) {
+
+	public PaintThread(GeoWindow parent, BufferedImage bi,
+			ImageSettings imageSettings) {
 		this.setGw(parent);
 		this.setBi(bi);
+		this.setImageSettings(imageSettings);
 	}
-	
+
 	@Override
 	public void interrupt() {
 		this.interrupted = true;
 	}
-	
+
 	@Override
 	public boolean isInterrupted() {
 		return this.interrupted;
@@ -62,5 +65,13 @@ public class PaintThread extends Thread {
 
 	public void setBi(BufferedImage bi) {
 		this.bi = bi;
+	}
+
+	public ImageSettings getImageSettings() {
+		return imageSettings;
+	}
+
+	public void setImageSettings(ImageSettings imageSettings) {
+		this.imageSettings = imageSettings;
 	}
 }

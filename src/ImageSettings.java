@@ -142,7 +142,7 @@ public class ImageSettings {
 	}
 	
 	/** Parses information from XML. 
-	 * @param url - Path to config.xml file.
+	 * @param url - URL for config.xml file.
 	 * */
 	public static ImageSettings parseXML(URL url) throws ConfigurationException {
 		XMLConfiguration xml = new XMLConfiguration(url);

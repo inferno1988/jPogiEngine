@@ -8,11 +8,10 @@ import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 
 public class RasterThread extends PaintThread {
-	private final int TILE_SIZE;
-	
-	public RasterThread(GeoWindow parent, BufferedImage bi) {
-		super(parent, bi);
-		TILE_SIZE=256;
+
+	public RasterThread(GeoWindow parent, BufferedImage bi,
+			ImageSettings imageSettings) {
+		super(parent, bi, imageSettings);
 	}
 
 	@Override
@@ -43,8 +42,8 @@ public class RasterThread extends PaintThread {
 						}
 					}
 					g2d.drawImage(getImg(), null,
-							new Double(TILE_SIZE * tileInfo.getI()).intValue() + new Double(getGw().getDeltaX()).intValue(),
-							new Double(TILE_SIZE * tileInfo.getJ()).intValue() + new Double(getGw().getDeltaY()).intValue());
+							new Double(getImageSettings().getTileSize() * tileInfo.getI()).intValue() + new Double(getGw().getDeltaX()).intValue(),
+							new Double(getImageSettings().getTileSize() * tileInfo.getJ()).intValue() + new Double(getGw().getDeltaY()).intValue());
 					if (isInterrupted()) {
 						Thread.yield();
 						WorkerPool.removeWorker(getId());
