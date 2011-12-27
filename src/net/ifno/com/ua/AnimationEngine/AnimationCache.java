@@ -1,13 +1,13 @@
 package net.ifno.com.ua.AnimationEngine;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class AnimationCache {
 	
-	private HashMap<String, Animation> cache;
+	private ConcurrentHashMap<String, Animation> cache;
 
 	public AnimationCache() {
-		cache = new HashMap<String, Animation>();
+		cache = new ConcurrentHashMap<String, Animation>();
 	}
 	
 	public void addAnimation(String name, Animation animation) {

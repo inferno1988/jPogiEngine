@@ -1,4 +1,5 @@
 package net.ifno.com.ua;
+
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -15,7 +16,6 @@ import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -28,7 +28,6 @@ import net.ifno.com.ua.AnimationEngine.AnimationCache;
 import net.ifno.com.ua.AnimationEngine.Animator;
 import net.ifno.com.ua.geoObjects.GeoLineMaker;
 import net.ifno.com.ua.geoObjects.GeoObjMaker;
-import net.ifno.com.ua.geoObjects.GeoObjShape;
 import net.ifno.com.ua.geoObjects.GeoPolyMaker;
 
 public class GeoWindow extends Canvas implements MouseMotionListener,
@@ -41,8 +40,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	private boolean select = false;
 	private boolean move = false;
 	private GeoObjMaker selected;
-	private double deltaX = 0, startX = 0, sx = 0, scaleX = 18.0;
-	private double deltaY = 0, startY = 0, sy = 0, scaleY = 18.0;
+	private double deltaX = 0, startX = 0, sx = 0;
+	private double deltaY = 0, startY = 0, sy = 0;
 	private Rectangle viewPort = new Rectangle();
 	private BufferedImage bi = null;
 	private BufferStrategy buffer = null;
@@ -75,8 +74,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				jsEngine.eval(new FileReader(f));
 				Object obj = jsEngine.get("result");
 				if (obj instanceof Animation)
-					animationCache.addAnimation(f.getName(), (Animation)obj);
-				System.out.println(f.getName());
+					animationCache.addAnimation(f.getName(), (Animation) obj);
 			}
 		} catch (ScriptException ex) {
 			ex.printStackTrace();
@@ -101,14 +99,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		this.sx = sx;
 	}
 
-	public double getScaleX() {
-		return scaleX;
-	}
-
-	public void setScaleX(double scaleX) {
-		this.scaleX = scaleX;
-	}
-
 	public double getStartY() {
 		return startY;
 	}
@@ -123,14 +113,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	public void setSy(double sy) {
 		this.sy = sy;
-	}
-
-	public double getScaleY() {
-		return scaleY;
-	}
-
-	public void setScaleY(double scaleY) {
-		this.scaleY = scaleY;
 	}
 
 	public void addLine(int dbId, int z, org.postgis.Point fp,
@@ -155,23 +137,15 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 	}
 
-	private void drawObjects(Graphics2D g2) { // Draw objects
-		for (int z = 0; z < 2; z++) {
-			for (GeoObjMaker lines : geoBuffer) {
-				for (GeoObjShape shape : lines.getgShapes()) {
-					if (shape.getZ() == z) {
-						if (shape.isFillable()) {
-							g2.setPaint(shape.getFillColor());
-							g2.fill(shape.getShape());
-						}
-						g2.setColor(shape.getStrokeColor());
-						g2.setStroke(shape.getStrokeStyle());
-						g2.draw(shape.getShape());
-					}
-				}
-			}
-		}
-	}
+	/*
+	 * private void drawObjects(Graphics2D g2) { // Draw objects for (int z = 0;
+	 * z < 2; z++) { for (GeoObjMaker lines : geoBuffer) { for (GeoObjShape
+	 * shape : lines.getgShapes()) { if (shape.getZ() == z) { if
+	 * (shape.isFillable()) { g2.setPaint(shape.getFillColor());
+	 * g2.fill(shape.getShape()); } g2.setColor(shape.getStrokeColor());
+	 * g2.setStroke(shape.getStrokeStyle()); g2.draw(shape.getShape()); } } } }
+	 * }
+	 */
 
 	public void init() {
 		Dimension d = getSize();
@@ -219,8 +193,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 					String.format("Cache size: %s", CachedLoop.size()), 20, 40);
 			graphics.drawString(String.format(
 					"Image size: %s",
-					settings.getImageSize().width + " | "
-							+ settings.getImageSize().height), 20, 60);
+					scaler.getScaledImageSize().width + " | "
+							+ scaler.getScaledImageSize().height), 20, 60);
 			int offset = 20;
 			for (Integer sc : settings.getScales()) {
 				if (scaler.getPointer() == sc) {
@@ -233,19 +207,20 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				}
 				offset += 20;
 			}
-
-			graphics.drawString(
-					String.format("Animation cache: %s", animator.getAnimations().size()), 20, 100);
+			graphics.drawString(String.format("Animation cache: %s", animator
+					.getAnimations().size()), 20, 100);
 			if (animator.hasAnimations())
-			for (Animation i : animator.getAnimations()) {
-				BufferedImage frame = i.getFrame();
-				if (frame != null) {
-					graphics.drawImage(frame, null, mouse.x-(frame.getWidth()/2), mouse.y-(frame.getHeight()/2));
-				} else {
-					animator.setPlayed(i);
+				for (Animation i : animator.getAnimations()) {
+					BufferedImage frame = i.getFrame();
+					if (frame != null) {
+						graphics.drawImage(frame, null,
+								mouse.x - (frame.getWidth() / 2), mouse.y
+										- (frame.getHeight() / 2));
+					} else {
+						animator.setPlayed(i);
+					}
 				}
-			}
-			
+
 			if (!buffer.contentsLost())
 				buffer.show();
 			// Let the OS have a little time...
@@ -403,6 +378,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
+		mouse = e.getPoint();
 		if (e.getWheelRotation() < 0) {
 			zoomIn();
 		} else {
@@ -439,14 +415,19 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	private void zoomIn() {
 		Animation animation = animationCache.getAnimation("zoomIn.js");
-		animation.reset();
-		animator.addAnimation(animation);
+		if (!animator.contains(animation)) {
+			animation.reset();
+			animator.addAnimation(animation);
+		}
 		scaler.zoomIn();
-
 	}
 
 	private void zoomOut() {
+		Animation animation = animationCache.getAnimation("zoomOut.js");
+		if (!animator.contains(animation)) {
+			animation.reset();
+			animator.addAnimation(animation);
+		}
 		scaler.zoomOut();
-
 	}
 }

@@ -28,4 +28,10 @@ public class Animator {
 		if (animation != null)
 			animations.remove(animation);
 	}
+	
+	public boolean contains(Animation animation) {
+		if (animation != null)
+			return animations.contains(animation);
+		return false;
+	}
 }

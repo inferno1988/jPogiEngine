@@ -1,9 +1,11 @@
 package net.ifno.com.ua;
+
 import java.awt.image.BufferedImage;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class CachedLoop {
+	/** TODO: Should be parameterized */
 	private static int cacheSize = 500; // size of image cache, should be
 										// parameterized
 	private static ConcurrentHashMap<String, BufferedImage> imgBuffer = new ConcurrentHashMap<String, BufferedImage>(

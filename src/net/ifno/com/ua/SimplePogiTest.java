@@ -33,7 +33,7 @@ import org.postgresql.PGConnection;
 
 public class SimplePogiTest {
 
-	private JFrame frame;
+	private JFrame frmJpogiengine;
 	private static GeoWindow gw;
 	private JToggleButton moveToggle = new JToggleButton("Move");
 	private JToggleButton selectToggle = new JToggleButton("Select");
@@ -50,7 +50,7 @@ public class SimplePogiTest {
 			public void run() {
 				try {
 					SimplePogiTest window = new SimplePogiTest();
-					window.frame.setVisible(true);
+					window.frmJpogiengine.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -70,10 +70,11 @@ public class SimplePogiTest {
 	 */
 	private void initialize() {
 		try {
-		frame = new JFrame();
+		frmJpogiengine = new JFrame();
+		frmJpogiengine.setTitle("jPogiEngine");
 		ImageSettings is = ImageSettings.parseXML(new URL("http://192.168.33.110/config.xml"));
 		gw = new GeoWindow(is);
-		frame.addWindowListener(new WindowAdapter() {
+		frmJpogiengine.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				gw.init();
@@ -97,13 +98,13 @@ public class SimplePogiTest {
 				loop.start();
 			}
 		});
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-		frame.getContentPane().setLayout(new BorderLayout());
+		frmJpogiengine.setBounds(100, 100, 450, 300);
+		frmJpogiengine.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmJpogiengine.setLocationRelativeTo(null);
+		frmJpogiengine.getContentPane().setLayout(new BorderLayout());
 
 		JToolBar toolBar = new JToolBar();
-		frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		frmJpogiengine.getContentPane().add(toolBar, BorderLayout.NORTH);
 		toolBar.setRollover(true);
 		toolBar.setFloatable(false);
 
@@ -178,7 +179,7 @@ public class SimplePogiTest {
 		});
 		toolBar.add(btnNewButton_3);
 
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		frmJpogiengine.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.add(gw);
 		gw.setSelected(false);
