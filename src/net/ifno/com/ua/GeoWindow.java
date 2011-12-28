@@ -40,8 +40,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	private boolean select = false;
 	private boolean move = false;
 	private GeoObjMaker selected;
-	private double deltaX = 0, startX = 0, sx = 0;
-	private double deltaY = 0, startY = 0, sy = 0;
+	//private double deltaX = 0, startX = 0, sx = 0;
+	//private double deltaY = 0, startY = 0, sy = 0;
 	private Rectangle viewPort = new Rectangle();
 	private BufferedImage bi = null;
 	private BufferStrategy buffer = null;
@@ -81,38 +81,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public double getStartX() {
-		return startX;
-	}
-
-	public void setStartX(double startX) {
-		this.startX = startX;
-	}
-
-	public double getSx() {
-		return sx;
-	}
-
-	public void setSx(double sx) {
-		this.sx = sx;
-	}
-
-	public double getStartY() {
-		return startY;
-	}
-
-	public void setStartY(double startY) {
-		this.startY = startY;
-	}
-
-	public double getSy() {
-		return sy;
-	}
-
-	public void setSy(double sy) {
-		this.sy = sy;
 	}
 
 	public void addLine(int dbId, int z, org.postgis.Point fp,
@@ -207,8 +175,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				}
 				offset += 20;
 			}
-			graphics.drawString(String.format("Animation cache: %s", animator
-					.getAnimations().size()), 20, 100);
+			graphics.drawString(String.format("View fx,fy: %sx%s", viewPort.getX(), viewPort.getY()), 20, 100);
+			graphics.drawString(String.format("View lx,ly: %sx%s", viewPort.getMaxX(), viewPort.getMaxY()), 20, 120);
 			if (animator.hasAnimations())
 				for (Animation i : animator.getAnimations()) {
 					BufferedImage frame = i.getFrame();
@@ -286,23 +254,23 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	public void mouseExited(MouseEvent e) {
 
 	}
-
+	
+	private int sx,sy = 0; //start x and y coordinate, used to calculate deltas 
+	
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		Graphics2D graphics = null;
-		graphics = (Graphics2D) bi.getGraphics();
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			if (WorkerPool.hasWorkers())
 				WorkerPool.interruptAll();
-			double dx = 0, dy = 0;
-			dx = e.getPoint().getX() - sx;
-			dy = e.getPoint().getY() - sy;
+			int dx = 0, dy = 0;
+			dx = sx - e.getX();
+			dy = sy - e.getY();
 			for (GeoObjMaker lines : geoBuffer) {
 				lines.move(new Point2D.Double(dx, dy));
 			}
-			sx = e.getPoint().getX();
-			sy = e.getPoint().getY();
-			graphics.copyArea(0, 0, getWidth(), getHeight(), (int) dx, (int) dy);
+			sx = e.getX();
+			sy = e.getY();
+			viewPort.translate(dx, dy);
 		}
 	}
 
@@ -310,20 +278,16 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	public void mousePressed(MouseEvent e) {
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			startX = e.getPoint().getX();
-			startY = e.getPoint().getY();
-			sx = e.getPoint().getX();
-			sy = e.getPoint().getY();
 			if (WorkerPool.hasWorkers())
 				WorkerPool.interruptAll();
+			sx = e.getX();
+			sy = e.getY();
 		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
-			deltaX -= startX - e.getPoint().getX();
-			deltaY -= startY - e.getPoint().getY();
 			setCursor(Cursor.getDefaultCursor());
 			loadMap();
 		}
@@ -360,29 +324,13 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		return move;
 	}
 
-	public void setDeltaX(double deltaX) {
-		this.deltaX = deltaX;
-	}
-
-	public double getDeltaX() {
-		return deltaX;
-	}
-
-	public void setDeltaY(double deltaY) {
-		this.deltaY = deltaY;
-	}
-
-	public double getDeltaY() {
-		return deltaY;
-	}
-
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		mouse = e.getPoint();
 		if (e.getWheelRotation() < 0) {
-			zoomIn();
+			zoomIn(e.getPoint());
 		} else {
-			zoomOut();
+			zoomOut(e.getPoint());
 		}
 		loadMap();
 	}
@@ -409,25 +357,25 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	public void loadMap() {
 		if (WorkerPool.hasWorkers())
 			WorkerPool.interruptAll();
-		Thread pt = new Thread(new JobGenerator(this, bi, settings, scaler));
+		Thread pt = new Thread(new JobGenerator(viewPort, bi, settings, scaler));
 		pt.start();
 	}
 
-	private void zoomIn() {
+	private void zoomIn(Point p) {
 		Animation animation = animationCache.getAnimation("zoomIn.js");
 		if (!animator.contains(animation)) {
 			animation.reset();
 			animator.addAnimation(animation);
 		}
-		scaler.zoomIn();
+		viewPort.setLocation(scaler.zoomInTo(p, viewPort));
 	}
 
-	private void zoomOut() {
+	private void zoomOut(Point p) {
 		Animation animation = animationCache.getAnimation("zoomOut.js");
 		if (!animator.contains(animation)) {
 			animation.reset();
 			animator.addAnimation(animation);
 		}
-		scaler.zoomOut();
+		viewPort.setLocation(scaler.zoomOutFrom(p, viewPort));
 	}
 }
