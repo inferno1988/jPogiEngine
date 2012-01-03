@@ -1,19 +1,19 @@
 package net.ifno.com.ua;
 
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class CachedLoop {
 	/** TODO: Should be parameterized */
-	private static int cacheSize = 500; // size of image cache, should be
+	private static int cacheSize = 1000; // size of image cache, should be
 										// parameterized
-	private static ConcurrentHashMap<String, BufferedImage> imgBuffer = new ConcurrentHashMap<String, BufferedImage>(
+	private static ConcurrentHashMap<String, Image> imgBuffer = new ConcurrentHashMap<String, Image>(
 			cacheSize);
 	private static ArrayBlockingQueue<String> fifoMap = new ArrayBlockingQueue<String>(
 			cacheSize + 10);
 
-	public static void put(String key, BufferedImage img) {
+	public static void put(String key, Image img) {
 		if (fifoMap.size() < cacheSize) {
 			imgBuffer.put(key, img);
 			fifoMap.add(key);
@@ -30,7 +30,7 @@ public class CachedLoop {
 		return imgBuffer.containsKey(key);
 	}
 
-	public static BufferedImage get(String key) {
+	public static Image get(String key) {
 		return imgBuffer.get(key);
 	}
 

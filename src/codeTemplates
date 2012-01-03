@@ -7,3 +7,23 @@ if (alpha < 0.9f) {
 } else {
 	alpha = 0.0f;
 }
+
+				try {
+					
+					if (CachedLoop.containsKey(tileInfo.getUrl().toString())) {
+						image = CachedLoop.get(tileInfo.getUrl().toString());
+						
+					} else {
+						//image = ImageIO.read(tileInfo.getUrl());
+						i = new ImageIcon(tileInfo.getUrl()).getImage();
+						//CachedLoop.put(tileInfo.getUrl().toString(), image);
+					}
+				} catch (Exception e) {
+					if (CachedLoop.containsKey("404")) {
+						image = CachedLoop.get("404");
+					} else {
+						i = new ImageIcon(new URL(is.getHost()+"/404.png")).getImage();
+						//image = ImageIO.read(new URL(is.getHost()+"/404.png"));
+						//CachedLoop.put("404", image);
+					}
+				}

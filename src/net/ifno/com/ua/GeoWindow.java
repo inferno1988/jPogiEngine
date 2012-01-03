@@ -40,8 +40,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	private boolean select = false;
 	private boolean move = false;
 	private GeoObjMaker selected;
-	//private double deltaX = 0, startX = 0, sx = 0;
-	//private double deltaY = 0, startY = 0, sy = 0;
 	private Rectangle viewPort = new Rectangle();
 	private BufferedImage bi = null;
 	private BufferStrategy buffer = null;
@@ -104,16 +102,28 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			bi = (BufferedImage) gc.createCompatibleImage(w, h);
 		}
 	}
-
 	/*
-	 * private void drawObjects(Graphics2D g2) { // Draw objects for (int z = 0;
-	 * z < 2; z++) { for (GeoObjMaker lines : geoBuffer) { for (GeoObjShape
-	 * shape : lines.getgShapes()) { if (shape.getZ() == z) { if
-	 * (shape.isFillable()) { g2.setPaint(shape.getFillColor());
-	 * g2.fill(shape.getShape()); } g2.setColor(shape.getStrokeColor());
-	 * g2.setStroke(shape.getStrokeStyle()); g2.draw(shape.getShape()); } } } }
-	 * }
-	 */
+	private BufferedImage drawObjects(BufferedImage bi) { // Draw objects
+		Graphics2D g2 = bi.createGraphics();
+		for (int z = 0; z < 2; z++) {
+			for (GeoObjMaker lines : geoBuffer) {
+				for (GeoObjShape shape : lines.getgShapes()) {
+					if (shape.getZ() == z) {
+						if (shape.isFillable()) {
+							g2.setPaint(shape.getFillColor());
+							g2.fill(shape.getShape());
+						}
+						g2.setColor(shape.getStrokeColor());
+						g2.setStroke(shape.getStrokeStyle());
+						g2.draw(shape.getShape());
+					}
+				}
+			}
+		}
+		g2.dispose();
+		return bi;
+	}
+	*/
 
 	public void init() {
 		Dimension d = getSize();
@@ -142,8 +152,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				frames = 0;
 			}
 			++frames;
+			
 			graphics = (Graphics2D) buffer.getDrawGraphics();
 			graphics.drawImage(bi, 0, 0, null);
+			
 			Rectangle2D rect = new Rectangle2D.Double(LINE_WIDTH, LINE_WIDTH,
 					INFO_RECT_SIZE.getWidth() - LINE_WIDTH,
 					INFO_RECT_SIZE.getHeight() - LINE_WIDTH);
@@ -175,8 +187,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				}
 				offset += 20;
 			}
-			graphics.drawString(String.format("View fx,fy: %sx%s", viewPort.getX(), viewPort.getY()), 20, 100);
-			graphics.drawString(String.format("View lx,ly: %sx%s", viewPort.getMaxX(), viewPort.getMaxY()), 20, 120);
+			graphics.drawString(String.format("View fx,fy: %sx%s",
+					viewPort.getX(), viewPort.getY()), 20, 100);
+			graphics.drawString(String.format("View lx,ly: %sx%s",
+					viewPort.getMaxX(), viewPort.getMaxY()), 20, 120);
 			if (animator.hasAnimations())
 				for (Animation i : animator.getAnimations()) {
 					BufferedImage frame = i.getFrame();
@@ -254,9 +268,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	public void mouseExited(MouseEvent e) {
 
 	}
-	
-	private int sx,sy = 0; //start x and y coordinate, used to calculate deltas 
-	
+
+	private int sx, sy = 0; // start x and y coordinate, used to calculate
+							// deltas
+
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
@@ -266,7 +281,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			dx = sx - e.getX();
 			dy = sy - e.getY();
 			for (GeoObjMaker lines : geoBuffer) {
-				lines.move(new Point2D.Double(dx, dy));
+				lines.move(new Point2D.Double(-dx, -dy));
 			}
 			sx = e.getX();
 			sy = e.getY();
@@ -359,6 +374,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			WorkerPool.interruptAll();
 		Thread pt = new Thread(new JobGenerator(viewPort, bi, settings, scaler));
 		pt.start();
+		SimplePogiTest.test(viewPort.getX(), viewPort.getY(),
+				viewPort.getWidth(), viewPort.getHeight());
 	}
 
 	private void zoomIn(Point p) {

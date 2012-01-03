@@ -1,18 +1,25 @@
 package net.ifno.com.ua;
 
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.MediaTracker;
 import java.awt.Rectangle;
+import java.awt.Transparency;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.imageio.IIOException;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class RasterThread extends PaintThread {
 
-	private BufferedImage bi, image;
+	private BufferedImage bi;
+	private Image i;
 	private ImageSettings is;
 	private Rectangle vp;
 
@@ -35,25 +42,24 @@ public class RasterThread extends PaintThread {
 					return;
 				}
 				TileInfo tileInfo = JobGenerator.getJobList().take();
-				try {
-					if (CachedLoop.containsKey(tileInfo.getUrl().toString())) {
-						image = CachedLoop.get(tileInfo.getUrl().toString());
+				if (CachedLoop.containsKey(tileInfo.getUrl().toString())) {
+					i = CachedLoop.get(tileInfo.getUrl().toString());
+				} else {
+					ImageIcon ic = new ImageIcon(tileInfo.getUrl());
+					if (ic.getImageLoadStatus() == MediaTracker.COMPLETE) {
+						i = ic.getImage();
+						CachedLoop.put(tileInfo.getUrl().toString(), i);
 					} else {
-						image = ImageIO.read(tileInfo.getUrl());
-						CachedLoop.put(tileInfo.getUrl().toString(), image);
-					}
-				} catch (IIOException e) {
-					if (CachedLoop.containsKey("404")) {
-						image = CachedLoop.get("404");
-					} else {
-						image = ImageIO.read(new URL(
-								"http://192.168.33.110/404.png"));
-						CachedLoop.put("404", image);
+						i = new ImageIcon(new URL(is.getHost() + "/404.png"))
+								.getImage();
 					}
 				}
-				int x = new Double(is.getTileSize()	* tileInfo.getI()).intValue()-vp.x;
-				int y = new Double(is.getTileSize() * tileInfo.getJ()).intValue()-vp.y;
-				g2d.drawImage(image, null, x, y);
+
+				int x = new Double(is.getTileSize() * tileInfo.getI())
+						.intValue() - vp.x;
+				int y = new Double(is.getTileSize() * tileInfo.getJ())
+						.intValue() - vp.y;
+				g2d.drawImage(i, x, y, null);
 				if (isInterrupted()) {
 					Thread.yield();
 					WorkerPool.removeWorker(getId());
@@ -63,13 +69,55 @@ public class RasterThread extends PaintThread {
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
 			g2d.dispose();
 			WorkerPool.removeWorker(getId());
 		}
+	}
+
+	// This method returns a buffered image with the contents of an image
+	public static BufferedImage toBufferedImage(Image image) {
+		if (image instanceof BufferedImage) {
+			return (BufferedImage) image;
+		}
+		// Determine if the image has transparent pixels; for this method's
+		// implementation, see Determining If an Image Has Transparent Pixels
+
+		// Create a buffered image with a format that's compatible with the
+		// screen
+		BufferedImage bimage = null;
+		GraphicsEnvironment ge = GraphicsEnvironment
+				.getLocalGraphicsEnvironment();
+		try {
+			// Determine the type of transparency of the new buffered image
+			int transparency = Transparency.OPAQUE;
+
+			// Create the buffered image
+			GraphicsDevice gs = ge.getDefaultScreenDevice();
+			GraphicsConfiguration gc = gs.getDefaultConfiguration();
+			bimage = gc.createCompatibleImage(image.getWidth(null),
+					image.getHeight(null), transparency);
+		} catch (HeadlessException e) {
+			// The system does not have a screen
+		}
+
+		if (bimage == null) {
+			// Create a buffered image using the default color model
+			int type = BufferedImage.TYPE_INT_RGB;
+
+			bimage = new BufferedImage(image.getWidth(null),
+					image.getHeight(null), type);
+		}
+
+		// Copy image to buffered image
+		Graphics g = bimage.createGraphics();
+
+		// Paint the image onto the buffered image
+		g.drawImage(image, 0, 0, null);
+		g.dispose();
+
+		return bimage;
 	}
 }

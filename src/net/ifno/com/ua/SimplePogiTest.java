@@ -1,6 +1,9 @@
 package net.ifno.com.ua;
 import java.awt.BorderLayout;
+import java.awt.DisplayMode;
 import java.awt.EventQueue;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -98,7 +101,12 @@ public class SimplePogiTest {
 				loop.start();
 			}
 		});
-		frmJpogiengine.setBounds(100, 100, 450, 300);
+		
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice gs = ge.getDefaultScreenDevice();
+		DisplayMode dm = gs.getDisplayMode();
+
+		frmJpogiengine.setBounds(100, 100, (int)(dm.getWidth()*0.75), (int)(dm.getHeight()*0.75));
 		frmJpogiengine.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJpogiengine.setLocationRelativeTo(null);
 		frmJpogiengine.getContentPane().setLayout(new BorderLayout());
@@ -194,8 +202,7 @@ public class SimplePogiTest {
 	
 	
 
-	public static void test(double dx, double dy, double w, double h,
-			double sx, double sy) {
+	public static void test(double dx, double dy, double w, double h) {
 		java.sql.Connection conn;
 
 		try {
@@ -216,18 +223,14 @@ public class SimplePogiTest {
 			 * Создаем объект запроса и выполняем запрос select.
 			 */
 			gw.clearLines();
-			Point xv = new Point(-dx, -dy);
-			Point yv = new Point((-dx + w), (-dy + h));
-			System.out.println("XV: " + xv.toString());
-			System.out.println("YV: " + yv.toString());
+			Point xv = new Point(dx, dy);
+			Point yv = new Point((dx + w), (dy + h));
 			PGbox3d b3d = new PGbox3d(xv, yv);
 			String selectAllIn = "select ST_TransScale(roads_geom, ?, ?, ?, ?) as geom, road_id, z from (select * from roads WHERE roads_geom && SetSRID(?::box3d,-1)) as box";
 			PreparedStatement s = conn.prepareStatement(selectAllIn);
-			s.setDouble(1, dx);
-			s.setDouble(2, dy);
-			if (sx <= 0 && sy <= 0) {
-				sx = sy = 1;
-			}
+			s.setDouble(1, -dx);
+			s.setDouble(2, -dy);
+
 			s.setDouble(3, 1.0);
 			s.setDouble(4, 1.0);
 			s.setString(5, b3d.getValue());
@@ -259,7 +262,6 @@ public class SimplePogiTest {
 					gw.addPolygon(r.getInt(2), z, x, y, num);
 				}
 			}
-			gw.repaint();
 			s.close();
 			conn.close();
 		} catch (Exception e) {

@@ -25,7 +25,7 @@ public class JobGenerator extends PaintThread {
 	}
 
 	private static ArrayBlockingQueue<TileInfo> jobList = new ArrayBlockingQueue<TileInfo>(
-			200);
+			1000);
 
 	public static ArrayBlockingQueue<TileInfo> getJobList() {
 		return jobList;
@@ -90,13 +90,12 @@ public class JobGenerator extends PaintThread {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		RasterThread a = new RasterThread(viewport, bi, is);
-		RasterThread b = new RasterThread(viewport, bi, is);
-		a.start();
-		b.start();
+
 		try {
-			a.join();
-			b.join();
+			for (int i = 0; i < 5; i++) {
+				RasterThread a = new RasterThread(viewport, bi, is);
+				a.start();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
