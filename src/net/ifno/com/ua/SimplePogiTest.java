@@ -33,6 +33,7 @@ import org.postgis.PGgeometry;
 import org.postgis.Point;
 import org.postgis.Polygon;
 import org.postgresql.PGConnection;
+import java.awt.event.WindowFocusListener;
 
 public class SimplePogiTest {
 
@@ -44,6 +45,7 @@ public class SimplePogiTest {
 	private final JButton btnNewButton_1 = new JButton("Print");
 	private final JButton btnNewButton_2 = new JButton("Map");
 	private final JButton btnNewButton_3 = new JButton("Clear");
+	private boolean focused = false;
 
 	/**
 	 * Launch the application.
@@ -74,6 +76,14 @@ public class SimplePogiTest {
 	private void initialize() {
 		try {
 		frmJpogiengine = new JFrame();
+		frmJpogiengine.addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent e) {
+				focused = true;
+			}
+			public void windowLostFocus(WindowEvent e) {
+				focused = false;
+			}
+		});
 		frmJpogiengine.setTitle("jPogiEngine");
 		ImageSettings is = ImageSettings.parseXML(new URL("http://192.168.33.110/config.xml"));
 		gw = new GeoWindow(is);
@@ -86,13 +96,15 @@ public class SimplePogiTest {
 					public void run() {
 						while (true) {
 							try {
-								if (WorkerPool.hasWorkers()) {
+								if (WorkerPool.hasWorkers() && focused) {
 									gw.paintAll();
-								} else {
+								} else if (focused) {
 									Thread.sleep(50);
 									gw.paintAll();
+								} else {
+									Thread.sleep(500);
 								}
-							} catch (InterruptedException e) {
+							} catch (Exception e) {
 								e.printStackTrace();
 							}
 						}
@@ -175,7 +187,7 @@ public class SimplePogiTest {
 		toolBar.add(btnNewButton_1);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gw.loadMap();
+				//gw.loadMap();
 			}
 		});
 

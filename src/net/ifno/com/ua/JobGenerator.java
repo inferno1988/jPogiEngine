@@ -92,7 +92,7 @@ public class JobGenerator extends PaintThread {
 		}
 
 		try {
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 3; i++) {
 				RasterThread a = new RasterThread(viewport, bi, is);
 				a.start();
 			}

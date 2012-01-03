@@ -274,6 +274,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
+		Graphics2D g2d = bi.createGraphics();
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			if (WorkerPool.hasWorkers())
 				WorkerPool.interruptAll();
@@ -281,16 +282,22 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			dx = sx - e.getX();
 			dy = sy - e.getY();
 			for (GeoObjMaker lines : geoBuffer) {
-				lines.move(new Point2D.Double(-dx, -dy));
+				lines.move(new Point2D.Double(invertSign(dx), invertSign(dy)));
 			}
 			sx = e.getX();
 			sy = e.getY();
 			viewPort.translate(dx, dy);
+
+			g2d.copyArea(0, 0, viewPort.width, viewPort.height, invertSign(dx),
+					invertSign(dy));
+			loadMap(viewPort);
 		}
+		g2d.dispose();
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		WorkerPool.addWorker(Thread.currentThread().getId(), new PaintThread());
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			if (WorkerPool.hasWorkers())
@@ -302,9 +309,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		WorkerPool.removeWorker(Thread.currentThread().getId());
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			setCursor(Cursor.getDefaultCursor());
-			loadMap();
+			loadMap(viewPort);
 		}
 	}
 
@@ -323,7 +331,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		Dimension d = getSize();
 		viewPort.setSize(d);
 		createGraphics2D(d.width, d.height);
-		loadMap();
+		loadMap(viewPort);
 	}
 
 	@Override
@@ -341,13 +349,15 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
+		if (WorkerPool.hasWorkers())
+			WorkerPool.interruptAll();
 		mouse = e.getPoint();
 		if (e.getWheelRotation() < 0) {
 			zoomIn(e.getPoint());
 		} else {
 			zoomOut(e.getPoint());
 		}
-		loadMap();
+		loadMap(viewPort);
 	}
 
 	@Override
@@ -369,13 +379,13 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		return PAGE_EXISTS;
 	}
 
-	public void loadMap() {
+	public void loadMap(Rectangle vp) {
 		if (WorkerPool.hasWorkers())
 			WorkerPool.interruptAll();
-		Thread pt = new Thread(new JobGenerator(viewPort, bi, settings, scaler));
+		Thread pt = new Thread(new JobGenerator(vp, bi, settings, scaler));
 		pt.start();
-		SimplePogiTest.test(viewPort.getX(), viewPort.getY(),
-				viewPort.getWidth(), viewPort.getHeight());
+		SimplePogiTest.test(vp.getX(), vp.getY(),
+				vp.getWidth(), vp.getHeight());
 	}
 
 	private void zoomIn(Point p) {
@@ -394,5 +404,9 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			animator.addAnimation(animation);
 		}
 		viewPort.setLocation(scaler.zoomOutFrom(p, viewPort));
+	}
+	
+	private int invertSign(int number) {
+		return number * -1;
 	}
 }
