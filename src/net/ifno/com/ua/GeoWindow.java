@@ -102,28 +102,17 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			bi = (BufferedImage) gc.createCompatibleImage(w, h);
 		}
 	}
+
 	/*
-	private BufferedImage drawObjects(BufferedImage bi) { // Draw objects
-		Graphics2D g2 = bi.createGraphics();
-		for (int z = 0; z < 2; z++) {
-			for (GeoObjMaker lines : geoBuffer) {
-				for (GeoObjShape shape : lines.getgShapes()) {
-					if (shape.getZ() == z) {
-						if (shape.isFillable()) {
-							g2.setPaint(shape.getFillColor());
-							g2.fill(shape.getShape());
-						}
-						g2.setColor(shape.getStrokeColor());
-						g2.setStroke(shape.getStrokeStyle());
-						g2.draw(shape.getShape());
-					}
-				}
-			}
-		}
-		g2.dispose();
-		return bi;
-	}
-	*/
+	 * private BufferedImage drawObjects(BufferedImage bi) { // Draw objects
+	 * Graphics2D g2 = bi.createGraphics(); for (int z = 0; z < 2; z++) { for
+	 * (GeoObjMaker lines : geoBuffer) { for (GeoObjShape shape :
+	 * lines.getgShapes()) { if (shape.getZ() == z) { if (shape.isFillable()) {
+	 * g2.setPaint(shape.getFillColor()); g2.fill(shape.getShape()); }
+	 * g2.setColor(shape.getStrokeColor());
+	 * g2.setStroke(shape.getStrokeStyle()); g2.draw(shape.getShape()); } } } }
+	 * g2.dispose(); return bi; }
+	 */
 
 	public void init() {
 		Dimension d = getSize();
@@ -152,10 +141,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				frames = 0;
 			}
 			++frames;
-			
+
 			graphics = (Graphics2D) buffer.getDrawGraphics();
 			graphics.drawImage(bi, 0, 0, null);
-			
+
 			Rectangle2D rect = new Rectangle2D.Double(LINE_WIDTH, LINE_WIDTH,
 					INFO_RECT_SIZE.getWidth() - LINE_WIDTH,
 					INFO_RECT_SIZE.getHeight() - LINE_WIDTH);
@@ -261,12 +250,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-
 	}
 
 	private int sx, sy = 0; // start x and y coordinate, used to calculate
@@ -318,12 +305,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void componentHidden(ComponentEvent e) {
-
 	}
 
 	@Override
 	public void componentMoved(ComponentEvent e) {
-
 	}
 
 	@Override
@@ -336,7 +321,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	@Override
 	public void componentShown(ComponentEvent e) {
-
 	}
 
 	public void setMove(boolean move) {
@@ -384,8 +368,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			WorkerPool.interruptAll();
 		Thread pt = new Thread(new JobGenerator(vp, bi, settings, scaler));
 		pt.start();
-		SimplePogiTest.test(vp.getX(), vp.getY(),
-				vp.getWidth(), vp.getHeight());
+		SimplePogiTest
+				.test(vp.getX(), vp.getY(), vp.getWidth(), vp.getHeight());
 	}
 
 	private void zoomIn(Point p) {
@@ -405,7 +389,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 		viewPort.setLocation(scaler.zoomOutFrom(p, viewPort));
 	}
-	
+
 	private int invertSign(int number) {
 		return number * -1;
 	}
