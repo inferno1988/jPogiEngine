@@ -1,13 +1,25 @@
 package net.ifno.com.ua;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.awt.geom.*;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
@@ -17,6 +29,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.concurrent.CopyOnWriteArrayList;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -34,21 +47,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		MouseInputListener, ComponentListener, MouseWheelListener, Printable {
 
 	private static final long serialVersionUID = -5210242861777162258L;
-	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
-	private CopyOnWriteArrayList<GeoObjMaker> geoBuffer = new CopyOnWriteArrayList<GeoObjMaker>();
-	private ImageSettings settings;
-	private boolean select = false;
-	private boolean move = false;
-	private GeoObjMaker selected;
-	private Rectangle viewPort = new Rectangle();
-	private BufferedImage bi = null;
-	private BufferStrategy buffer = null;
-	private Scaler scaler;
-	private int LINE_WIDTH = 2;
-	private Dimension INFO_RECT_SIZE = new Dimension(200, 200);
-	private Animator animator = new Animator();
 	private AnimationCache animationCache = new AnimationCache();
-	private Point mouse = new Point(0, 0);
 
 	public GeoWindow(ImageSettings imageSettings) {
 		addComponentListener(this);
@@ -66,7 +65,9 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		ScriptEngineManager mgr = new ScriptEngineManager();
 		ScriptEngine jsEngine = mgr.getEngineByName("JavaScript");
 		try {
-			File file = new File("bin/scripts/animations/");
+			String basePath = getClass().getProtectionDomain().getCodeSource()
+					.getLocation().getPath();
+			File file = new File(basePath + "/scripts/animations/");
 			File listList[] = file.listFiles();
 			for (File f : listList) {
 				jsEngine.eval(new FileReader(f));
@@ -81,6 +82,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 	}
 
+	private CopyOnWriteArrayList<GeoObjMaker> geoBuffer = new CopyOnWriteArrayList<GeoObjMaker>();
+
 	public void addLine(int dbId, int z, org.postgis.Point fp,
 			org.postgis.Point lp) {
 		GeoObjMaker l2d = new GeoLineMaker(dbId, z, fp, lp);
@@ -92,6 +95,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		GeoObjMaker poly = new GeoPolyMaker(aDbId, z, xpoints, ypoints, npoints);
 		geoBuffer.add(poly);
 	}
+
+	private BufferedImage bi = null;
 
 	public void createGraphics2D(int w, int h) {
 		GraphicsEnvironment ge = GraphicsEnvironment
@@ -114,6 +119,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	 * g2.dispose(); return bi; }
 	 */
 
+	private BufferStrategy buffer = null;
+
 	public void init() {
 		Dimension d = getSize();
 		createGraphics2D(d.width, d.height);
@@ -127,6 +134,13 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	long curTime = System.currentTimeMillis();
 	long lastTime = curTime;
 	float alpha = 0.0f;
+	private Point mouse = new Point(0, 0);
+	private Animator animator = new Animator();
+	private Dimension INFO_RECT_SIZE = new Dimension(200, 200);
+	private int LINE_WIDTH = 2;
+	private Scaler scaler;
+	private Rectangle viewPort = new Rectangle();
+	private ImageSettings settings;
 
 	public synchronized void paintAll() {
 		Graphics2D graphics = null;
@@ -207,6 +221,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		geoBuffer.clear();
 	}
 
+	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
+
 	private GeoObjMaker find(Point2D p) {
 		for (GeoObjMaker lines : geoBuffer) {
 			if (lines.intersects(mouseRect))
@@ -214,6 +230,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 		return null;
 	}
+
+	private boolean select = false;
 
 	public void setSelected(boolean state) {
 		select = state;
@@ -235,6 +253,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			}
 		}
 	}
+
+	private GeoObjMaker selected;
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -322,6 +342,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	@Override
 	public void componentShown(ComponentEvent e) {
 	}
+
+	private boolean move = false;
 
 	public void setMove(boolean move) {
 		this.move = move;

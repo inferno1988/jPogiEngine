@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 public class RasterThread extends PaintThread {
 
 	private BufferedImage bi;
-	private Image i;
 	private ImageSettings is;
 	private Rectangle vp;
 
@@ -23,6 +22,8 @@ public class RasterThread extends PaintThread {
 		this.is = imageSettings;
 		this.vp = viewport;
 	}
+
+	private Image image;
 
 	@Override
 	public void run() {
@@ -38,21 +39,21 @@ public class RasterThread extends PaintThread {
 				TileInfo tileInfo = JobGenerator.getJobList().take();
 
 				if (CachedLoop.containsKey(tileInfo.getUrl().toString())) {
-					i = CachedLoop.get(tileInfo.getUrl().toString());
+					image = CachedLoop.get(tileInfo.getUrl().toString());
 				} else {
 					ImageIcon ic = new ImageIcon(tileInfo.getUrl());
 					if (ic.getImageLoadStatus() == MediaTracker.COMPLETE) {
-						i = ic.getImage();
-						CachedLoop.put(tileInfo.getUrl().toString(), i);
+						image = ic.getImage();
+						CachedLoop.put(tileInfo.getUrl().toString(), image);
 					} else {
-						i = new ImageIcon(new URL(is.getHost() + "/404.png"))
+						image = new ImageIcon(new URL(is.getHost() + "/404.png"))
 								.getImage();
 					}
 				}
 
 				int x = (is.getTileSize() * tileInfo.getI()) - vp.x;
 				int y = (is.getTileSize() * tileInfo.getJ()) - vp.y;
-				g2d.drawImage(i, x, y, null);
+				g2d.drawImage(image, x, y, null);
 				if (isInterrupted()) {
 					Thread.yield();
 					WorkerPool.removeWorker(getId());

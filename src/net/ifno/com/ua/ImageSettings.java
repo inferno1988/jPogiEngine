@@ -12,14 +12,7 @@ import org.apache.commons.configuration.XMLConfiguration;
  */
 public class ImageSettings {
 
-	private Dimension imageSize = new Dimension(256, 256);
-	private Integer tscales[] = { 0, 1, 2, 3, 4, 5 };
-	private ArrayList<Integer> scales = new ArrayList<Integer>(
-			Arrays.asList(tscales));
-	private int tileSize = 256;
 	private String tileName = null;
-	private String host = null;
-	private String path = null;
 
 	/**
 	 * Creates ImageSettings instance with default values:
@@ -32,7 +25,11 @@ public class ImageSettings {
 		this.setTilesPath("/yTiles");
 		this.tileName = "/tile-%d-%d.png";
 	}
-
+	
+	private Dimension imageSize = new Dimension(256, 256);
+	private Integer tscales[] = { 0, 1, 2, 3, 4, 5 };
+	private ArrayList<Integer> scales = new ArrayList<Integer>(
+			Arrays.asList(tscales));
 	/**
 	 * Creates ImageSettings instance with specified parameters:
 	 * 
@@ -76,6 +73,8 @@ public class ImageSettings {
 		this.tileName = tileName;
 	}
 
+	private int tileSize = 256;
+	
 	/**
 	 * Creates ImageSettings instance with specified parameters:
 	 * 
@@ -141,6 +140,8 @@ public class ImageSettings {
 	public void setTileName(String name) {
 		this.tileName = name;
 	}
+	
+	private String host = null;
 
 	/** Returns host name with protocol. */
 	public String getHost() {
@@ -152,6 +153,8 @@ public class ImageSettings {
 		this.host = host;
 	}
 
+	private String path = null;
+	
 	/** Returns path to tiles folder. */
 	public String getTilesPath() {
 		return path;
@@ -167,6 +170,7 @@ public class ImageSettings {
 	 * 
 	 * @param url
 	 *            - URL for config.xml file.
+	 * @throws ConfigurationException 
 	 * */
 	public static ImageSettings parseXML(URL url) throws ConfigurationException {
 		XMLConfiguration xml = new XMLConfiguration(url);

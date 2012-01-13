@@ -27,3 +27,7 @@ if (alpha < 0.9f) {
 						//CachedLoop.put("404", image);
 					}
 				}
+				
+private EventListenerSupport<ActionListener> evSupport = EventListenerSupport.create(ActionListener.class);
+ActionEvent event = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "zoomOutFrom");
+evSupport.fire().actionPerformed(event);

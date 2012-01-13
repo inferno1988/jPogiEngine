@@ -1,9 +1,11 @@
 package net.ifno.com.ua;
+
 import java.awt.BorderLayout;
 import java.awt.DisplayMode;
 import java.awt.EventQueue;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -16,6 +18,7 @@ import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -25,13 +28,12 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
+import net.ifno.com.ua.geoObjects.PostgisParser;
+
 import org.apache.commons.configuration.ConfigurationException;
 import org.postgis.Geometry;
-import org.postgis.LineString;
 import org.postgis.PGbox3d;
-import org.postgis.PGgeometry;
 import org.postgis.Point;
-import org.postgis.Polygon;
 import org.postgresql.PGConnection;
 import java.awt.event.WindowFocusListener;
 
@@ -75,134 +77,139 @@ public class SimplePogiTest {
 	 */
 	private void initialize() {
 		try {
-		frmJpogiengine = new JFrame();
-		frmJpogiengine.addWindowFocusListener(new WindowFocusListener() {
-			public void windowGainedFocus(WindowEvent e) {
-				focused = true;
-			}
-			public void windowLostFocus(WindowEvent e) {
-				focused = false;
-			}
-		});
-		frmJpogiengine.setTitle("jPogiEngine");
-		ImageSettings is = ImageSettings.parseXML(new URL("http://192.168.33.110/config.xml"));
-		gw = new GeoWindow(is);
-		frmJpogiengine.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowOpened(WindowEvent e) {
-				gw.init();
-				Thread loop = new Thread(new Runnable() {
-					@Override
-					public void run() {
-						while (true) {
-							try {
-								if (WorkerPool.hasWorkers() && focused) {
-									gw.paintAll();
-								} else if (focused) {
-									Thread.sleep(50);
-									gw.paintAll();
-								} else {
-									Thread.sleep(500);
+			frmJpogiengine = new JFrame();
+			frmJpogiengine.addWindowFocusListener(new WindowFocusListener() {
+				public void windowGainedFocus(WindowEvent e) {
+					focused = true;
+				}
+
+				public void windowLostFocus(WindowEvent e) {
+					focused = false;
+				}
+			});
+			frmJpogiengine.setTitle("jPogiEngine");
+			ImageSettings is = ImageSettings.parseXML(new URL(
+					"http://192.168.33.110/config.xml"));
+			gw = new GeoWindow(is);
+			frmJpogiengine.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowOpened(WindowEvent e) {
+					gw.init();
+					Thread loop = new Thread(new Runnable() {
+						@Override
+						public void run() {
+							while (true) {
+								try {
+									if (WorkerPool.hasWorkers() && focused) {
+										gw.paintAll();
+									} else if (focused) {
+										Thread.sleep(50);
+										gw.paintAll();
+									} else {
+										Thread.sleep(500);
+									}
+								} catch (Exception e) {
+									e.printStackTrace();
 								}
-							} catch (Exception e) {
-								e.printStackTrace();
 							}
 						}
-					}
-				});
-				loop.start();
-			}
-		});
-		
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice gs = ge.getDefaultScreenDevice();
-		DisplayMode dm = gs.getDisplayMode();
+					});
+					loop.start();
+				}
+			});
 
-		frmJpogiengine.setBounds(100, 100, (int)(dm.getWidth()*0.75), (int)(dm.getHeight()*0.75));
-		frmJpogiengine.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmJpogiengine.setLocationRelativeTo(null);
-		frmJpogiengine.getContentPane().setLayout(new BorderLayout());
+			GraphicsEnvironment ge = GraphicsEnvironment
+					.getLocalGraphicsEnvironment();
+			GraphicsDevice gs = ge.getDefaultScreenDevice();
+			DisplayMode dm = gs.getDisplayMode();
 
-		JToolBar toolBar = new JToolBar();
-		frmJpogiengine.getContentPane().add(toolBar, BorderLayout.NORTH);
-		toolBar.setRollover(true);
-		toolBar.setFloatable(false);
+			frmJpogiengine.setBounds(100, 100, (int) (dm.getWidth() * 0.75),
+					(int) (dm.getHeight() * 0.75));
+			frmJpogiengine.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frmJpogiengine.setLocationRelativeTo(null);
+			frmJpogiengine.getContentPane().setLayout(new BorderLayout());
 
-		JButton btnNewButton = new JButton("Load");
-		toolBar.add(btnNewButton);
+			JToolBar toolBar = new JToolBar();
+			frmJpogiengine.getContentPane().add(toolBar, BorderLayout.NORTH);
+			toolBar.setRollover(true);
+			toolBar.setFloatable(false);
 
-		selectToggle.addActionListener(new ActionListener() {
-			Object src = new Object();
+			JButton btnNewButton = new JButton("Load");
+			toolBar.add(btnNewButton);
 
-			public void actionPerformed(ActionEvent e) {
-				src = e.getSource();
-				if (src instanceof JToggleButton) {
-					if (((JToggleButton) src).isSelected()) {
-						moveToggle.setSelected(false);
-						gw.setSelected(true);
-						gw.setMove(false);
-					} else {
-						gw.setSelected(false);
+			selectToggle.addActionListener(new ActionListener() {
+				Object src = new Object();
+
+				public void actionPerformed(ActionEvent e) {
+					src = e.getSource();
+					if (src instanceof JToggleButton) {
+						if (((JToggleButton) src).isSelected()) {
+							moveToggle.setSelected(false);
+							gw.setSelected(true);
+							gw.setMove(false);
+						} else {
+							gw.setSelected(false);
+						}
 					}
 				}
-			}
-		});
+			});
 
-		toolBar.add(selectToggle);
-		moveToggle.addActionListener(new ActionListener() {
-			Object src = new Object();
+			toolBar.add(selectToggle);
+			moveToggle.addActionListener(new ActionListener() {
+				Object src = new Object();
 
-			public void actionPerformed(ActionEvent e) {
-				src = e.getSource();
-				if (src instanceof JToggleButton) {
-					if (((JToggleButton) src).isSelected()) {
-						selectToggle.setSelected(false);
-						gw.setMove(true);
-						gw.setSelected(false);
-					} else {
-						gw.setMove(false);
+				public void actionPerformed(ActionEvent e) {
+					src = e.getSource();
+					if (src instanceof JToggleButton) {
+						if (((JToggleButton) src).isSelected()) {
+							selectToggle.setSelected(false);
+							gw.setMove(true);
+							gw.setSelected(false);
+						} else {
+							gw.setMove(false);
+						}
 					}
 				}
-			}
-		});
+			});
 
-		toolBar.add(moveToggle);
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PrinterJob job = PrinterJob.getPrinterJob();
-				PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-				PageFormat pf = job.pageDialog(aset);
-				job.setPrintable(gw, pf);
-				boolean ok = job.printDialog(aset);
-				if (ok) {
-					try {
-						job.print(aset);
-					} catch (PrinterException ex) {
-						/* The job did not successfully complete */
+			toolBar.add(moveToggle);
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					PrinterJob job = PrinterJob.getPrinterJob();
+					PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
+					PageFormat pf = job.pageDialog(aset);
+					job.setPrintable(gw, pf);
+					boolean ok = job.printDialog(aset);
+					if (ok) {
+						try {
+							job.print(aset);
+						} catch (PrinterException ex) {
+							/* The job did not successfully complete */
+						}
 					}
 				}
-			}
-		});
+			});
 
-		toolBar.add(btnNewButton_1);
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//gw.loadMap();
-			}
-		});
+			toolBar.add(btnNewButton_1);
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					// gw.loadMap();
+				}
+			});
 
-		toolBar.add(btnNewButton_2);
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		toolBar.add(btnNewButton_3);
+			toolBar.add(btnNewButton_2);
+			btnNewButton_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.out.println(e.getActionCommand());
+				}
+			});
+			toolBar.add(btnNewButton_3);
 
-		frmJpogiengine.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
-		panel.add(gw);
-		gw.setSelected(false);
+			frmJpogiengine.getContentPane().add(panel, BorderLayout.CENTER);
+			panel.setLayout(new BorderLayout(0, 0));
+			panel.add(gw);
+			gw.setSelected(false);
+			
 		} catch (MalformedURLException e) {
 			System.out.println(e.getMessage());
 			System.exit(0);
@@ -211,8 +218,6 @@ public class SimplePogiTest {
 			System.exit(0);
 		}
 	}
-	
-	
 
 	public static void test(double dx, double dy, double w, double h) {
 		java.sql.Connection conn;
@@ -248,32 +253,10 @@ public class SimplePogiTest {
 			s.setString(5, b3d.getValue());
 			ResultSet r = s.executeQuery();
 
-			int z = 0;
-			while (r.next()) {
-				/*
-				 * Восстанавливаем геометрию как объект, какого то из
-				 * геометрических типов. Выводим его.
-				 */
-				PGgeometry geom = (PGgeometry) r.getObject(1);
-				z = r.getInt(3);
-				int geoType = geom.getGeoType();
-				if (geoType == Geometry.LINESTRING) {
-					LineString ls = (LineString) geom.getGeometry();
-					gw.addLine(r.getInt(2), z, ls.getFirstPoint(),
-							ls.getLastPoint());
-				}
-				if (geoType == Geometry.POLYGON) {
-					Polygon poly = (Polygon) geom.getGeometry();
-					int num = poly.numPoints();
-					int[] x = new int[num];
-					int[] y = new int[num];
-					for (int i = 0; i < num; i++) {
-						x[i] = new Double(poly.getPoint(i).x).intValue();
-						y[i] = new Double(poly.getPoint(i).y).intValue();
-					}
-					gw.addPolygon(r.getInt(2), z, x, y, num);
-				}
-			}
+			PostgisParser pp = new PostgisParser("geom", r);
+			ArrayList<Shape> shapes = pp.parseAll(Geometry.LINESTRING);
+			System.out.println(shapes.size());
+			
 			s.close();
 			conn.close();
 		} catch (Exception e) {

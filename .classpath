@@ -4,9 +4,27 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="jars/postgis_1.5.3.jar"/>
 	<classpathentry kind="lib" path="jars/postgresql-9.0-801.jdbc3.jar" sourcepath="/home/atom/.m2/repository/postgresql/postgresql/9.0-801.jdbc3/postgresql-9.0-801.jdbc3-sources.jar"/>
-	<classpathentry kind="lib" path="jars/commons-configuration-1.6.jar"/>
-	<classpathentry kind="lib" path="jars/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="jars/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="jars/commons-collections-3.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="jars/commons-lang3-3.1.jar" sourcepath="jars/commons-lang3-3.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/jPogiEngine/jars/commons-lang3-3.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jars/commons-configuration-1.7.jar" sourcepath="jars/commons-configuration-1.7-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/jPogiEngine/jars/commons-configuration-1.7-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jars/commons-lang-2.6.jar" sourcepath="jars/commons-lang-2.6-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/jPogiEngine/jars/commons-lang-2.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jars/commons-logging-1.1.1.jar" sourcepath="jars/commons-logging-1.1.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/jPogiEngine/jars/commons-logging-1.1.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
