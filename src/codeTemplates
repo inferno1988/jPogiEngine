@@ -28,6 +28,22 @@ if (alpha < 0.9f) {
 					}
 				}
 				
+
+	public void createGraphics2D(int w, int h) {
+		GraphicsEnvironment ge = GraphicsEnvironment
+				.getLocalGraphicsEnvironment();
+		GraphicsDevice gd = ge.getDefaultScreenDevice();
+		GraphicsConfiguration gc = gd.getDefaultConfiguration();
+		if (bi == null || bi.getWidth() != w || bi.getHeight() != h) {
+			bi = (VolatileImage) gc.createCompatibleVolatileImage(w, h);
+			bi.setAccelerationPriority(1.0f);
+		}
+		if (bi1 == null || bi1.getWidth() != w || bi1.getHeight() != h) {
+			bi1 = (VolatileImage) gc.createCompatibleVolatileImage(w, h);
+			bi1.setAccelerationPriority(1.0f);
+		}
+	}
+				
 private EventListenerSupport<ActionListener> evSupport = EventListenerSupport.create(ActionListener.class);
 ActionEvent event = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "zoomOutFrom");
 evSupport.fire().actionPerformed(event);

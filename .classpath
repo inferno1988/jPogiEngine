@@ -2,7 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="jars/postgis_1.5.3.jar"/>
+	<classpathentry kind="lib" path="jars/postgis_1.5.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/atom/workspace/jPogiEngine/jars/postgis-jdbc-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="jars/postgresql-9.0-801.jdbc3.jar" sourcepath="/home/atom/.m2/repository/postgresql/postgresql/9.0-801.jdbc3/postgresql-9.0-801.jdbc3-sources.jar"/>
 	<classpathentry kind="lib" path="jars/commons-collections-3.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
@@ -26,5 +30,7 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/jPogiEngine/jars/commons-logging-1.1.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="jars/geotools/jts-1.11.jar"/>
+	<classpathentry kind="lib" path="jars/geotools/gt-main-2.7.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
