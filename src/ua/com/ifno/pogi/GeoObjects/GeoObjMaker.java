@@ -72,11 +72,7 @@ public abstract class GeoObjMaker {
 	}
 	
 	public void setSelected(){
-		for (GeoObjShape shapes: gShapes) {
-				shapes.setStrokeColor(Color.BLUE);
-				shapes.setFillColor(Color.GREEN);
-		
-		}
+
 	}
 	
 	public void move(Point2D offset) {

@@ -10,18 +10,20 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.Element;
+
 public class RasterThread extends PaintThread {
 	private ImageSettings is;
 	private Rectangle vp;
-	private CachedLoop<String, Image> cachedLoop = null;
+	private Cache cache;
 	private BufferedImage bi = null;
 
-
 	public RasterThread(Rectangle viewport, BufferedImage bi,
-			ImageSettings imageSettings, CachedLoop<String, Image> cache) {
+			ImageSettings imageSettings, Cache cache) {
 		this.is = imageSettings;
 		this.vp = viewport;
-		this.cachedLoop = cache;
+		this.cache = cache;
 		this.bi = bi;
 	}
 
@@ -39,14 +41,15 @@ public class RasterThread extends PaintThread {
 					return;
 				}
 				TileInfo tileInfo = JobGenerator.getJobList().take();
-
-				if (cachedLoop.containsKey(tileInfo.getUrl().toString())) {
-					image = cachedLoop.get(tileInfo.getUrl().toString());
+				URL key = tileInfo.getUrl();
+				if (cache.isKeyInCache(key)) {
+					image = ((ImageIcon)cache.get(key).getObjectValue()).getImage();
 				} else {
 					ImageIcon ic = new ImageIcon(tileInfo.getUrl());
 					if (ic.getImageLoadStatus() == MediaTracker.COMPLETE) {
 						image = ic.getImage();
-						cachedLoop.put(tileInfo.getUrl().toString(), image);
+						Element element = new Element(key, ic);
+						cache.put(element);
 					} else {
 						image = new ImageIcon(new URL(is.getHost() + "/404.png"))
 								.getImage();

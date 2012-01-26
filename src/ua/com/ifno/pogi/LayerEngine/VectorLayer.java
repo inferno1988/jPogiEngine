@@ -4,46 +4,61 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import net.sf.ehcache.Cache;
+
 /**
- * @author atom
- *
+ * @author Palamarchuk Maksym
+ * 
  */
 public class VectorLayer extends AbstractLayer implements Layer {
 	private BasicStroke stroke = null;
 	private Color fillColor = null;
-	
-	/** <code>VectorLayer</code> creates default Layer with 1 pixel stroke line and Color.LIGHT_GRAY color */
-	public VectorLayer(String name, boolean visible) {
-		super(name, visible);
-	}
-	
-	/** Constructs a new <code>VectorLayer</code> with specified parameters
-	 * @param name the name of <code>VectorLayer</code>
-	 * @param visible visibility of <code>VectorLayer</code>
-	 * @param stroke  Defines stroke style. Can be null. When value is null, will be used default value
-	 * @param fillColor Defines default fill color for layer
+	private Cache cache;
+
+	/**
+	 * <code>VectorLayer</code> creates default Layer with 1 pixel stroke line
+	 * and Color.LIGHT_GRAY color
 	 */
-	public VectorLayer(String name, boolean visible, BasicStroke stroke, Color fillColor) {
+	public VectorLayer(String name, Cache cache, boolean visible) {
 		super(name, visible);
+		this.cache = cache;
+	}
+
+	/**
+	 * Constructs a new <code>VectorLayer</code> with specified parameters
+	 * 
+	 * @param name
+	 *            the name of <code>VectorLayer</code>
+	 * @param visible
+	 *            visibility of <code>VectorLayer</code>
+	 * @param stroke
+	 *            Defines stroke style. Can be null. When value is null, will be
+	 *            used default value
+	 * @param fillColor
+	 *            Defines default fill color for layer
+	 */
+	public VectorLayer(String name, BasicStroke stroke, Color fillColor,
+			Cache cache, boolean visible) {
+		super(name, visible);
+		this.cache = cache;
 		if (stroke != null)
 			this.stroke = stroke;
-		else 
+		else
 			this.stroke = new BasicStroke();
 		if (fillColor != null)
 			this.fillColor = fillColor;
-		else 
+		else
 			this.fillColor = Color.LIGHT_GRAY;
 	}
 
 	@Override
 	public void setPosition(Rectangle viewPort) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public Rectangle getPosition() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -77,8 +92,7 @@ public class VectorLayer extends AbstractLayer implements Layer {
 	@Override
 	public void setSize(int width, int height) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }

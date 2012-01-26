@@ -6,7 +6,6 @@ import java.awt.DisplayMode;
 import java.awt.EventQueue;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
@@ -21,8 +20,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -50,7 +47,6 @@ import org.postgis.PGbox3d;
 import org.postgis.Point;
 import org.postgresql.PGConnection;
 
-import ua.com.ifno.pogi.GeoObjects.PostgisParser;
 import ua.com.ifno.pogi.LayerEngine.LayerFactory;
 
 public class SimplePogiTest {
@@ -240,6 +236,8 @@ public class SimplePogiTest {
 
 			frmJpogiengine.getContentPane().add(panel, BorderLayout.CENTER);
 			panel.setLayout(new BorderLayout(0, 0));
+			topSplitPane.setFocusTraversalKeysEnabled(false);
+			topSplitPane.setFocusable(false);
 			topSplitPane.setResizeWeight(0.75);
 			topSplitPane.setRequestFocusEnabled(false);
 			splitPane.setResizeWeight(1.0);
@@ -249,6 +247,8 @@ public class SimplePogiTest {
 			panel_1.setSize(new Dimension(1024, 768));
 			panel_1.setPreferredSize(new Dimension(1024, 768));
 			panel_1.setLayout(new BorderLayout(0, 0));
+			topInformationalPane.setFocusable(false);
+			topInformationalPane.setFocusTraversalKeysEnabled(false);
 			topInformationalPane.setPreferredSize(new Dimension(800, 600));
 			topInformationalPane.setMinimumSize(new Dimension(800, 600));
 			topSplitPane.setLeftComponent(topInformationalPane);
@@ -256,8 +256,12 @@ public class SimplePogiTest {
 			list.setModel(layerFactory.getLayerListModel());
 			list.setSelectedIndex(0);
 			topInformationalPane.setLayout(new BorderLayout(0, 0));
+			tabbedPane_1.setFocusTraversalKeysEnabled(false);
+			tabbedPane_1.setFocusable(false);
 			topInformationalPane.add(tabbedPane_1);
 			tabbedPane_1.addTab("Map ", new ImageIcon(SimplePogiTest.class.getResource("/javax/swing/plaf/metal/icons/ocean/menu.gif")), gw, null);
+			panel_4.setFocusTraversalKeysEnabled(false);
+			panel_4.setFocusable(false);
 			
 			tabbedPane_1.addTab("Tools ", new ImageIcon(SimplePogiTest.class.getResource("/javax/swing/plaf/metal/icons/ocean/computer.gif")), panel_4, null);
 			panel_4.setLayout(null);
@@ -337,10 +341,10 @@ public class SimplePogiTest {
 			s.setDouble(3, 1.0);
 			s.setDouble(4, 1.0);
 			s.setString(5, b3d.getValue());
-			ResultSet r = s.executeQuery();
+			//ResultSet r = s.executeQuery();
 
-			PostgisParser pp = new PostgisParser("geom", r);
-			ArrayList<Shape> shapes = pp.parseAll();
+			//PostgisParser pp = new PostgisParser("geom", r);
+			//ArrayList<Shape> shapes = pp.parseAll();
 			s.close();
 			conn.close();
 		} catch (Exception e) {

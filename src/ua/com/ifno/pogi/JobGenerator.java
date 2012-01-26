@@ -1,11 +1,12 @@
 package ua.com.ifno.pogi;
 
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ArrayBlockingQueue;
+
+import net.sf.ehcache.Cache;
 
 public class JobGenerator extends Thread {
 
@@ -13,17 +14,17 @@ public class JobGenerator extends Thread {
 	private final int TILE_SIZE;
 	private Rectangle viewport;
 	private ImageSettings is;
-	private CachedLoop<String, Image> cachedLoop = null;
+	private Cache cache;
 	private BufferedImage bi = null;
 
 	public JobGenerator(Rectangle viewport, BufferedImage bi,
 			ImageSettings imageSettings, Scaler scaler, 
-			CachedLoop<String, Image> cache) {
+			Cache cache) {
 		TILE_SIZE = imageSettings.getTileSize();
 		this.scaler = scaler;
 		this.viewport = viewport;
 		this.is = imageSettings;
-		this.cachedLoop = cache;
+		this.cache = cache;
 		this.bi = bi;
 	}
 
@@ -86,7 +87,7 @@ public class JobGenerator extends Thread {
 		}
 
 		try {
-			RasterThread a = new RasterThread(viewport, bi, is, cachedLoop);
+			RasterThread a = new RasterThread(viewport, bi, is, cache);
 			a.start();
 		} catch (Exception e) {
 			e.printStackTrace();

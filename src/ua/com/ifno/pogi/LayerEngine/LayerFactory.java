@@ -9,6 +9,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+
 import ua.com.ifno.pogi.ImageSettings;
 import ua.com.ifno.pogi.Scaler;
 
@@ -17,12 +20,15 @@ public class LayerFactory {
 	private ImageSettings imageSettings;
 	private Scaler scaler;
 	private Dimension size = new Dimension(800, 600);
+	private CacheManager cacheManager;
 	
 	/** Constructs default background map layer */
 	public LayerFactory(ImageSettings settings, Scaler scaler) {
 		this.imageSettings = settings;
 		this.scaler = scaler;
-		BackgroundMapLayer bgLayer = new BackgroundMapLayer("Background", imageSettings, size, this.scaler, true);
+		this.cacheManager = new CacheManager();
+		Cache cache = this.cacheManager.getCache("imageCache");
+		BackgroundMapLayer bgLayer = new BackgroundMapLayer("Background", imageSettings, size, this.scaler, cache, true);
 		layers.put(bgLayer.getLayerName(), bgLayer);
 	}
 	

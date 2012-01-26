@@ -15,6 +15,8 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
@@ -29,8 +31,6 @@ import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.script.ScriptEngine;
@@ -46,7 +46,7 @@ import ua.com.ifno.pogi.LayerEngine.LayerFactory;
 
 
 public class GeoWindow extends Canvas implements MouseMotionListener,
-		MouseInputListener, ComponentListener, MouseWheelListener, Printable {
+		MouseInputListener, ComponentListener, MouseWheelListener, KeyListener, Printable {
 
 	private static final long serialVersionUID = -5210242861777162258L;
 	private AnimationCache animationCache = new AnimationCache();
@@ -59,6 +59,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		addMouseWheelListener(this);
+		addKeyListener(this);
+		setFocusable(true);
 		setVisible(true);
 		setBackground(new Color(145, 188, 236));
 		setIgnoreRepaint(true);
@@ -89,32 +91,9 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	public static CopyOnWriteArrayList<Shape> geoBuffer = new CopyOnWriteArrayList<Shape>();
 
 	public void init() {
-		Timer timer = new Timer(true);
-		TimerTask tt = new TimerTask() {
-
-			@Override
-			public void run() {
-				SimplePogiTest.test(viewPort.getX(), viewPort.getY(),
-						viewPort.getWidth(), viewPort.getHeight());
-			}
-		};
-
-		timer.scheduleAtFixedRate(tt, 500, 500);
 		Dimension d = getSize();
 		initOffscreen(d.width, d.height);
 		resetRestoreVolatileImages(d.width, d.height);
-	}
-
-	private void drawMap() {
-		Graphics2D graphics = (Graphics2D) backBuffer.getGraphics();
-		for (Shape shape : GeoWindow.geoBuffer) {
-			graphics.setPaint(Color.GREEN);
-			graphics.fill(shape);
-			graphics.setPaint(Color.BLACK);
-			graphics.setStroke(new BasicStroke(2.0f));
-			graphics.draw(shape);
-		}
-		graphics.dispose();
 	}
 
 	int fps = 0;
@@ -395,10 +374,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		viewPort.setLocation(scaler.zoomOutFrom(p, viewPort));
 	}
 
-	private int invertSign(int number) {
-		return number * -1;
-	}
-
 	Image backBuffer;
 
 	/**
@@ -427,5 +402,33 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			backBuffer = createVolatileImage(width, height);
 			layerFactory.setSize(width, height);
 		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_W)
+			viewPort.translate(0, -10);
+		if (e.getKeyCode() == KeyEvent.VK_S)
+			viewPort.translate(0, 10);
+		if (e.getKeyCode() == KeyEvent.VK_D)
+			viewPort.translate(10, 0);
+		if (e.getKeyCode() == KeyEvent.VK_A)
+			viewPort.translate(-10, 0);
+		layerFactory.setPosition(viewPort);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		Point p = new Point((int)getBounds().getCenterX(),(int)getBounds().getCenterY());
+		mouse.setLocation(p);
+		if (e.getKeyCode() == KeyEvent.VK_PAGE_UP)
+			zoomIn(p);
+		if (e.getKeyCode() == KeyEvent.VK_PAGE_DOWN)
+			zoomOut(p);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
 	}
 }

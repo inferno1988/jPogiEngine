@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_3QbhwEaWEeGB-9ESQbwnNw" name="ua.com.ifno.pogi.GeoObjects">
+  <packagedElement xmi:type="uml:Class" xmi:id="_O8XLkEaXEeGB-9ESQbwnNw" name="GeoObjShape"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_rbBkkEaXEeGB-9ESQbwnNw" name="GeoNode">
+    <ownedOperation xmi:id="_x2zVMEaXEeGB-9ESQbwnNw" name="getNext">
+      <ownedParameter xmi:id="_6N4U4EaXEeGB-9ESQbwnNw" type="_rbBkkEaXEeGB-9ESQbwnNw" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_9Dcz0EaXEeGB-9ESQbwnNw" name="getPrev">
+      <ownedParameter xmi:id="_-SuDUEaXEeGB-9ESQbwnNw" type="_rbBkkEaXEeGB-9ESQbwnNw" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+</uml:Package>
