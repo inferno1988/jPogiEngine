@@ -7,11 +7,11 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import net.sf.ehcache.Cache;
 
 import ua.com.ifno.pogi.ImageSettings;
 import ua.com.ifno.pogi.JobGenerator;
@@ -19,7 +19,6 @@ import ua.com.ifno.pogi.Scaler;
 import ua.com.ifno.pogi.WorkerPool;
 
 public class BackgroundMapLayer extends AbstractLayer implements Layer {
-	private Cache cache;
 	private ImageSettings settings;
 	private Scaler scaler;
 	private BufferedImage bi = null;
@@ -32,18 +31,16 @@ public class BackgroundMapLayer extends AbstractLayer implements Layer {
 	private ScheduledRepaint repaint = null;
 
 	public BackgroundMapLayer(String name, ImageSettings settings, Dimension size,
-			Scaler scaler, Cache cache, boolean visible) {
+			Scaler scaler, boolean visible) {
 		super(name, visible);
 		this.settings = settings;
 		this.scaler = scaler;
 		this.bi = gc.createCompatibleImage(size.width, size.height);
-		this.cache = cache;
 		repaint = new ScheduledRepaint();
 		Timer timer = new Timer("Background repaint", false);
 		timer.schedule(repaint, 0, 200);
 	}
 	
-	boolean runned = false;	
 	@Override
 	public void setPosition(Rectangle viewPort) {
 		if (WorkerPool.hasWorkers())
@@ -74,11 +71,6 @@ public class BackgroundMapLayer extends AbstractLayer implements Layer {
 	}
 
 	@Override
-	public int getCacheSize() {
-		return cache.getSize();
-	}
-
-	@Override
 	public Object getDrawable() {
 		return bi;
 	}
@@ -90,22 +82,38 @@ public class BackgroundMapLayer extends AbstractLayer implements Layer {
 	
 	private class ScheduledRepaint extends TimerTask {
 		private Rectangle viewPort;
+		private Rectangle oldViewPort;
 		private Thread tt;
 		
 		public ScheduledRepaint() {
 			this.viewPort = new Rectangle(800, 600);
+			this.oldViewPort = new Rectangle(800, 600);
 		}
 
 		@Override
 		public void run() {
+			if (!viewPort.equals(oldViewPort)) {
 			tt = new JobGenerator(this.viewPort, bi, settings,
-					scaler, cache);
+					scaler);
 			tt.start();
+			}
+			oldViewPort.setBounds(viewPort);
 		}
 		
 		public void setViewPort(Rectangle viewPort) {
 			this.viewPort = viewPort;
 		}
 		
+	}
+
+	@Override
+	public ArrayList<Shape> getData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setData(ArrayList<Shape> data) {
+		// TODO Auto-generated method stub
 	}
 }

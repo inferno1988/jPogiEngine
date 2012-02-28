@@ -6,25 +6,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ArrayBlockingQueue;
 
-import net.sf.ehcache.Cache;
-
 public class JobGenerator extends Thread {
 
 	private Scaler scaler;
 	private final int TILE_SIZE;
 	private Rectangle viewport;
 	private ImageSettings is;
-	private Cache cache;
 	private BufferedImage bi = null;
 
 	public JobGenerator(Rectangle viewport, BufferedImage bi,
-			ImageSettings imageSettings, Scaler scaler, 
-			Cache cache) {
+			ImageSettings imageSettings, Scaler scaler) {
 		TILE_SIZE = imageSettings.getTileSize();
 		this.scaler = scaler;
 		this.viewport = viewport;
 		this.is = imageSettings;
-		this.cache = cache;
+
 		this.bi = bi;
 	}
 
@@ -87,7 +83,7 @@ public class JobGenerator extends Thread {
 		}
 
 		try {
-			RasterThread a = new RasterThread(viewport, bi, is, cache);
+			RasterThread a = new RasterThread(viewport, bi, is);
 			a.start();
 		} catch (Exception e) {
 			e.printStackTrace();

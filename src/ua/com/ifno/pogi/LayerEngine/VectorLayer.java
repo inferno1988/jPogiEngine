@@ -3,8 +3,8 @@ package ua.com.ifno.pogi.LayerEngine;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Rectangle;
-
-import net.sf.ehcache.Cache;
+import java.awt.Shape;
+import java.util.ArrayList;
 
 /**
  * @author Palamarchuk Maksym
@@ -13,15 +13,16 @@ import net.sf.ehcache.Cache;
 public class VectorLayer extends AbstractLayer implements Layer {
 	private BasicStroke stroke = null;
 	private Color fillColor = null;
-	private Cache cache;
+	private ArrayList<Shape> data = new ArrayList<Shape>();
 
 	/**
 	 * <code>VectorLayer</code> creates default Layer with 1 pixel stroke line
 	 * and Color.LIGHT_GRAY color
 	 */
-	public VectorLayer(String name, Cache cache, boolean visible) {
+	public VectorLayer(String name, boolean visible) {
 		super(name, visible);
-		this.cache = cache;
+		this.stroke = new BasicStroke(1.0F);
+		this.fillColor = Color.LIGHT_GRAY;
 	}
 
 	/**
@@ -37,10 +38,8 @@ public class VectorLayer extends AbstractLayer implements Layer {
 	 * @param fillColor
 	 *            Defines default fill color for layer
 	 */
-	public VectorLayer(String name, BasicStroke stroke, Color fillColor,
-			Cache cache, boolean visible) {
+	public VectorLayer(String name, BasicStroke stroke, Color fillColor, boolean visible) {
 		super(name, visible);
-		this.cache = cache;
 		if (stroke != null)
 			this.stroke = stroke;
 		else
@@ -79,20 +78,20 @@ public class VectorLayer extends AbstractLayer implements Layer {
 	}
 
 	@Override
-	public int getCacheSize() {
-		return 0;
-	}
-
-	@Override
 	public Object getDrawable() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Shape>(data);
 	}
 
 	@Override
 	public void setSize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
 
+	public ArrayList<Shape> getData() {
+		return this.data;
+	}
+
+	public void setData(ArrayList<Shape> data) {
+		this.data = data;
+	}
 }

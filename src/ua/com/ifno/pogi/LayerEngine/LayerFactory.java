@@ -4,83 +4,72 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
-
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
+import javax.swing.table.TableModel;
 
 import ua.com.ifno.pogi.ImageSettings;
 import ua.com.ifno.pogi.Scaler;
 
 public class LayerFactory {
-	private ConcurrentHashMap<String, Layer> layers = new ConcurrentHashMap<String, Layer>();
+	private CopyOnWriteArrayList<Layer> layers = new CopyOnWriteArrayList<Layer>();
 	private ImageSettings imageSettings;
 	private Scaler scaler;
 	private Dimension size = new Dimension(800, 600);
-	private CacheManager cacheManager;
+	private	LayerListModel listModel = new LayerListModel();
 	
 	/** Constructs default background map layer */
 	public LayerFactory(ImageSettings settings, Scaler scaler) {
 		this.imageSettings = settings;
 		this.scaler = scaler;
-		this.cacheManager = new CacheManager();
-		Cache cache = this.cacheManager.getCache("imageCache");
-		BackgroundMapLayer bgLayer = new BackgroundMapLayer("Background", imageSettings, size, this.scaler, cache, true);
-		layers.put(bgLayer.getLayerName(), bgLayer);
+		BackgroundMapLayer bgLayer = new BackgroundMapLayer("Background", imageSettings, size, this.scaler,true);
+		layers.add(bgLayer);
+		listModel.addElement(bgLayer);
 	}
 	
-	public void setPosition(Rectangle viewPort) {
-		if (!layers.isEmpty()) {
-			Collection<Layer> layrs = layers.values();
-			for (Layer layer : layrs) {
-				layer.setPosition(viewPort);
-			}
-		}
+	public void addLayer(Layer layer) throws NullPointerException {
+		if (layer == null)
+			throw new NullPointerException();
+		layers.add(layer);
+		listModel.addElement(layer);
 	}
 	
-	public int getLayersCount() {
-		return layers.size();
-	}
-	
-	public ConcurrentHashMap<String, Layer> getLayers() {
-		return layers;
-	}
-
-	public void setLayers(ConcurrentHashMap<String, Layer> layers) {
-		this.layers = layers;
-	}
-
 	public ImageSettings getImageSettings() {
 		return imageSettings;
 	}
+	
+	public Layer getLayer(int index) {
+		return layers.get(index);
+	}
 
-	public void setImageSettings(ImageSettings imageSettings) {
-		this.imageSettings = imageSettings;
+	public TableModel getLayerTableModel() {
+		return listModel;
+	}
+
+	public CopyOnWriteArrayList<Layer> getLayers() {
+		return layers;
+	}
+	
+	public CopyOnWriteArrayList<Layer> getLayersFrom(int index) {
+		return new CopyOnWriteArrayList<Layer>(layers.subList(index, getLayersCount()));
+	}
+
+	public int getLayersCount() {
+		return layers.size();
+	}
+
+	public Dimension getLayersSize() {
+		return size;
 	}
 
 	public Scaler getScaler() {
 		return scaler;
 	}
-
-	public void setScaler(Scaler scaler) {
-		this.scaler = scaler;
-	}
-	
-	public int getCacheSize(String layerName) {
-		Layer layer = layers.get(layerName);
-		if (layer == null)
-			return 0;
-		return layer.getCacheSize();
-	}
 	
 	public Collection<Object> getScene() {
 		Collection<Object> l = new ArrayList<Object>();
 		if (!layers.isEmpty()) {
-			Collection<Layer> layrs = layers.values();
-			for (Layer layer : layrs) {
+			for (Layer layer : layers) {
 				l.add(layer.getDrawable());
 			}
 			return l;
@@ -88,29 +77,32 @@ public class LayerFactory {
 		return null;
 	}
 	
+	public void setImageSettings(ImageSettings imageSettings) {
+		this.imageSettings = imageSettings;
+	}
+	
+	public void setLayers(CopyOnWriteArrayList<Layer> layers) {
+		this.layers = layers;
+	}
+	
+	public void setPosition(Rectangle viewPort) {
+		if (!layers.isEmpty()) {
+			for (Layer layer : layers) {
+				layer.setPosition(viewPort);
+			}
+		}
+	}
+	
+	public void setScaler(Scaler scaler) {
+		this.scaler = scaler;
+	}
+	
 	public void setSize(int width, int height) {
 		size.setSize(width, height);
 		if (!layers.isEmpty()) {
-			Collection<Layer> layrs = layers.values();
-			for (Layer layer : layrs) {
+			for (Layer layer : layers) {
 				layer.setSize(width, height);
 			}
 		}
-	}
-	
-	public Dimension getLayersSize() {
-		return size;
-	}
-	
-	public ListModel getLayerListModel() {
-		if (!layers.isEmpty()) {
-			DefaultListModel lm = new DefaultListModel();
-			Collection<Layer> layrs = layers.values();
-			for (Layer layer : layrs) {
-				lm.addElement(layer.getLayerName());
-			}
-			return lm;
-		}
-		return null;
 	}
 }

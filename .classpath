@@ -32,12 +32,8 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="jars/geotools/jts-1.11.jar"/>
 	<classpathentry kind="lib" path="jars/geotools/gt-main-2.7.4.jar"/>
-	<classpathentry kind="lib" path="jars/ehcache/ehcache-core-2.5.0.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="file:/home/atom/workspace/jPogiEngine/jars/ehcache/javadoc/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="jars/ehcache/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="jars/ehcache/slf4j-jdk14-1.6.1.jar"/>
+	<classpathentry kind="lib" path="jars/geotools/gt-jdbc-2.7.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

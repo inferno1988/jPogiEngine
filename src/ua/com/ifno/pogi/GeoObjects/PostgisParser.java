@@ -75,6 +75,22 @@ public class PostgisParser {
 		return parsedObjects;
 	}
 
+	public static Shape parse(PGgeometry geometry) throws SQLException,
+			WrongGeoTypeException, CantParseException {
+		int geoType = geometry.getGeoType();
+		switch (geoType) {
+		case Geometry.LINESTRING:
+			return parseLineString(geometry);
+		case Geometry.POLYGON:
+			return parsePolygon(geometry);
+		case Geometry.MULTILINESTRING:
+			return parseMultilineString(geometry);
+		default:
+			throw new CantParseException(
+					"ResultSet does not contains any parser for this type");
+		}
+	}
+
 	public static Line2D parseLineString(PGgeometry line)
 			throws WrongGeoTypeException {
 		if (line.getGeoType() != Geometry.LINESTRING)
@@ -98,7 +114,7 @@ public class PostgisParser {
 		for (int i = 1; i < num; i++) {
 			resultPolygon.lineTo(poly.getPoint(i).x, poly.getPoint(i).y);
 		}
-		resultPolygon.closePath();
+		// resultPolygon.closePath();
 		return resultPolygon;
 	}
 
@@ -117,6 +133,7 @@ public class PostgisParser {
 			resultMultiLine.lineTo(multiLine.getPoint(i).x,
 					multiLine.getPoint(i).y);
 		}
+		resultMultiLine.closePath();
 		return resultMultiLine;
 	}
 

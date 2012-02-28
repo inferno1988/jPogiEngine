@@ -1,26 +1,20 @@
 package ua.com.ifno.pogi;
 
-import java.awt.BasicStroke;
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import ua.com.ifno.pogi.AnimationEngine.Animation;
+import ua.com.ifno.pogi.AnimationEngine.AnimationCache;
+import ua.com.ifno.pogi.AnimationEngine.Animator;
+import ua.com.ifno.pogi.LayerEngine.Layer;
+import ua.com.ifno.pogi.LayerEngine.LayerFactory;
+import ua.com.ifno.pogi.Scaler;
+import ua.com.ifno.pogi.WorkerPool;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import javax.swing.*;
+import javax.swing.event.MouseInputListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -33,28 +27,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import javax.swing.SwingUtilities;
-import javax.swing.event.MouseInputListener;
-
-import ua.com.ifno.pogi.AnimationEngine.Animation;
-import ua.com.ifno.pogi.AnimationEngine.AnimationCache;
-import ua.com.ifno.pogi.AnimationEngine.Animator;
-import ua.com.ifno.pogi.LayerEngine.LayerFactory;
-
 
 public class GeoWindow extends Canvas implements MouseMotionListener,
 		MouseInputListener, ComponentListener, MouseWheelListener, KeyListener, Printable {
 
 	private static final long serialVersionUID = -5210242861777162258L;
 	private AnimationCache animationCache = new AnimationCache();
-	private ImageSettings settings;
 	private LayerFactory layerFactory;
 	private Scaler scaler;
 	
-	public GeoWindow(ImageSettings imageSettings, LayerFactory layerFactory, Scaler scaler) {
+	public GeoWindow(LayerFactory layerFactory, Scaler scaler) {
 		addComponentListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -65,7 +47,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		setBackground(new Color(145, 188, 236));
 		setIgnoreRepaint(true);
 		setVisible(true);
-		this.settings = imageSettings;
 		this.scaler = scaler;
 		this.layerFactory = layerFactory;
 		ScriptEngineManager mgr = new ScriptEngineManager();
@@ -104,9 +85,8 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	float alpha = 0.0f;
 	private Point mouse = new Point(0, 0);
 	private Animator animator = new Animator();
-	private Dimension INFO_RECT_SIZE = new Dimension(200, 200);
-	private int LINE_WIDTH = 2;
 	private Rectangle viewPort = new Rectangle();
+	private Color backgroundColor = new Color(145, 188, 236);
 
 	public void paint() {
 		Dimension d = getSize();
@@ -126,15 +106,28 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				fps = frames;
 				frames = 0;
 			}
-			++frames;
+
 
 			if (!((VolatileImage) backBuffer).contentsLost()) {
 				resetRestoreVolatileImages(d.width, d.height);
 				Graphics2D gBB = (Graphics2D) backBuffer.getGraphics();
-				for (Object drawing : layerFactory.getScene()) {
-					if (drawing instanceof BufferedImage)
-						gBB.drawImage((BufferedImage)drawing, 0, 0, null);
+				if (layerFactory.getLayer(0).isVisible())
+					gBB.drawImage((BufferedImage)layerFactory.getLayer(0).getDrawable(), 0, 0, null);
+				else {
+					gBB.setColor(backgroundColor);
+					gBB.fill(new Rectangle2D.Double(0, 0, getWidth(), getHeight()));
 				}
+				for (Layer layer : layerFactory.getLayersFrom(1)) {
+					if (layer.isVisible()) {
+						for (Shape shape : layer.getData()) {
+							gBB.setColor(Color.WHITE);
+							gBB.fill(shape);
+							gBB.setColor(Color.BLACK);
+							gBB.draw(shape);
+						}
+					}
+				}
+				/*
 				Rectangle2D rect = new Rectangle2D.Double(LINE_WIDTH,
 						LINE_WIDTH, INFO_RECT_SIZE.getWidth() - LINE_WIDTH,
 						INFO_RECT_SIZE.getHeight() - LINE_WIDTH);
@@ -172,7 +165,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 						viewPort.getX(), viewPort.getY()), 20, 100);
 				gBB.drawString(String.format("View lx,ly: %sx%s",
 						viewPort.getMaxX(), viewPort.getMaxY()), 20, 120);
-
+				*/
 				if (animator.hasAnimations())
 					for (Animation i : animator.getAnimations()) {
 						BufferedImage frame = i.getFrame();
@@ -190,7 +183,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			// Let the OS have a little time...
 			Thread.yield();
 		} finally {
-			// release resources
+			++frames;
 			if (graphics != null)
 				graphics.dispose();
 		}
