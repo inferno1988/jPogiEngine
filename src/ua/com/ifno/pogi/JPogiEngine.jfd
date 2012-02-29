@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_26" class="java.beans.XMLDecoder"> 
+ <object class="com.jformdesigner.model.FormModel"> 
+  <void method="setProperty"> 
+   <string>i18n.bundlePackage</string> 
+   <string>ua.com.ifno.pogi</string> 
+  </void> 
+  <void method="setProperty"> 
+   <string>i18n.bundleName</string> 
+   <string>locale</string> 
+  </void> 
+  <void method="setProperty"> 
+   <string>i18n.keyPrefix</string> 
+   <string>JPogiEngine</string> 
+  </void> 
+  <void property="contentType"> 
+   <string>form/swing</string> 
+  </void> 
+  <void property="root"> 
+   <object class="com.jformdesigner.model.FormRoot"> 
+    <void method="add"> 
+     <object class="com.jformdesigner.model.FormWindow"> 
+      <string>javax.swing.JFrame</string> 
+      <object class="com.jformdesigner.model.FormLayoutManager"> 
+       <class>java.awt.BorderLayout</class> 
+       <void method="setProperty"> 
+        <string>hgap</string> 
+        <int>10</int> 
+       </void> 
+       <void method="setProperty"> 
+        <string>vgap</string> 
+        <int>10</int> 
+       </void> 
+      </object> 
+      <void method="setProperty"> 
+       <string>defaultCloseOperation</string> 
+       <int>3</int> 
+      </void> 
+      <void property="menuBar"> 
+       <object class="com.jformdesigner.model.FormContainer"> 
+        <string>javax.swing.JMenuBar</string> 
+        <object class="com.jformdesigner.model.FormLayoutManager"> 
+         <class>javax.swing.JMenuBar</class> 
+        </object> 
+        <void property="name"> 
+         <string>menuBar1</string> 
+        </void> 
+        <void method="add"> 
+         <object class="com.jformdesigner.model.FormContainer"> 
+          <string>javax.swing.JMenu</string> 
+          <object class="com.jformdesigner.model.FormLayoutManager"> 
+           <class>javax.swing.JMenu</class> 
+          </object> 
+          <void method="setProperty"> 
+           <string>text</string> 
+           <object class="com.jformdesigner.model.FormMessage"> 
+            <null/> 
+            <string>Menu.File</string> 
+           </object> 
+          </void> 
+          <void property="name"> 
+           <string>menu1</string> 
+          </void> 
+          <void method="add"> 
+           <object class="com.jformdesigner.model.FormComponent"> 
+            <string>javax.swing.JMenuItem</string> 
+            <void method="setProperty"> 
+             <string>text</string> 
+             <object class="com.jformdesigner.model.FormMessage"> 
+              <null/> 
+              <string>Menu.Exit</string> 
+             </object> 
+            </void> 
+            <void property="name"> 
+             <string>mntmExit</string> 
+            </void> 
+            <void method="addEvent"> 
+             <object class="com.jformdesigner.model.FormEvent"> 
+              <string>java.awt.event.ActionListener</string> 
+              <string>actionPerformed</string> 
+              <string>mntmExitActionPerformed</string> 
+              <boolean>true</boolean> 
+             </object> 
+            </void> 
+           </object> 
+          </void> 
+         </object> 
+        </void> 
+        <void method="add"> 
+         <object class="com.jformdesigner.model.FormContainer"> 
+          <string>javax.swing.JMenu</string> 
+          <object class="com.jformdesigner.model.FormLayoutManager"> 
+           <class>javax.swing.JMenu</class> 
+          </object> 
+          <void method="setProperty"> 
+           <string>text</string> 
+           <object class="com.jformdesigner.model.FormMessage"> 
+            <null/> 
+            <string>Menu.Help</string> 
+           </object> 
+          </void> 
+          <void property="name"> 
+           <string>menu2</string> 
+          </void> 
+          <void method="add"> 
+           <object class="com.jformdesigner.model.FormComponent"> 
+            <string>javax.swing.JMenuItem</string> 
+            <void method="setProperty"> 
+             <string>text</string> 
+             <object class="com.jformdesigner.model.FormMessage"> 
+              <null/> 
+              <string>Menu.About</string> 
+             </object> 
+            </void> 
+            <void property="name"> 
+             <string>menuItem2</string> 
+            </void> 
+           </object> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="name"> 
+       <string>this</string> 
+      </void> 
+     </object> 
+     <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+      <null/> 
+      <void method="setProperty"> 
+       <string>location</string> 
+       <object class="java.awt.Point"> 
+        <int>0</int> 
+        <int>0</int> 
+       </object> 
+      </void> 
+      <void method="setProperty"> 
+       <string>size</string> 
+       <object class="java.awt.Dimension"> 
+        <int>650</int> 
+        <int>490</int> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 
