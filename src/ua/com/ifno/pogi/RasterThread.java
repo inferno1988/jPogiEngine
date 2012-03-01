@@ -22,9 +22,7 @@ public class RasterThread extends PaintThread {
 		this.bi = bi;
 	}
 
-	private Image image;
-
-	@Override
+    @Override
 	public void run() {
 		Graphics2D g2d = bi.createGraphics();
 		try {
@@ -37,7 +35,8 @@ public class RasterThread extends PaintThread {
 				}
 				TileInfo tileInfo = JobGenerator.getJobList().take();
 				ImageIcon ic = new ImageIcon(tileInfo.getUrl());
-				if (ic.getImageLoadStatus() == MediaTracker.COMPLETE) {
+                Image image;
+                if (ic.getImageLoadStatus() == MediaTracker.COMPLETE) {
 					image = ic.getImage();
 				} else {
 					image = new ImageIcon(new URL(is.getHost() + "/404.png"))

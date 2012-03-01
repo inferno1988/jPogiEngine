@@ -11,7 +11,7 @@ public class AnimationCache {
 	}
 	
 	public void addAnimation(String name, Animation animation) {
-		if ((name != null) && (name != "") && (animation != null))
+		if ((name != null) && (!name.equals("")) && (animation != null))
 			cache.put(name, animation);
 	}
 	

@@ -11,7 +11,7 @@ import javax.swing.table.TableModel;
 import ua.com.ifno.pogi.ImageSettings;
 import ua.com.ifno.pogi.Scaler;
 
-public class LayerFactory {
+public class LayerManager {
 	private CopyOnWriteArrayList<Layer> layers = new CopyOnWriteArrayList<Layer>();
 	private ImageSettings imageSettings;
 	private Scaler scaler;
@@ -19,7 +19,7 @@ public class LayerFactory {
 	private	LayerListModel listModel = new LayerListModel();
 	
 	/** Constructs default background map layer */
-	public LayerFactory(ImageSettings settings, Scaler scaler) {
+	public LayerManager(ImageSettings settings, Scaler scaler) {
 		this.imageSettings = settings;
 		this.scaler = scaler;
 		BackgroundMapLayer bgLayer = new BackgroundMapLayer("Background", imageSettings, size, this.scaler,true);
@@ -85,13 +85,20 @@ public class LayerFactory {
 		this.layers = layers;
 	}
 	
-	public void setPosition(Rectangle viewPort) {
+	public void setViewPort(Rectangle viewPort) {
 		if (!layers.isEmpty()) {
 			for (Layer layer : layers) {
-				layer.setPosition(viewPort);
+				layer.setViewPort(viewPort);
 			}
 		}
 	}
+
+    public Rectangle getViewPort(int layerIndex) throws IndexOutOfBoundsException {
+        if (!layers.isEmpty() && layerIndex >= 0)
+            return layers.get(layerIndex).getViewPort();
+        else
+            throw new IndexOutOfBoundsException("wrong layer index");
+    }
 	
 	public void setScaler(Scaler scaler) {
 		this.scaler = scaler;

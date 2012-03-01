@@ -1,9 +1,6 @@
 package ua.com.ifno.pogi.LayerEngine;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Rectangle;
-import java.awt.Shape;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -51,12 +48,12 @@ public class VectorLayer extends AbstractLayer implements Layer {
 	}
 
 	@Override
-	public void setPosition(Rectangle viewPort) {
+	public void setViewPort(Rectangle viewPort) {
 
 	}
 
 	@Override
-	public Rectangle getPosition() {
+	public Rectangle getViewPort() {
 
 		return null;
 	}

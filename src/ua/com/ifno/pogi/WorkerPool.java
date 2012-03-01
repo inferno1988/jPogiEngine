@@ -6,9 +6,9 @@ public class WorkerPool {
 	private static ConcurrentHashMap<Long, PaintThread> workerPool = new ConcurrentHashMap<Long, PaintThread>();
 	public static void addWorker(Long threadId, PaintThread thread) {
 		workerPool.put(threadId, thread);
-	};
+	}
 
-	public static Integer getWorkerCount() {
+    public static Integer getWorkerCount() {
 		return workerPool.size();
 	}
 
@@ -17,11 +17,7 @@ public class WorkerPool {
 	}
 
 	public static boolean hasWorkers() {
-		if (getWorkerCount() > 0) {
-			return true;
-		} else {
-			return false;
-		}
+        return getWorkerCount() > 0;
 	}
 
 	public static void interruptAll() {

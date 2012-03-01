@@ -42,7 +42,7 @@ public class BackgroundMapLayer extends AbstractLayer implements Layer {
 	}
 	
 	@Override
-	public void setPosition(Rectangle viewPort) {
+	public void setViewPort(Rectangle viewPort) {
 		if (WorkerPool.hasWorkers())
 			WorkerPool.interruptAll();
 		repaint.setViewPort(viewPort);
@@ -54,19 +54,18 @@ public class BackgroundMapLayer extends AbstractLayer implements Layer {
 		g2d.setColor(Color.LIGHT_GRAY);
 		if (dx < 0)
 			g2d.fillRect(viewPort.width+dx, 0, Math.abs(dx), viewPort.height);
-		else 
+		else
 			g2d.fillRect(0, 0, Math.abs(dx), viewPort.height);
 		if (dy < 0)
 			g2d.fillRect(0, viewPort.height+dy, viewPort.width, Math.abs(dy));
 		else
 			g2d.fillRect(0, 0, viewPort.width, Math.abs(dx));
-		
 		g2d.dispose();
 		oldPosition.setBounds(newPosition);
 	}
 
 	@Override
-	public Rectangle getPosition() {
+	public Rectangle getViewPort() {
 		return newPosition;
 	}
 

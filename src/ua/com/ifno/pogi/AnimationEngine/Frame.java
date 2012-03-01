@@ -6,7 +6,9 @@ public class Frame {
 	private long showTime = 0;
 	private BufferedImage frame;
 	
-	/** Creates frame with specified image and show time in milis */
+	/** Creates frame with specified image and show time in milis
+     * @param bi
+     * @param showTime*/
 	public Frame(BufferedImage bi, long showTime) {
 		this.frame = bi;
 		this.showTime = showTime;

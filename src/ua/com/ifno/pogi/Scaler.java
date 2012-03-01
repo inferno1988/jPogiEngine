@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Scaler {
 	private ArrayList<Integer> scales;
 	private int pointer = 0;
-	private int dividor = 0;
+	private int divider = 0;
 	private ImageSettings is;
 
 	/**
@@ -22,12 +22,13 @@ public class Scaler {
 		return pointer;
 	}
 
-	/** Creates Scaler instance */
+	/** Creates Scaler instance
+     * @param imageSettings*/
 	public Scaler(ImageSettings imageSettings) {
 		is = imageSettings;
 		this.setScales(is.getScales());
 		pointer = scales.get(0);
-		dividor = (int) Math.pow(2, scales.size() - 1);
+		divider = (int) Math.pow(2, scales.size() - 1);
 	}
 
 	/**
@@ -47,29 +48,29 @@ public class Scaler {
 
 	public Dimension getScaledImageSize() {
 		Dimension size = new Dimension();
-		size.width = is.getImageSize().width / dividor;
-		size.height = is.getImageSize().height / dividor;
+		size.width = is.getImageSize().width / divider;
+		size.height = is.getImageSize().height / divider;
 		return size;
 	}
 
 	public void zoomIn() {
 		if (pointer < scales.get(scales.size() - 1)) {
 			pointer++;
-			dividor /= 2;
+			divider /= 2;
 		}
 	}
 
 	public void zoomOut() {
 		if (pointer > scales.get(0)) {
 			pointer--;
-			dividor *= 2;
+			divider *= 2;
 		}
 	}
 
 	public Point zoomInTo(Point p, Rectangle viewPort) {
 		if (pointer < scales.get(scales.size() - 1)) {
 			pointer++;
-			dividor /= 2;
+			divider /= 2;
 			int x = p.x + viewPort.x;
 			int y = p.y + viewPort.y;
 			return new Point(x * 2 - (x - viewPort.x), y * 2 - (y - viewPort.y));
@@ -80,7 +81,7 @@ public class Scaler {
 	public Point zoomOutFrom(Point p, Rectangle viewPort) {
 		if (pointer > scales.get(0)) {
 			pointer--;
-			dividor *= 2;
+			divider *= 2;
 			int x = p.x + viewPort.x;
 			int y = p.y + viewPort.y;
 			return new Point(x / 2 - (x - viewPort.x), y / 2 - (y - viewPort.y));

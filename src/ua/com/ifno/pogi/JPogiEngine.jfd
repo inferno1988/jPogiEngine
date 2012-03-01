@@ -36,6 +36,493 @@
        <string>defaultCloseOperation</string> 
        <int>3</int> 
       </void> 
+      <void method="setProperty"> 
+       <string>title</string> 
+       <object class="com.jformdesigner.model.FormMessage"> 
+        <null/> 
+        <string>Frame.title</string> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormContainer"> 
+        <string>javax.swing.JSplitPane</string> 
+        <object class="com.jformdesigner.model.FormLayoutManager"> 
+         <class>javax.swing.JSplitPane</class> 
+        </object> 
+        <void method="setProperty"> 
+         <string>orientation</string> 
+         <int>0</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>resizeWeight</string> 
+         <double>0.9</double> 
+        </void> 
+        <void property="name"> 
+         <string>splitPane1</string> 
+        </void> 
+        <void method="add"> 
+         <object class="com.jformdesigner.model.FormContainer"> 
+          <string>javax.swing.JSplitPane</string> 
+          <object class="com.jformdesigner.model.FormLayoutManager"> 
+           <class>javax.swing.JSplitPane</class> 
+          </object> 
+          <void method="setProperty"> 
+           <string>resizeWeight</string> 
+           <double>0.8</double> 
+          </void> 
+          <void property="name"> 
+           <string>splitPane2</string> 
+          </void> 
+          <void method="add"> 
+           <object class="com.jformdesigner.model.FormContainer"> 
+            <string>javax.swing.JTabbedPane</string> 
+            <object class="com.jformdesigner.model.FormLayoutManager"> 
+             <class>javax.swing.JTabbedPane</class> 
+            </object> 
+            <void method="setProperty"> 
+             <string>tabPlacement</string> 
+             <int>3</int> 
+            </void> 
+            <void method="setProperty"> 
+             <string>alignmentX</string> 
+             <float>0.0</float> 
+            </void> 
+            <void method="setProperty"> 
+             <string>alignmentY</string> 
+             <float>0.0</float> 
+            </void> 
+            <void property="name"> 
+             <string>tabbedPane2</string> 
+            </void> 
+            <void method="add"> 
+             <object class="com.jformdesigner.model.FormContainer"> 
+              <string>javax.swing.JPanel</string> 
+              <object class="com.jformdesigner.model.FormLayoutManager"> 
+               <class>java.awt.BorderLayout</class> 
+              </object> 
+              <void method="setProperty"> 
+               <string>verifyInputWhenFocusTarget</string> 
+               <boolean>false</boolean> 
+              </void> 
+              <void method="setProperty"> 
+               <string>requestFocusEnabled</string> 
+               <boolean>false</boolean> 
+              </void> 
+              <void method="setProperty"> 
+               <string>focusable</string> 
+               <boolean>false</boolean> 
+              </void> 
+              <void property="name"> 
+               <string>panel2</string> 
+              </void> 
+              <void method="add"> 
+               <object class="com.jformdesigner.model.FormContainer"> 
+                <string>javax.swing.JToolBar</string> 
+                <object class="com.jformdesigner.model.FormLayoutManager"> 
+                 <class>javax.swing.JToolBar</class> 
+                </object> 
+                <void method="setProperty"> 
+                 <string>preferredSize</string> 
+                 <object class="java.awt.Dimension"> 
+                  <int>128</int> 
+                  <int>32</int> 
+                 </object> 
+                </void> 
+                <void method="setProperty"> 
+                 <string>focusable</string> 
+                 <boolean>false</boolean> 
+                </void> 
+                <void method="setProperty"> 
+                 <string>alignmentX</string> 
+                 <float>0.0</float> 
+                </void> 
+                <void method="setProperty"> 
+                 <string>alignmentY</string> 
+                 <float>0.0</float> 
+                </void> 
+                <void method="setProperty"> 
+                 <string>rollover</string> 
+                 <boolean>true</boolean> 
+                </void> 
+                <void method="setProperty"> 
+                 <string>floatable</string> 
+                 <boolean>false</boolean> 
+                </void> 
+                <void property="name"> 
+                 <string>mapToolBar</string> 
+                </void> 
+                <void method="add"> 
+                 <object class="com.jformdesigner.model.FormComponent"> 
+                  <string>javax.swing.JButton</string> 
+                  <void method="setProperty"> 
+                   <string>text</string> 
+                   <object class="com.jformdesigner.model.FormMessage"> 
+                    <null/> 
+                    <string>JPogiEngine.button2.text</string> 
+                   </object> 
+                  </void> 
+                  <void property="name"> 
+                   <string>button2</string> 
+                  </void> 
+                 </object> 
+                </void> 
+                <void method="add"> 
+                 <object class="com.jformdesigner.model.FormComponent"> 
+                  <string>javax.swing.JToggleButton</string> 
+                  <void method="setProperty"> 
+                   <string>icon</string> 
+                   <object class="com.jformdesigner.model.SwingIcon"> 
+                    <int>0</int> 
+                    <string>/ua/com/ifno/pogi/resources/size16/gtk-edit.png</string> 
+                   </object> 
+                  </void> 
+                  <void method="setProperty"> 
+                   <string>toolTipText</string> 
+                   <object class="com.jformdesigner.model.FormMessage"> 
+                    <null/> 
+                    <string>JPogiEngine.btnEditMode.tooltip</string> 
+                   </object> 
+                  </void> 
+                  <void property="name"> 
+                   <string>btnEditMode</string> 
+                  </void> 
+                  <void method="addEvent"> 
+                   <object class="com.jformdesigner.model.FormEvent"> 
+                    <string>java.awt.event.ActionListener</string> 
+                    <string>actionPerformed</string> 
+                    <string>button3ActionPerformed</string> 
+                    <boolean>true</boolean> 
+                   </object> 
+                  </void> 
+                 </object> 
+                </void> 
+                <void method="add"> 
+                 <object class="com.jformdesigner.model.FormComponent"> 
+                  <string>javax.swing.JToggleButton</string> 
+                  <void method="setProperty"> 
+                   <string>icon</string> 
+                   <object class="com.jformdesigner.model.SwingIcon"> 
+                    <int>0</int> 
+                    <string>/ua/com/ifno/pogi/resources/size16/gtk-fullscreen.png</string> 
+                   </object> 
+                  </void> 
+                  <void method="setProperty"> 
+                   <string>toolTipText</string> 
+                   <object class="com.jformdesigner.model.FormMessage"> 
+                    <null/> 
+                    <string>JPogiEngine.btnMove.text</string> 
+                   </object> 
+                  </void> 
+                  <void property="name"> 
+                   <string>btnMove</string> 
+                  </void> 
+                  <void method="addEvent"> 
+                   <object class="com.jformdesigner.model.FormEvent"> 
+                    <string>java.awt.event.ActionListener</string> 
+                    <string>actionPerformed</string> 
+                    <string>btnMoveActionPerformed</string> 
+                    <boolean>true</boolean> 
+                   </object> 
+                  </void> 
+                 </object> 
+                </void> 
+                <void method="add"> 
+                 <object class="com.jformdesigner.model.FormComponent"> 
+                  <string>javax.swing.JButton</string> 
+                  <void method="setProperty"> 
+                   <string>toolTipText</string> 
+                   <object class="com.jformdesigner.model.FormMessage"> 
+                    <null/> 
+                    <string>JPogiEngine.btnPrint.text</string> 
+                   </object> 
+                  </void> 
+                  <void method="setProperty"> 
+                   <string>icon</string> 
+                   <object class="com.jformdesigner.model.SwingIcon"> 
+                    <int>0</int> 
+                    <string>/ua/com/ifno/pogi/resources/size16/gtk-print.png</string> 
+                   </object> 
+                  </void> 
+                  <void property="name"> 
+                   <string>btnPrint</string> 
+                  </void> 
+                  <void method="addEvent"> 
+                   <object class="com.jformdesigner.model.FormEvent"> 
+                    <string>java.awt.event.MouseListener</string> 
+                    <string>mouseClicked</string> 
+                    <string>btnPrintMouseClicked</string> 
+                    <boolean>true</boolean> 
+                   </object> 
+                  </void> 
+                 </object> 
+                </void> 
+                <void method="add"> 
+                 <object class="com.jformdesigner.model.FormComponent"> 
+                  <string>javax.swing.JToolBar$Separator</string> 
+                  <void property="name"> 
+                   <string>separator1</string> 
+                  </void> 
+                 </object> 
+                </void> 
+               </object> 
+               <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+                <class>java.lang.String</class> 
+                <void method="setProperty"> 
+                 <string>value</string> 
+                 <string>North</string> 
+                </void> 
+               </object> 
+              </void> 
+             </object> 
+             <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+              <null/> 
+              <void method="setProperty"> 
+               <string>title</string> 
+               <object class="com.jformdesigner.model.FormMessage"> 
+                <null/> 
+                <string>JPogiEngine.panel2.tab.title</string> 
+               </object> 
+              </void> 
+             </object> 
+            </void> 
+            <void method="add"> 
+             <object class="com.jformdesigner.model.FormContainer"> 
+              <string>javax.swing.JPanel</string> 
+              <object class="com.jformdesigner.model.FormLayoutManager"> 
+               <class>java.awt.BorderLayout</class> 
+              </object> 
+              <void property="name"> 
+               <string>panel3</string> 
+              </void> 
+             </object> 
+             <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+              <null/> 
+              <void method="setProperty"> 
+               <string>title</string> 
+               <object class="com.jformdesigner.model.FormMessage"> 
+                <null/> 
+                <string>JPogiEngine.panel3.tab.title</string> 
+               </object> 
+              </void> 
+             </object> 
+            </void> 
+           </object> 
+           <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+            <class>java.lang.String</class> 
+            <void method="setProperty"> 
+             <string>value</string> 
+             <string>left</string> 
+            </void> 
+           </object> 
+          </void> 
+          <void method="add"> 
+           <object class="com.jformdesigner.model.FormContainer"> 
+            <string>javax.swing.JScrollPane</string> 
+            <object class="com.jformdesigner.model.FormLayoutManager"> 
+             <class>javax.swing.JScrollPane</class> 
+            </object> 
+            <void method="setProperty"> 
+             <string>preferredSize</string> 
+             <object class="java.awt.Dimension"> 
+              <int>100</int> 
+              <int>174</int> 
+             </object> 
+            </void> 
+            <void method="setProperty"> 
+             <string>minimumSize</string> 
+             <object class="java.awt.Dimension"> 
+              <int>100</int> 
+              <int>25</int> 
+             </object> 
+            </void> 
+            <void property="name"> 
+             <string>scrollPane2</string> 
+            </void> 
+            <void method="add"> 
+             <object class="com.jformdesigner.model.FormComponent"> 
+              <string>javax.swing.JTable</string> 
+              <void method="setProperty"> 
+               <string>preferredSize</string> 
+               <object class="java.awt.Dimension"> 
+                <int>100</int> 
+                <int>63</int> 
+               </object> 
+              </void> 
+              <void method="setProperty"> 
+               <string>minimumSize</string> 
+               <object class="java.awt.Dimension"> 
+                <int>100</int> 
+                <int>63</int> 
+               </object> 
+              </void> 
+              <void method="setProperty"> 
+               <string>autoResizeMode</string> 
+               <int>1</int> 
+              </void> 
+              <void property="name"> 
+               <string>layerList</string> 
+              </void> 
+             </object> 
+            </void> 
+           </object> 
+           <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+            <class>java.lang.String</class> 
+            <void method="setProperty"> 
+             <string>value</string> 
+             <string>right</string> 
+            </void> 
+           </object> 
+          </void> 
+         </object> 
+         <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+          <class>java.lang.String</class> 
+          <void method="setProperty"> 
+           <string>value</string> 
+           <string>left</string> 
+          </void> 
+         </object> 
+        </void> 
+        <void method="add"> 
+         <object class="com.jformdesigner.model.FormContainer"> 
+          <string>javax.swing.JPanel</string> 
+          <object class="com.jformdesigner.model.FormLayoutManager"> 
+           <class>java.awt.BorderLayout</class> 
+          </object> 
+          <void property="name"> 
+           <string>panel4</string> 
+          </void> 
+          <void method="add"> 
+           <object class="com.jformdesigner.model.FormContainer"> 
+            <string>javax.swing.JTabbedPane</string> 
+            <object class="com.jformdesigner.model.FormLayoutManager"> 
+             <class>javax.swing.JTabbedPane</class> 
+            </object> 
+            <void method="setProperty"> 
+             <string>preferredSize</string> 
+             <object class="java.awt.Dimension"> 
+              <int>455</int> 
+              <int>100</int> 
+             </object> 
+            </void> 
+            <void method="setProperty"> 
+             <string>toolTipText</string> 
+             <object class="com.jformdesigner.model.FormMessage"> 
+              <null/> 
+              <string>Tab.Map</string> 
+             </object> 
+            </void> 
+            <void method="setProperty"> 
+             <string>minimumSize</string> 
+             <object class="java.awt.Dimension"> 
+              <int>42</int> 
+              <int>100</int> 
+             </object> 
+            </void> 
+            <void method="setProperty"> 
+             <string>maximumSize</string> 
+             <object class="java.awt.Dimension"> 
+              <int>32767</int> 
+              <int>100</int> 
+             </object> 
+            </void> 
+            <void method="setProperty"> 
+             <string>focusable</string> 
+             <boolean>false</boolean> 
+            </void> 
+            <void property="name"> 
+             <string>tabbedPane1</string> 
+            </void> 
+            <void method="add"> 
+             <object class="com.jformdesigner.model.FormContainer"> 
+              <string>javax.swing.JScrollPane</string> 
+              <object class="com.jformdesigner.model.FormLayoutManager"> 
+               <class>javax.swing.JScrollPane</class> 
+              </object> 
+              <void method="setProperty"> 
+               <string>preferredSize</string> 
+               <object class="java.awt.Dimension"> 
+                <int>456</int> 
+                <int>100</int> 
+               </object> 
+              </void> 
+              <void method="setProperty"> 
+               <string>minimumSize</string> 
+               <object class="java.awt.Dimension"> 
+                <int>25</int> 
+                <int>100</int> 
+               </object> 
+              </void> 
+              <void property="name"> 
+               <string>scrollPane1</string> 
+              </void> 
+              <void method="add"> 
+               <object class="com.jformdesigner.model.FormComponent"> 
+                <string>javax.swing.JTable</string> 
+                <void method="setProperty"> 
+                 <string>preferredSize</string> 
+                 <object class="java.awt.Dimension"> 
+                  <int>150</int> 
+                  <int>100</int> 
+                 </object> 
+                </void> 
+                <void method="setProperty"> 
+                 <string>minimumSize</string> 
+                 <object class="java.awt.Dimension"> 
+                  <int>30</int> 
+                  <int>100</int> 
+                 </object> 
+                </void> 
+                <void method="setProperty"> 
+                 <string>maximumSize</string> 
+                 <object class="java.awt.Dimension"> 
+                  <int>2147483647</int> 
+                  <int>1024</int> 
+                 </object> 
+                </void> 
+                <void property="name"> 
+                 <string>table1</string> 
+                </void> 
+               </object> 
+              </void> 
+             </object> 
+             <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+              <null/> 
+              <void method="setProperty"> 
+               <string>title</string> 
+               <object class="com.jformdesigner.model.FormMessage"> 
+                <null/> 
+                <string>JPogiEngine.scrollPane1.tab.title</string> 
+               </object> 
+              </void> 
+             </object> 
+            </void> 
+           </object> 
+           <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+            <class>java.lang.String</class> 
+            <void method="setProperty"> 
+             <string>value</string> 
+             <string>Center</string> 
+            </void> 
+           </object> 
+          </void> 
+         </object> 
+         <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+          <class>java.lang.String</class> 
+          <void method="setProperty"> 
+           <string>value</string> 
+           <string>right</string> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>java.lang.String</class> 
+        <void method="setProperty"> 
+         <string>value</string> 
+         <string>Center</string> 
+        </void> 
+       </object> 
+      </void> 
       <void property="menuBar"> 
        <object class="com.jformdesigner.model.FormContainer"> 
         <string>javax.swing.JMenuBar</string> 
@@ -137,8 +624,8 @@
       <void method="setProperty"> 
        <string>size</string> 
        <object class="java.awt.Dimension"> 
-        <int>650</int> 
-        <int>490</int> 
+        <int>1035</int> 
+        <int>655</int> 
        </object> 
       </void> 
      </object> 

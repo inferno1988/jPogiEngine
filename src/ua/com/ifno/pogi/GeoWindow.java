@@ -4,9 +4,7 @@ import ua.com.ifno.pogi.AnimationEngine.Animation;
 import ua.com.ifno.pogi.AnimationEngine.AnimationCache;
 import ua.com.ifno.pogi.AnimationEngine.Animator;
 import ua.com.ifno.pogi.LayerEngine.Layer;
-import ua.com.ifno.pogi.LayerEngine.LayerFactory;
-import ua.com.ifno.pogi.Scaler;
-import ua.com.ifno.pogi.WorkerPool;
+import ua.com.ifno.pogi.LayerEngine.LayerManager;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -33,10 +31,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	private static final long serialVersionUID = -5210242861777162258L;
 	private AnimationCache animationCache = new AnimationCache();
-	private LayerFactory layerFactory;
+	private LayerManager layerManager;
 	private Scaler scaler;
 	
-	public GeoWindow(LayerFactory layerFactory, Scaler scaler) {
+	public GeoWindow(LayerManager layerManager, Scaler scaler) {
 		addComponentListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -48,7 +46,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		setIgnoreRepaint(true);
 		setVisible(true);
 		this.scaler = scaler;
-		this.layerFactory = layerFactory;
+		this.layerManager = layerManager;
 		ScriptEngineManager mgr = new ScriptEngineManager();
 		ScriptEngine jsEngine = mgr.getEngineByName("JavaScript");
 		try {
@@ -111,13 +109,13 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			if (!((VolatileImage) backBuffer).contentsLost()) {
 				resetRestoreVolatileImages(d.width, d.height);
 				Graphics2D gBB = (Graphics2D) backBuffer.getGraphics();
-				if (layerFactory.getLayer(0).isVisible())
-					gBB.drawImage((BufferedImage)layerFactory.getLayer(0).getDrawable(), 0, 0, null);
+				if (layerManager.getLayer(0).isVisible())
+					gBB.drawImage((BufferedImage) layerManager.getLayer(0).getDrawable(), 0, 0, null);
 				else {
 					gBB.setColor(backgroundColor);
 					gBB.fill(new Rectangle2D.Double(0, 0, getWidth(), getHeight()));
 				}
-				for (Layer layer : layerFactory.getLayersFrom(1)) {
+				for (Layer layer : layerManager.getLayersFrom(1)) {
 					if (layer.isVisible()) {
 						for (Shape shape : layer.getData()) {
 							gBB.setColor(Color.WHITE);
@@ -142,7 +140,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				gBB.drawString(String.format("FPS: %s", fps), 20, 20);
 
 				gBB.drawString(
-						String.format("Cache size: %s", layerFactory.getCacheSize("Background")), 20,
+						String.format("Cache size: %s", layerManager.getCacheSize("Background")), 20,
 						40);
 				gBB.drawString(
 						String.format("Image size: %s",
@@ -263,7 +261,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			sx = e.getX();
 			sy = e.getY();
 			viewPort.translate(dx, dy);
-			layerFactory.setPosition(viewPort);
+			layerManager.setViewPort(viewPort);
 		}
 	}
 
@@ -299,7 +297,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		viewPort.setSize(d);
 		initOffscreen(d.width, d.height);
 		resetRestoreVolatileImages(d.width, d.height);
-		layerFactory.setPosition(viewPort);
+		layerManager.setViewPort(viewPort);
 	}
 
 	@Override
@@ -326,7 +324,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		} else {
 			zoomOut(e.getPoint());
 		}
-		layerFactory.setPosition(viewPort);
+		layerManager.setViewPort(viewPort);
 	}
 
 	@Override
@@ -373,27 +371,31 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 	 * For any of our images that are volatile, if the contents of the image
 	 * have been lost since the last reset, reset the image and restore the
 	 * contents.
-	 */
+     * @param w
+     * @param h
+     */
 	public void resetRestoreVolatileImages(int w, int h) {
 		GraphicsConfiguration gc = this.getGraphicsConfiguration();
 		int valCode = ((VolatileImage) backBuffer).validate(gc);
 		if (valCode == VolatileImage.IMAGE_INCOMPATIBLE) {
 			backBuffer = gc.createCompatibleVolatileImage(w, h);
-			layerFactory.setSize(w, h);
+			layerManager.setSize(w, h);
 		}
 	}
 
 	/**
 	 * Load the duke.gif image, create the sprite and back buffer images, and
 	 * render the content into the sprite.
-	 */
+     * @param width
+     * @param height
+     */
 	public synchronized void initOffscreen(int width, int height) {
-		Dimension d = layerFactory.getLayersSize();
+		Dimension d = layerManager.getLayersSize();
 		if (backBuffer == null || width != d.width || height != d.height) {
 			width = getWidth();
 			height = getHeight();
 			backBuffer = createVolatileImage(width, height);
-			layerFactory.setSize(width, height);
+			layerManager.setSize(width, height);
 		}
 	}
 
@@ -407,7 +409,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 			viewPort.translate(10, 0);
 		if (e.getKeyCode() == KeyEvent.VK_A)
 			viewPort.translate(-10, 0);
-		layerFactory.setPosition(viewPort);
+		layerManager.setViewPort(viewPort);
 	}
 
 	@Override

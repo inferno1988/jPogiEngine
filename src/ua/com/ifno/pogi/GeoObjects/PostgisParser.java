@@ -96,10 +96,9 @@ public class PostgisParser {
 		if (line.getGeoType() != Geometry.LINESTRING)
 			throw new WrongGeoTypeException("This is not LINESTRING object");
 		LineString lineString = (LineString) line.getGeometry();
-		Line2D resultLine = new Line2D.Double(
-				postgisPointToJavaPoint(lineString.getFirstPoint()),
-				postgisPointToJavaPoint(lineString.getLastPoint()));
-		return resultLine;
+        return new Line2D.Double(
+                postgisPointToJavaPoint(lineString.getFirstPoint()),
+                postgisPointToJavaPoint(lineString.getLastPoint()));
 
 	}
 

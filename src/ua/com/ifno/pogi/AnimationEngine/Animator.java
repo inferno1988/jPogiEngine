@@ -10,10 +10,8 @@ public class Animator {
 	}
 	
 	public boolean hasAnimations() {
-		if (animations.size() > 0)
-			return true;
-		return false;
-	}
+        return animations.size() > 0;
+    }
 
 	public CopyOnWriteArrayList<Animation> getAnimations() {
 		return animations;
@@ -30,8 +28,6 @@ public class Animator {
 	}
 	
 	public boolean contains(Animation animation) {
-		if (animation != null)
-			return animations.contains(animation);
-		return false;
-	}
+        return animation != null && animations.contains(animation);
+    }
 }

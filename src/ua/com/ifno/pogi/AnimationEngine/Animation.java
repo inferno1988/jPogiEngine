@@ -7,8 +7,7 @@ public class Animation {
 	private int seconds = 0;
 	private long totalTime = 0;
 	private long curTime = 0;
-	private long lastTime = curTime;
-	private ArrayList<Frame> frames;
+    private ArrayList<Frame> frames;
 	private boolean firstFrame = true;
 	private BufferedImage bi;
 	private long showTime = 0;
@@ -29,7 +28,7 @@ public class Animation {
 			bi = frames.get(0).getFrame();
 			showTime = frames.get(0).getShowTime(); 
 		}
-		lastTime = curTime;
+        long lastTime = curTime;
 		curTime = System.currentTimeMillis();
 		totalTime += curTime - lastTime;
 		if (totalTime > showTime) {

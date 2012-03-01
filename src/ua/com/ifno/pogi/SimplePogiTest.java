@@ -52,11 +52,8 @@ import org.postgis.Point;
 import org.postgresql.PGConnection;
 
 import ua.com.ifno.pogi.GeoObjects.PostgisParser;
-import ua.com.ifno.pogi.LayerEngine.IconedCheckbox;
-import ua.com.ifno.pogi.LayerEngine.Layer;
-import ua.com.ifno.pogi.LayerEngine.LayerFactory;
-import ua.com.ifno.pogi.LayerEngine.LayerVisibilityTableRenderer;
-import ua.com.ifno.pogi.LayerEngine.VectorLayer;
+import ua.com.ifno.pogi.LayerEngine.*;
+import ua.com.ifno.pogi.LayerEngine.LayerManager;
 
 public class SimplePogiTest {
 	private JFrame frmJpogiengine;
@@ -86,7 +83,7 @@ public class SimplePogiTest {
     private final JMenu mnHelp = new JMenu("Help");
 	private final JMenuItem mntmExit = new JMenuItem("Exit");
     private final JMenuItem mntmAbout = new JMenuItem("About");
-	private LayerFactory layerFactory;
+	private LayerManager layerManager;
 
 	/**
 	 * Launch the application.
@@ -130,8 +127,8 @@ public class SimplePogiTest {
 			ImageSettings is = ImageSettings.parseXML(new URL(
 					"http://192.168.33.110/config.xml"));
 			Scaler scaler = new Scaler(is);
-			layerFactory = new LayerFactory(is, scaler);
-			gw = new GeoWindow(layerFactory, scaler);
+			layerManager = new LayerManager(is, scaler);
+			gw = new GeoWindow(layerManager, scaler);
 			gw.setIgnoreRepaint(true);
 			gw.setSelected(false);
 
@@ -212,7 +209,7 @@ public class SimplePogiTest {
 						while (r.next()) {
 							Layer layer = new VectorLayer(r.getObject("name")
 									.toString(), true);
-							layerFactory.addLayer(layer);
+							layerManager.addLayer(layer);
 						}
 
 						s.close();
@@ -220,7 +217,7 @@ public class SimplePogiTest {
 					} catch (Exception e1) {
 						System.out.println(e1.getMessage());
 					}
-					test(layerFactory);
+					test(layerManager);
 				}
 			});
 			btnNewButton.setToolTipText("Load");
@@ -320,7 +317,7 @@ public class SimplePogiTest {
 			topInformationalPane.setMinimumSize(new Dimension(800, 600));
 			topSplitPane.setLeftComponent(topInformationalPane);
 			topSplitPane.setRightComponent(layerTable);
-			TableModel tableModel = layerFactory.getLayerTableModel();
+			TableModel tableModel = layerManager.getLayerTableModel();
 			layerTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 			layerTable.setModel(tableModel);
 			layerTable.setDefaultRenderer(Boolean.class, new LayerVisibilityTableRenderer());
@@ -372,10 +369,6 @@ public class SimplePogiTest {
             mntmAbout.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    AboutDialog aboutDialog = new AboutDialog();
-                    aboutDialog.pack();
-                    aboutDialog.setLocationRelativeTo(null);
-                    aboutDialog.setVisible(true);
                 }
             });
 			bottomInformationalPane.setMinimumSize(new Dimension(10, 100));
@@ -409,7 +402,7 @@ public class SimplePogiTest {
 		}
 	}
 
-	public static void test(LayerFactory lf) {
+	public static void test(LayerManager lf) {
 		java.sql.Connection conn;
 		try {
 			/*
