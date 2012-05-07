@@ -1,8 +1,6 @@
 package ua.com.ifno.pogi;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +11,7 @@ public class Scaler {
 	private ArrayList<Integer> scales;
 	private int pointer = 0;
 	private int divider = 0;
-	private ImageSettings is;
+	private final ImageSettings is;
 
 	/**
 	 * @return the pointer
@@ -42,7 +40,7 @@ public class Scaler {
 	 * @param scales
 	 *            the scales to set
 	 */
-	public void setScales(ArrayList<Integer> scales) {
+    void setScales(ArrayList<Integer> scales) {
 		this.scales = scales;
 	}
 

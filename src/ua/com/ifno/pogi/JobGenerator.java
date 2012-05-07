@@ -1,6 +1,6 @@
 package ua.com.ifno.pogi;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,10 +8,10 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class JobGenerator extends Thread {
 
-    private Scaler scaler;
+    private final Scaler scaler;
     private final int TILE_SIZE;
-    private Rectangle viewport;
-    private ImageSettings is;
+    private final Rectangle viewport;
+    private final ImageSettings is;
     private BufferedImage bi = null;
 
     public JobGenerator(Rectangle viewport, BufferedImage bi,
@@ -24,7 +24,7 @@ public class JobGenerator extends Thread {
         this.bi = bi;
     }
 
-    private static ArrayBlockingQueue<TileInfo> jobList = new ArrayBlockingQueue<TileInfo>(
+    private static final ArrayBlockingQueue<TileInfo> jobList = new ArrayBlockingQueue<TileInfo>(
             1000);
 
     public static ArrayBlockingQueue<TileInfo> getJobList() {

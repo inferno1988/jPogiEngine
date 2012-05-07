@@ -1,7 +1,6 @@
 package ua.com.ifno.pogi.LayerEngine;
 
-import java.awt.Rectangle;
-import java.awt.Shape;
+import java.awt.*;
 import java.util.ArrayList;
 
 public interface Layer {

@@ -1,7 +1,7 @@
 package ua.com.ifno.pogi;
 import java.net.URL;
 
-public class TileInfo {
+class TileInfo {
 	private URL url;
 	private int i;
 	private int j;

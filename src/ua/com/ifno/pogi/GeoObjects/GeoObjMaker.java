@@ -1,15 +1,13 @@
 package ua.com.ifno.pogi.GeoObjects;
 
-import java.awt.Color;
-import java.awt.Polygon;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
-public abstract class GeoObjMaker {
-	private int dbId;
+abstract class GeoObjMaker {
+	private final int dbId;
 	private ArrayList<GeoObjShape> gShapes = new ArrayList<GeoObjShape>();
 	private Color lineColor = Color.RED;
 	private Color selectRectColor = Color.BLACK;
@@ -36,7 +34,7 @@ public abstract class GeoObjMaker {
 		this.gShapes = gShapes;
 	}
 
-	public ArrayList<GeoObjShape> getgShapes() {
+	ArrayList<GeoObjShape> getgShapes() {
 		return gShapes;
 	}
 	
@@ -70,12 +68,8 @@ public abstract class GeoObjMaker {
 	public Color getSelectRectFillColor() {
 		return selectRectFillColor;
 	}
-	
-	public void setSelected(){
 
-	}
-	
-	public void move(Point2D offset) {
+    public void move(Point2D offset) {
 		for (GeoObjShape geoSshape : getgShapes()) {
 			Shape shape = geoSshape.getShape();
 			if (shape instanceof Line2D) {

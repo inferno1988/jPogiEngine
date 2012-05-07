@@ -13,7 +13,6 @@ import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
@@ -26,13 +25,14 @@ import java.io.FileReader;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
+@SuppressWarnings("ConstantConditions")
 public class GeoWindow extends Canvas implements MouseMotionListener,
 		MouseInputListener, ComponentListener, MouseWheelListener, KeyListener, Printable {
 
 	private static final long serialVersionUID = -5210242861777162258L;
-	private AnimationCache animationCache = new AnimationCache();
-	private LayerManager layerManager;
-	private Scaler scaler;
+	private final AnimationCache animationCache = new AnimationCache();
+	private final LayerManager layerManager;
+	private final Scaler scaler;
 	
 	public GeoWindow(LayerManager layerManager, Scaler scaler) {
 		addComponentListener(this);
@@ -67,7 +67,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 	}
 
-	public static CopyOnWriteArrayList<Shape> geoBuffer = new CopyOnWriteArrayList<Shape>();
+	private static final CopyOnWriteArrayList<Shape> geoBuffer = new CopyOnWriteArrayList<Shape>();
 
 	public void init() {
 		Dimension d = getSize();
@@ -75,16 +75,16 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		resetRestoreVolatileImages(d.width, d.height);
 	}
 
-	int fps = 0;
-	int frames = 0;
-	long totalTime = 0;
-	long curTime = System.currentTimeMillis();
-	long lastTime = curTime;
+	private int fps = 0;
+	private int frames = 0;
+	private long totalTime = 0;
+	private long curTime = System.currentTimeMillis();
+	private long lastTime = curTime;
 	float alpha = 0.0f;
 	private Point mouse = new Point(0, 0);
-	private Animator animator = new Animator();
-	private Rectangle viewPort = new Rectangle();
-	private Color backgroundColor = new Color(145, 188, 236);
+	private final Animator animator = new Animator();
+	private final Rectangle viewPort = new Rectangle();
+	private final Color backgroundColor = new Color(145, 188, 236);
 
 	public void paint() {
 		Dimension d = getSize();
@@ -104,7 +104,6 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 				fps = frames;
 				frames = 0;
 			}
-
 
 			if (!((VolatileImage) backBuffer).contentsLost()) {
 				resetRestoreVolatileImages(d.width, d.height);
@@ -187,9 +186,9 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 	}
 
-	private Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
+	private final Rectangle2D mouseRect = new Rectangle2D.Double(0, 0, 5, 5);
 
-	private Shape find(Point2D p) {
+	private Shape find() {
 		for (Shape lines : geoBuffer) {
 			if (lines.intersects(mouseRect))
 				return lines;
@@ -203,7 +202,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		select = state;
 	}
 
-	public boolean isSelect() {
+	boolean isSelect() {
 		return select;
 	}
 
@@ -219,7 +218,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		mouse = e.getPoint();
 		if (isSelect()) {
 			mouseRect.setRect(e.getX() - 5, e.getY() - 5, 10, 10);
-			if (find(e.getPoint()) == null) {
+			if (find() == null) {
 				setCursor(Cursor.getDefaultCursor());
 			} else {
 				setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -227,12 +226,10 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		}
 	}
 
-	private Shape selected;
-
-	@Override
+    @Override
 	public void mouseClicked(MouseEvent e) {
 		if (isSelect()) {
-			selected = find(e.getPoint());
+            Shape selected = find();
 			if (selected != null && e.getClickCount() == 1
 					&& e.getButton() == MouseEvent.BUTTON1) {
 
@@ -255,7 +252,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		if (isMove() && SwingUtilities.isLeftMouseButton(e)) {
 			if (WorkerPool.hasWorkers())
 				WorkerPool.interruptAll();
-			int dx = 0, dy = 0;
+			int dx, dy;
 			dx = sx - e.getX();
 			dy = sy - e.getY();
 			sx = e.getX();
@@ -310,7 +307,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 		this.move = move;
 	}
 
-	public boolean isMove() {
+	boolean isMove() {
 		return move;
 	}
 
@@ -349,7 +346,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	private void zoomIn(Point p) {
 		Animation animation = animationCache.getAnimation("zoomIn.js");
-		if (!animator.contains(animation)) {
+		if (animator.contains_invert(animation)) {
 			animation.reset();
 			animator.addAnimation(animation);
 		}
@@ -358,14 +355,14 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
 
 	private void zoomOut(Point p) {
 		Animation animation = animationCache.getAnimation("zoomOut.js");
-		if (!animator.contains(animation)) {
+		if (animator.contains_invert(animation)) {
 			animation.reset();
 			animator.addAnimation(animation);
 		}
 		viewPort.setLocation(scaler.zoomOutFrom(p, viewPort));
 	}
 
-	Image backBuffer;
+	private Image backBuffer;
 
 	/**
 	 * For any of our images that are volatile, if the contents of the image
@@ -374,7 +371,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
      * @param w
      * @param h
      */
-	public void resetRestoreVolatileImages(int w, int h) {
+    void resetRestoreVolatileImages(int w, int h) {
 		GraphicsConfiguration gc = this.getGraphicsConfiguration();
 		int valCode = ((VolatileImage) backBuffer).validate(gc);
 		if (valCode == VolatileImage.IMAGE_INCOMPATIBLE) {
@@ -389,7 +386,7 @@ public class GeoWindow extends Canvas implements MouseMotionListener,
      * @param width
      * @param height
      */
-	public synchronized void initOffscreen(int width, int height) {
+	synchronized void initOffscreen(int width, int height) {
 		Dimension d = layerManager.getLayersSize();
 		if (backBuffer == null || width != d.width || height != d.height) {
 			width = getWidth();

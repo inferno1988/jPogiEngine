@@ -2,7 +2,7 @@ package ua.com.ifno.pogi.AnimationEngine;
 
 import java.awt.image.BufferedImage;
 
-public class Frame {
+class Frame {
 	private long showTime = 0;
 	private BufferedImage frame;
 	

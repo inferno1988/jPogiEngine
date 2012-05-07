@@ -1,11 +1,12 @@
 package ua.com.ifno.pogi;
-import java.awt.Dimension;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
+
+import java.awt.*;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Palamarchuk Maksym
@@ -20,14 +21,14 @@ public class ImageSettings {
 	 * <br>
 	 * http://localhost/yTiles/tile-%d-%d.png
 	 */
-	public ImageSettings() {
+    private ImageSettings() {
 		this.setHost("http://localhost");
 		this.setTilesPath("/yTiles");
 		this.tileName = "/tile-%d-%d.png";
 	}
 	
 	private Dimension imageSize = new Dimension(256, 256);
-	private Integer tscales[] = { 0, 1, 2, 3, 4, 5 };
+	private final Integer[] tscales = { 0, 1, 2, 3, 4, 5 };
 	private ArrayList<Integer> scales = new ArrayList<Integer>(
 			Arrays.asList(tscales));
 	/**
@@ -101,67 +102,79 @@ public class ImageSettings {
 		this.tileSize = tileSize;
 	}
 
-	/** Returns image size. */
+	/** Returns image size.
+     * @return*/
 	public Dimension getImageSize() {
 		return imageSize;
 	}
 
-	/** Sets image size. */
-	public void setImageSize(Dimension size) {
+	/** Sets image size.
+     * @param size*/
+    void setImageSize(Dimension size) {
 		this.imageSize = size;
 	}
 
-	/** Returns image scale levels as list. */
+	/** Returns image scale levels as list.
+     * @return*/
 	public ArrayList<Integer> getScales() {
 		return scales;
 	}
 
-	/** Sets image scale levels as ArrayList. */
-	public void setScales(ArrayList<Integer> scales) {
+	/** Sets image scale levels as ArrayList.
+     * @param scales*/
+    void setScales(ArrayList<Integer> scales) {
 		this.scales = scales;
 	}
 
-	/** Returns tile size. */
+	/** Returns tile size.
+     * @return*/
 	public int getTileSize() {
 		return tileSize;
 	}
 
-	/** Sets tile size. */
-	public void setTileSize(int tileSize) {
+	/** Sets tile size.
+     * @param tileSize*/
+    void setTileSize(int tileSize) {
 		this.tileSize = tileSize;
 	}
 
-	/** Returns tile name mask. */
+	/** Returns tile name mask.
+     * @return*/
 	public String getTileName() {
 		return tileName;
 	}
 
-	/** Sets tile name mask. */
-	public void setTileName(String name) {
+	/** Sets tile name mask.
+     * @param name*/
+    void setTileName(String name) {
 		this.tileName = name;
 	}
 	
 	private String host = null;
 
-	/** Returns host name with protocol. */
+	/** Returns host name with protocol.
+     * @return*/
 	public String getHost() {
 		return host;
 	}
 
-	/** Sets host name with protocol. */
-	public void setHost(String host) {
+	/** Sets host name with protocol.
+     * @param host*/
+    void setHost(String host) {
 		this.host = host;
 	}
 
 	private String path = null;
 	
-	/** Returns path to tiles folder. */
+	/** Returns path to tiles folder.
+     * @return*/
 	public String getTilesPath() {
 		return path;
 	}
 
-	/** Sets path to tiles folder. */
-	public void setTilesPath(String path) {
+	/** Sets path to tiles folder.
+     * @param path*/
+    void setTilesPath(String path) {
 		this.path = path;
 	}
 
@@ -171,8 +184,9 @@ public class ImageSettings {
 	 * @param url
 	 *            - URL for config.xml file.
 	 * @throws ConfigurationException 
-	 * */
-	public static ImageSettings parseXML(URL url) throws ConfigurationException {
+	 * @return*/
+	@SuppressWarnings("JavaDoc")
+    public static ImageSettings parseXML(URL url) throws ConfigurationException {
 		XMLConfiguration xml = new XMLConfiguration(url);
 		ImageSettings is = new ImageSettings();
 		is.setImageSize(new Dimension(xml.getInt("image.size[@width]"), xml

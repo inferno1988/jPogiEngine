@@ -1,28 +1,29 @@
 package ua.com.ifno.pogi.LayerEngine;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
+import ua.com.ifno.pogi.ImageSettings;
+import ua.com.ifno.pogi.Scaler;
+
+import javax.swing.table.TableModel;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import javax.swing.table.TableModel;
-
-import ua.com.ifno.pogi.ImageSettings;
-import ua.com.ifno.pogi.Scaler;
-
+@SuppressWarnings("SameParameterValue")
 public class LayerManager {
 	private CopyOnWriteArrayList<Layer> layers = new CopyOnWriteArrayList<Layer>();
 	private ImageSettings imageSettings;
 	private Scaler scaler;
-	private Dimension size = new Dimension(800, 600);
-	private	LayerListModel listModel = new LayerListModel();
+	private final Dimension size = new Dimension(800, 600);
+	private final LayerListModel listModel = new LayerListModel();
 	
-	/** Constructs default background map layer */
+	/** Constructs default background map layer
+     * @param settings
+     * @param scaler*/
 	public LayerManager(ImageSettings settings, Scaler scaler) {
 		this.imageSettings = settings;
 		this.scaler = scaler;
-		BackgroundMapLayer bgLayer = new BackgroundMapLayer("Background", imageSettings, size, this.scaler,true);
+		BackgroundMapLayer bgLayer = new BackgroundMapLayer(imageSettings, size, this.scaler);
 		layers.add(bgLayer);
 		listModel.addElement(bgLayer);
 	}
@@ -54,7 +55,7 @@ public class LayerManager {
 		return new CopyOnWriteArrayList<Layer>(layers.subList(index, getLayersCount()));
 	}
 
-	public int getLayersCount() {
+	int getLayersCount() {
 		return layers.size();
 	}
 

@@ -1,18 +1,22 @@
 package ua.com.ifno.pogi;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.DisplayMode;
-import java.awt.EventQueue;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
+import org.apache.commons.configuration.ConfigurationException;
+import org.postgis.PGbox3d;
+import org.postgis.PGgeometry;
+import org.postgis.Point;
+import org.postgresql.PGConnection;
+import ua.com.ifno.pogi.GeoObjects.PostgisParser;
+import ua.com.ifno.pogi.LayerEngine.*;
+
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
@@ -22,51 +26,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.swing.DefaultCellEditor;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
-import javax.swing.border.EtchedBorder;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-
-import org.apache.commons.configuration.ConfigurationException;
-import org.postgis.PGbox3d;
-import org.postgis.PGgeometry;
-import org.postgis.Point;
-import org.postgresql.PGConnection;
-
-import ua.com.ifno.pogi.GeoObjects.PostgisParser;
-import ua.com.ifno.pogi.LayerEngine.*;
-import ua.com.ifno.pogi.LayerEngine.LayerManager;
-
+@SuppressWarnings("ConstantConditions")
 public class SimplePogiTest {
 	private JFrame frmJpogiengine;
 	private GeoWindow gw;
-	private JToggleButton moveToggle = new JToggleButton("");
-	private JToggleButton selectToggle = new JToggleButton("");
+	private final JToggleButton moveToggle = new JToggleButton("");
+	private final JToggleButton selectToggle = new JToggleButton("");
 	private final JPanel panel = new JPanel();
 	private final JButton btnNewButton_1 = new JButton("");
 	private boolean focused = false;
 	private final JSplitPane topSplitPane = new JSplitPane();
-	private JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+	private final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 	private final JPanel bottomInformationalPane = new JPanel();
-	JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+	private final JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
 			topSplitPane, bottomInformationalPane);
 	private final JTable layerTable = new JTable();
 	private final JPanel panel_1 = new JPanel();
@@ -87,7 +59,8 @@ public class SimplePogiTest {
 
 	/**
 	 * Launch the application.
-	 */
+     * @param args
+     */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -104,7 +77,7 @@ public class SimplePogiTest {
 	/**
 	 * Create the application.
 	 */
-	public SimplePogiTest() {
+    private SimplePogiTest() {
 		initialize();
 	}
 
@@ -402,7 +375,7 @@ public class SimplePogiTest {
 		}
 	}
 
-	public static void test(LayerManager lf) {
+	private static void test(LayerManager lf) {
 		java.sql.Connection conn;
 		try {
 			/*

@@ -2,7 +2,7 @@ package ua.com.ifno.pogi;
 abstract class PaintThread extends Thread {
 	private boolean interrupted = false;
 
-	public PaintThread() {
+	PaintThread() {
 	}
 
 	public void interrupt() {

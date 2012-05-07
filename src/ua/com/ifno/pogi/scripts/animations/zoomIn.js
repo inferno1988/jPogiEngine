@@ -20,7 +20,7 @@ var animation = new Animation();
 for (var i = 0; i < HEIGTH/HSTEP-1; i++) {
 RECT_WIDTH+=WSTEP;
 RECT_HEIGTH+=HSTEP;
-var bi = new BufferedImage(WIDTH, HEIGTH, BufferedImage.TYPE_INT_ARGB)
+var bi = new BufferedImage(WIDTH, HEIGTH, BufferedImage.TYPE_INT_ARGB);
 var g2d = bi.createGraphics();
 g2d.setColor(Color.RED);
 g2d.setStroke(stroke);

@@ -155,10 +155,10 @@
                  <object class="com.jformdesigner.model.FormComponent"> 
                   <string>javax.swing.JButton</string> 
                   <void method="setProperty"> 
-                   <string>text</string> 
-                   <object class="com.jformdesigner.model.FormMessage"> 
-                    <null/> 
-                    <string>JPogiEngine.button2.text</string> 
+                   <string>icon</string> 
+                   <object class="com.jformdesigner.model.SwingIcon"> 
+                    <int>0</int> 
+                    <string>/ua/com/ifno/pogi/resources/size16/bonobo-component-browser.png</string> 
                    </object> 
                   </void> 
                   <void property="name"> 

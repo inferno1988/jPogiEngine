@@ -2,7 +2,7 @@ package ua.com.ifno.pogi;
 
 import java.awt.image.RGBImageFilter;
 
-public class FilterInvert extends RGBImageFilter {
+class FilterInvert extends RGBImageFilter {
     public FilterInvert() {
         canFilterIndexColorModel = true;
     }

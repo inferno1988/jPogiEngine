@@ -1,5 +1,5 @@
 package ua.com.ifno.pogi;
 
-public class GeoThread extends Thread {
+class GeoThread extends Thread {
 
 }

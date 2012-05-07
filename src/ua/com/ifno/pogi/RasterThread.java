@@ -1,18 +1,14 @@
 package ua.com.ifno.pogi;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.awt.Rectangle;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.swing.ImageIcon;
-
-public class RasterThread extends PaintThread {
-	private ImageSettings is;
-	private Rectangle vp;
+class RasterThread extends PaintThread {
+	private final ImageSettings is;
+	private final Rectangle vp;
 	private BufferedImage bi = null;
 
 	public RasterThread(Rectangle viewport, BufferedImage bi,

@@ -1,8 +1,8 @@
 package ua.com.ifno.pogi.GeoObjects;
 
-import java.awt.Shape;
+import java.awt.*;
 
-public class GeoObjShape {
+class GeoObjShape {
 	private Shape shape = null;
 	private boolean isFillable = false;
 	

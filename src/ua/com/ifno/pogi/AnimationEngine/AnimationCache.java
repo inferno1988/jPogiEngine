@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AnimationCache {
 	
-	private ConcurrentHashMap<String, Animation> cache;
+	private final ConcurrentHashMap<String, Animation> cache;
 
 	public AnimationCache() {
 		cache = new ConcurrentHashMap<String, Animation>();

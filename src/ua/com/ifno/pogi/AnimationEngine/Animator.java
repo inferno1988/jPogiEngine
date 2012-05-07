@@ -3,7 +3,7 @@ package ua.com.ifno.pogi.AnimationEngine;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Animator {
-	private CopyOnWriteArrayList<Animation> animations;
+	private final CopyOnWriteArrayList<Animation> animations;
 	
 	public Animator() {
 		animations = new CopyOnWriteArrayList<Animation>();
@@ -27,7 +27,7 @@ public class Animator {
 			animations.remove(animation);
 	}
 	
-	public boolean contains(Animation animation) {
-        return animation != null && animations.contains(animation);
+	public boolean contains_invert(Animation animation) {
+        return animation == null || !animations.contains(animation);
     }
 }

@@ -1,10 +1,10 @@
 package ua.com.ifno.pogi.LayerEngine;
 
 public abstract class AbstractLayer implements Layer {
-	protected String layerName = null;
-	protected boolean visible = true;
+	private String layerName = null;
+	private boolean visible = true;
 
-	public AbstractLayer(String name, boolean visible) {
+	AbstractLayer(String name, boolean visible) {
 		this.layerName = name;
 		this.visible = visible;
 	}

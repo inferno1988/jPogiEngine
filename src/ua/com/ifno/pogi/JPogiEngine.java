@@ -9,6 +9,10 @@ import ua.com.ifno.pogi.LayerEngine.IconedCheckbox;
 import ua.com.ifno.pogi.LayerEngine.LayerManager;
 import ua.com.ifno.pogi.LayerEngine.LayerVisibilityTableRenderer;
 
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.swing.*;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.PageFormat;
@@ -16,11 +20,7 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.swing.*;
-import javax.swing.table.TableModel;
+import java.util.ResourceBundle;
 
 /**
  * @author unknown
@@ -37,7 +37,7 @@ public class JPogiEngine extends JFrame {
         });
     }
 
-    public JPogiEngine() {
+    private JPogiEngine() {
         initComponents();
         try {
             ImageSettings is = ImageSettings.parseXML(new URL(
@@ -47,9 +47,9 @@ public class JPogiEngine extends JFrame {
             geoWindow = new GeoWindow(layerManager, scaler);
 
         } catch (ConfigurationException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         } catch (MalformedURLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         geoWindow.setIgnoreRepaint(true);
         geoWindow.setSelected(false);
@@ -68,10 +68,9 @@ public class JPogiEngine extends JFrame {
         layerList.setModel(tableModel);
         layerList.setDefaultRenderer(Boolean.class, new LayerVisibilityTableRenderer());
         layerList.setDefaultEditor(Boolean.class, new DefaultCellEditor(new IconedCheckbox()));
-        mapToolBar.add(new JButton("mama"));
-    }
+   }
 
-    private void mntmExitActionPerformed(ActionEvent e) {
+    private void mntmExitActionPerformed() {
         System.exit(0);
     }
 
@@ -87,7 +86,7 @@ public class JPogiEngine extends JFrame {
         }
     }
 
-    private void btnPrintMouseClicked(MouseEvent e) {
+    private void btnPrintMouseClicked() {
         PrinterJob job = PrinterJob.getPrinterJob();
         PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
         PageFormat pf = job.pageDialog(aset);
@@ -102,11 +101,8 @@ public class JPogiEngine extends JFrame {
         }
     }
 
-    private void button3ActionPerformed(ActionEvent e) {
-
-     }
-
-    class Loop extends WindowAdapter {
+    @SuppressWarnings("ConstantConditions")
+    private class Loop extends WindowAdapter {
         @Override
         public void windowOpened(WindowEvent e) {
             geoWindow.init();
@@ -135,12 +131,11 @@ public class JPogiEngine extends JFrame {
         }
     }
 
-    class Focused implements WindowFocusListener {
+    private class Focused implements WindowFocusListener {
         @Override
         public void windowLostFocus(WindowEvent e) {
             focused = false;
         }
-
         @Override
         public void windowGainedFocus(WindowEvent e) {
             focused = true;
@@ -149,7 +144,6 @@ public class JPogiEngine extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Max Palamarchuk
         ResourceBundle bundle = ResourceBundle.getBundle("ua.com.ifno.pogi.locale");
         menuBar1 = new JMenuBar();
         menu1 = new JMenu();
@@ -191,7 +185,7 @@ public class JPogiEngine extends JFrame {
                 mntmExit.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        mntmExitActionPerformed(e);
+                        mntmExitActionPerformed();
                     }
                 });
                 menu1.add(mntmExit);
@@ -230,14 +224,6 @@ public class JPogiEngine extends JFrame {
                         panel2.setVerifyInputWhenFocusTarget(false);
                         panel2.setRequestFocusEnabled(false);
                         panel2.setFocusable(false);
-
-                        // JFormDesigner evaluation mark
-                        panel2.setBorder(new javax.swing.border.CompoundBorder(
-                            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                                java.awt.Color.red), panel2.getBorder())); panel2.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
                         panel2.setLayout(new BorderLayout());
 
                         //======== mapToolBar ========
@@ -250,18 +236,12 @@ public class JPogiEngine extends JFrame {
                             mapToolBar.setFloatable(false);
 
                             //---- button2 ----
-                            button2.setText(bundle.getString("JPogiEngine.button2.text"));
+                            button2.setIcon(new ImageIcon(getClass().getResource("/ua/com/ifno/pogi/resources/size16/bonobo-component-browser.png")));
                             mapToolBar.add(button2);
 
                             //---- btnEditMode ----
                             btnEditMode.setIcon(new ImageIcon(getClass().getResource("/ua/com/ifno/pogi/resources/size16/gtk-edit.png")));
                             btnEditMode.setToolTipText(bundle.getString("JPogiEngine.btnEditMode.tooltip"));
-                            btnEditMode.addActionListener(new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    button3ActionPerformed(e);
-                                }
-                            });
                             mapToolBar.add(btnEditMode);
 
                             //---- btnMove ----
@@ -281,7 +261,7 @@ public class JPogiEngine extends JFrame {
                             btnPrint.addMouseListener(new MouseAdapter() {
                                 @Override
                                 public void mouseClicked(MouseEvent e) {
-                                    btnPrintMouseClicked(e);
+                                    btnPrintMouseClicked();
                                 }
                             });
                             mapToolBar.add(btnPrint);
@@ -352,11 +332,7 @@ public class JPogiEngine extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    private boolean focused = false;
-    private GeoWindow geoWindow;
-    private LayerManager layerManager;
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Max Palamarchuk
     private JMenuBar menuBar1;
     private JMenu menu1;
     private JMenuItem mntmExit;
@@ -379,4 +355,8 @@ public class JPogiEngine extends JFrame {
     private JScrollPane scrollPane1;
     private JTable table1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    private boolean focused = false;
+    private GeoWindow geoWindow;
+    private LayerManager layerManager;
 }

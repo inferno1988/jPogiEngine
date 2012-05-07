@@ -7,7 +7,7 @@ public class Animation {
 	private int seconds = 0;
 	private long totalTime = 0;
 	private long curTime = 0;
-    private ArrayList<Frame> frames;
+    private final ArrayList<Frame> frames;
 	private boolean firstFrame = true;
 	private BufferedImage bi;
 	private long showTime = 0;

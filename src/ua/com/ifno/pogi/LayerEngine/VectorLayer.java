@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author Palamarchuk Maksym
  * 
  */
+@SuppressWarnings("SameParameterValue")
 public class VectorLayer extends AbstractLayer implements Layer {
 	private BasicStroke stroke = null;
 	private Color fillColor = null;
@@ -15,7 +16,9 @@ public class VectorLayer extends AbstractLayer implements Layer {
 	/**
 	 * <code>VectorLayer</code> creates default Layer with 1 pixel stroke line
 	 * and Color.LIGHT_GRAY color
-	 */
+     * @param name
+     * @param visible
+     */
 	public VectorLayer(String name, boolean visible) {
 		super(name, visible);
 		this.stroke = new BasicStroke(1.0F);
@@ -54,7 +57,6 @@ public class VectorLayer extends AbstractLayer implements Layer {
 
 	@Override
 	public Rectangle getViewPort() {
-
 		return null;
 	}
 

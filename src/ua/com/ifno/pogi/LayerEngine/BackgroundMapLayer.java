@@ -1,38 +1,31 @@
 package ua.com.ifno.pogi.LayerEngine;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import ua.com.ifno.pogi.ImageSettings;
 import ua.com.ifno.pogi.JobGenerator;
 import ua.com.ifno.pogi.Scaler;
 import ua.com.ifno.pogi.WorkerPool;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class BackgroundMapLayer extends AbstractLayer implements Layer {
-	private ImageSettings settings;
-	private Scaler scaler;
+	private final ImageSettings settings;
+	private final Scaler scaler;
 	private BufferedImage bi = null;
-	private GraphicsEnvironment ge = GraphicsEnvironment
+	private final GraphicsEnvironment ge = GraphicsEnvironment
 			.getLocalGraphicsEnvironment();
-	private GraphicsDevice gs = ge.getDefaultScreenDevice();
-	private GraphicsConfiguration gc = gs.getDefaultConfiguration();
-	private Rectangle oldPosition = new Rectangle();
-	private Rectangle newPosition = new Rectangle();
+	private final GraphicsDevice gs = ge.getDefaultScreenDevice();
+	private final GraphicsConfiguration gc = gs.getDefaultConfiguration();
+	private final Rectangle oldPosition = new Rectangle();
+	private final Rectangle newPosition = new Rectangle();
 	private ScheduledRepaint repaint = null;
 
-	public BackgroundMapLayer(String name, ImageSettings settings, Dimension size,
-			Scaler scaler, boolean visible) {
-		super(name, visible);
+	public BackgroundMapLayer(ImageSettings settings, Dimension size,
+                              Scaler scaler) {
+		super("Background", true);
 		this.settings = settings;
 		this.scaler = scaler;
 		this.bi = gc.createCompatibleImage(size.width, size.height);
@@ -81,7 +74,7 @@ public class BackgroundMapLayer extends AbstractLayer implements Layer {
 	
 	private class ScheduledRepaint extends TimerTask {
 		private Rectangle viewPort;
-		private Rectangle oldViewPort;
+		private final Rectangle oldViewPort;
 		private Thread tt;
 		
 		public ScheduledRepaint() {

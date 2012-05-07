@@ -1,19 +1,16 @@
 package ua.com.ifno.pogi.GeoObjects;
 
-import java.awt.Shape;
+import org.postgis.*;
+import org.postgis.Point;
+import org.postgis.Polygon;
+
+import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import org.postgis.Geometry;
-import org.postgis.LineString;
-import org.postgis.MultiLineString;
-import org.postgis.PGgeometry;
-import org.postgis.Point;
-import org.postgis.Polygon;
 
 public class PostgisParser {
 	private ResultSet results = null;
@@ -75,8 +72,8 @@ public class PostgisParser {
 		return parsedObjects;
 	}
 
-	public static Shape parse(PGgeometry geometry) throws SQLException,
-			WrongGeoTypeException, CantParseException {
+	public static Shape parse(PGgeometry geometry) throws
+            WrongGeoTypeException, CantParseException {
 		int geoType = geometry.getGeoType();
 		switch (geoType) {
 		case Geometry.LINESTRING:
@@ -91,7 +88,7 @@ public class PostgisParser {
 		}
 	}
 
-	public static Line2D parseLineString(PGgeometry line)
+	private static Line2D parseLineString(PGgeometry line)
 			throws WrongGeoTypeException {
 		if (line.getGeoType() != Geometry.LINESTRING)
 			throw new WrongGeoTypeException("This is not LINESTRING object");
@@ -102,7 +99,7 @@ public class PostgisParser {
 
 	}
 
-	public static GeneralPath parsePolygon(PGgeometry polygon)
+	private static GeneralPath parsePolygon(PGgeometry polygon)
 			throws WrongGeoTypeException {
 		if (polygon.getGeoType() != Geometry.POLYGON)
 			throw new WrongGeoTypeException("This is not POLYGON object");
@@ -117,7 +114,7 @@ public class PostgisParser {
 		return resultPolygon;
 	}
 
-	public static GeneralPath parseMultilineString(PGgeometry multiLineString)
+	private static GeneralPath parseMultilineString(PGgeometry multiLineString)
 			throws WrongGeoTypeException {
 		if (multiLineString.getGeoType() != Geometry.MULTILINESTRING)
 			throw new WrongGeoTypeException(

@@ -3,12 +3,12 @@ import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WorkerPool {
-	private static ConcurrentHashMap<Long, PaintThread> workerPool = new ConcurrentHashMap<Long, PaintThread>();
+	private static final ConcurrentHashMap<Long, PaintThread> workerPool = new ConcurrentHashMap<Long, PaintThread>();
 	public static void addWorker(Long threadId, PaintThread thread) {
 		workerPool.put(threadId, thread);
 	}
 
-    public static Integer getWorkerCount() {
+    private static Integer getWorkerCount() {
 		return workerPool.size();
 	}
 
