@@ -1,0 +1,1 @@
+INSERT INTO layers (name, visible, fill_color, stroke_width) VALUES ('Квартали', true, (233, 233, 233)::color, 1.0);
