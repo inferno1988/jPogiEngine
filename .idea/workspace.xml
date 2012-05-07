@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="da06a269-a4a1-4c75-8115-d91a6ed36769" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/add-files-to-archive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/add-folder-to-archive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/application-exit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/appointment-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/appointment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/audio-cd-duplicate.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/audio-cd-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/back.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/bonobo-component-browser.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/bookmark-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/bookmark_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/bookmark_list_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/browser-download.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/cab_extract.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/call-start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/call-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/centrejust.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/contact-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/dialog-apply.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/dialog-no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/dialog-ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/dialog-yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-export.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-import.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-open-recent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-page-setup.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-print-preview.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-print.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-revert.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-save-as.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-save.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/document-send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-clear.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-cut.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-find-replace.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-find.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-paste.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-redo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-select-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/edit-undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/editclear.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/editcopy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/editcut.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/editdelete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/editpaste.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/exit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/extract-archive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/file_new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/filefind.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/fileopen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/fileprint.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/filesave.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/filesaveas.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/find.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/finish.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/folder-copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/folder-move.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/folder-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/folder_new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-indent-less.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-indent-more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-justify-center.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-justify-fill.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-justify-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-justify-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-text-bold.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-text-direction-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-text-direction-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-text-italic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-text-strikethrough.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/format-text-underline.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/forward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/games-endturn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-app-install-star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-lockscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-log-out.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-logout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-run.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-searchtool.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-session-logout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-stock-mail-fwd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-stock-mail-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-stock-mail-rpl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-stock-mail-snd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-stock-text-indent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gnome-stock-text-unindent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-first.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-jump.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-last.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-next.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-previous.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/go-up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gohome.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-about.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-apply.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-bold.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-cancel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-clear.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-cut.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-execute.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-find-and-replace.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-find.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-fullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-go-back-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-go-back-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-go-down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-go-forward-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-go-forward-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-go-up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-goto-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-goto-first-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-goto-first-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-goto-last-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-goto-last-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-goto-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-indent-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-indent-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-italic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-jump-to-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-jump-to-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-justify-center.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-justify-fill.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-justify-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-justify-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-leave-fullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-next-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-next-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-pause.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-play-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-previous-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-previous-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-record.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-media-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-paste.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-print-preview.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-print.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-quit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-redo-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-remove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-revert-to-saved-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-revert-to-saved-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-save-as.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-save.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-select-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-sort-ascending.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-sort-descending.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-spell-check.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-strikethrough.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-underline.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-undo-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-unindent-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-unindent-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-zoom-100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-zoom-fit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-zoom-in.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/gtk-zoom-out.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/help-about.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/help-contents.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/im-message-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/insert-image.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/insert-link.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/insert-text.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/internet-radio-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/iso-image-burn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/kfind.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/kfm-home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/leftjust.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/list-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/list-remove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/locationbar-erase.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/lock.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/lock.xpm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/lpi-bug.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/lpi-help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/lpi-translate.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/lxde-logout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-attachment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-folder-sent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-forward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-inbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-mark-important.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-mark-junk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-mark-not-junk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-mark-notjunk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-mark-read.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-mark-unread.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-message-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-outbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-read.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-replied.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-reply-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-reply-sender.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-send-receive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-sent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail-unread.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail_forward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail_new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail_reply.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail_replyall.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/mail_send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-eject.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-import-audio-cd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-optical-audio-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-optical-burn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-optical-copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-playback-pause.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-playback-start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-playback-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-playlist-repeat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-playlist-shuffle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-record.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-skip-backward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-skip-forward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/media-write-cd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/music-library.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/next.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/object-flip-horizontal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/object-flip-vertical.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/object-rotate-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/object-rotate-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-available-locked.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-available.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-broken.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-downgrade.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-install.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-installed-locked.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-installed-outdated.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-installed-updated.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-purge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-reinstall.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-remove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-supported.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/package-upgrade.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/player-eject.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/player_end.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/player_pause.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/player_play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/player_record.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/player_start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/player_stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/podcast-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/preview-file.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/previous.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/process-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/redhat-home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/redo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/reload.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/reload3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/reload_all_tabs.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/reload_page.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/remove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/revert.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/rhythmbox-set-star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/rightjust.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/rotate.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock-refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_about.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_add-bookmark.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_attach.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_calc-accept.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_cut.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_file-properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_first.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_folder-copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_folder-move.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_folder-properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_fullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_help-add-bookmark.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_inbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_last.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_leave-fullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mail-compose.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mail-filters-apply.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mail-forward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mail-reply-to-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mail-reply.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mail-send-receive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mail-send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_mark.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_media-next.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_media-pause.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_media-play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_media-prev.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_media-rec.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_media-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_new-appointment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_new-bcard.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_new-dir.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_new-tab.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_new-text.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_new-window.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_outbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_paste.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_print-preview.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_print-setup.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_print.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_redo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_repeat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_save-as.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_save.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_search-and-replace.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_select-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_sent-mail.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_shuffle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_spellcheck.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text-strikethrough.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_bold.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_center.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_indent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_italic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_justify.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_underlined.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_text_unindent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_zoom-1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_zoom-in.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_zoom-out.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stock_zoom-page.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-lock-screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-log-out.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-restart-panel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-run.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-shutdown-panel-restart.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-shutdown-panel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-shutdown-restart-panel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-shutdown.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/system-upgrade.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/tab-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/tab_new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/tag-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/text_bold.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/text_italic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/text_strike.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/text_under.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/tools-check-spelling.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/top.xpm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-fullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-list-compact-symbolic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-list-compact.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-list-details-symbolic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-list-details.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-list-icons-symbolic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-list-icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-restore.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-sort-ascending.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/view-sort-descending.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/viewmag+.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/viewmag-.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/viewmag1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/viewmagfit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/visualization.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/window-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/window-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/window_fullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/window_new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/window_nofullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/xfce-system-exit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/xfce-system-lock.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/xfsm-logout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/zoom-best-fit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/zoom-fit-best.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/zoom-fit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/zoom-in.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/zoom-original.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/zoom-out.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jPogiEngine.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sqlTemplates.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/PGColor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/IconedCheckbox.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerListModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerVisibilityTableRenderer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size16/.directory" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ua/com/ifno/pogi/resources/size32/.directory" />
+    </list>
+    <ignored path="jPogiEngine.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="jPogiEngine" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="JPogiEngine.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/JPogiEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="23" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1336391564000" expanded="true" signature="4874:13086" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+                <marker date="1336391564000" expanded="false" signature="13098:13918" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LayerListModel.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerListModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="30" selection-start="213" selection-end="213" vertical-scroll-proportion="-0.16423358">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LayerVisibilityTableRenderer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerVisibilityTableRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="30" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Animation.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/Animation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="11" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimationCache.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/AnimationCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="15" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PGColor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/PGColor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="65" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostgisParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/PostgisParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="11" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CantParseException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/CantParseException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="15" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TileInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/TileInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="6" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VectorLayer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/VectorLayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="26" selection-start="1723" selection-end="1723" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
+    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
+    <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/Animation.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/AnimationCache.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/Animator.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/BackgroundMapLayer.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/GeoObjMaker.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/IconedCheckbox.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/JobGenerator.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerListModel.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/RasterThread.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/Scaler.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/SimplePogiTest.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/ImageSettings.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerManager.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoWindow.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/JPogiEngine.java" />
+        <option value="$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/VectorLayer.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-5" />
+    <option name="y" value="-5" />
+    <option name="width" value="1930" />
+    <option name="height" value="1041" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Annotator</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jPogiEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jPogiEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jPogiEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="RESOURCE_BUNDLE_SPLITTER_PROPORTION" value="0.5" />
+    <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.lookFeel" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <PyConsoleSettings />
+    </option>
+    <option name="myDjangoConsoleState">
+      <PyConsoleSettings />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.JPogiEngine">
+    <configuration default="false" name="JPogiEngine" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ua.com.ifno.pogi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="ua.com.ifno.pogi.JPogiEngine" />
+      <option name="VM_PARAMETERS" value="-client -Dswing.defaultlaf=com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel -Dsun.java2d.opengl=false -Dsun.java2d.opengl.fbobject=false -Dsun.java2d.pmoffscreen=false  -Xms200m -Xmx500m" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="jPogiEngine" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" adl_options="" air_descriptor_path="" air_program_params="" air_publisher_id="" air_root_dir_path="" air_run_mode="AppDescriptor" browser_family="FIREFOX" class_name="" debugger_sdk="Module SDK" html_or_swf_file_path="" launcher_type="OSDefault" main_class_name="" method_name="" module_name="" output_log_level="" package_name="" player_path="/usr/bin/flashplayerdebugger" port="0" run_mode="HtmlOrSwfFile" run_trusted="true" scope="Class" socket_policy_port="0" url_to_launch="http://">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.JPogiEngine" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <configuration useDefault="true">$USER_HOME$/.subversion_IDEA</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da06a269-a4a1-4c75-8115-d91a6ed36769" name="Default" comment="" />
+      <created>1330685149823</created>
+      <updated>1330685149823</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-5" y="-5" width="1930" height="1041" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32919955" sideWeight="0.49786323" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.49839744" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15972222" sideWeight="0.67080045" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="J2D Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven-2 Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990981" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some fixes" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Some fixes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="14" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/ImageSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="0" selection-start="4156" selection-end="4156" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="1" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/WrongGeoTypeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="11" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="30" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/IconedCheckbox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="30" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/JPogiEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="23" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="30" selection-start="213" selection-end="213" vertical-scroll-proportion="-0.16423358">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/LayerVisibilityTableRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="30" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/Animation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="11" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/AnimationEngine/AnimationCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="15" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/PGColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="65" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/PostgisParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="11" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/GeoObjects/CantParseException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="15" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/TileInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="6" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/com/ifno/pogi/LayerEngine/VectorLayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="26" selection-start="1723" selection-end="1723" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Python 2.7.2+ (/usr/bin/python2.7) interpreter library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>jPogiEngine</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
